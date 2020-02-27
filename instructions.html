@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Initializing course environment — Data analysis with Python - Spring 2019  documentation</title>
+<title>Initializing course environment — Data analysis with Python - Spring 2020  documentation</title>
 <script src="_static/js/modernizr.min.js" type="text/javascript"></script>
 <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
 <script src="_static/jquery.js" type="text/javascript"></script>
@@ -18,14 +18,14 @@
 <link href="genindex.html" rel="index" title="Index"/>
 <link href="search.html" rel="search" title="Search"/>
 <link href="tools.html" rel="next" title="Running Python code"/>
-<link href="index.html" rel="prev" title="Welcome to Data analysis with Python - Spring 2019"/>
+<link href="index.html" rel="prev" title="Welcome to Data analysis with Python - Spring 2020"/>
 </head>
 <body class="wy-body-for-nav">
 <div class="wy-grid-for-nav">
 <nav class="wy-nav-side" data-toggle="wy-nav-shift">
 <div class="wy-side-scroll">
-<div class="wy-side-nav-search">
-<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+<div class="wy-side-nav-search"><a href="http://www.helsinki.fi" style="margin-bottom: 0px;"><img src="https://uni.materialbank.net/NiboWEB/uni/getPublicFile.do?uuid=146263&amp;inline=false&amp;ticket=8a2a112700dc87abd2813d55e149bc0c&amp;type=original" style="margin-bottom: 0px;max-width: 60%;height: auto;width: auto;"/></a>
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2020
           
 
           
@@ -48,7 +48,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#2-Log-in-to-the-course">2 Log in to the course</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#3-Install-TMC-client">3 Install TMC client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3-Install-TMC-client">3 Install TMC client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Note-for-windows-users">Note for windows users</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
@@ -90,17 +93,13 @@
 <li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Week8:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
-</ul>
 </div>
 </div>
 </nav>
 <section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
 <nav aria-label="top navigation" class="wy-nav-top">
 <i class="fa fa-bars" data-toggle="wy-nav-top"></i>
-<a href="index.html">Data analysis with Python - Spring 2019</a>
+<a href="index.html">Data analysis with Python - Spring 2020</a>
 </nav>
 <div class="wy-nav-content">
 <div class="rst-content">
@@ -140,8 +139,8 @@
 }
 </style>
 <div class="admonition note">
-This page was generated from <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/blob/master/instructions.ipynb">instructions.ipynb</a>.
-<span class="raw-html"><br/><a href="https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/instructions.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
+This page was generated from <a class="reference external" href="https://github.com/csmastersUH/data_analysis_with_python_spring_2020/blob/master/instructions.ipynb">instructions.ipynb</a>.
+<span class="raw-html"><br/><a href="https://colab.research.google.com/github/csmastersUH/data_analysis_with_python_spring_2020/blob/master/instructions.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
 <span class="raw-html"><br/></span></div>
 <!--NAVIGATION--><div class="section" id="Initializing-course-environment">
 <h1>Initializing course environment<a class="headerlink" href="#Initializing-course-environment" title="Permalink to this headline">¶</a></h1>
@@ -152,83 +151,96 @@ This page was generated from <a class="reference external" href="https://github.
 <ul class="simple">
 <li>This is the recommended alternative</li>
 <li>Will take about 3.3 gigabytes of disk space</li>
-<li>Download the anaconda installer (64bits, Python 3) from <a class="reference external" href="https://www.anaconda.com/download">https://www.anaconda.com/download</a></li>
-<li>On command line run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">nameofthedownloadedfile</span></code> on Linux (and maybe on macOS)</li>
+<li>Download the anaconda installer for your OS (64bits, Python 3) from <a class="reference external" href="https://www.anaconda.com/download">https://www.anaconda.com/download</a></li>
+<li>Install anaconda<ul>
+<li><strong>Linux:</strong> On command line run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">nameofthedownloadedfile</span></code></li>
+<li><strong>Windows:</strong> Execute the installer you downloaded</li>
+</ul>
+</li>
 <li>Follow the instructions of the installer</li>
 <li>Takes about 3 minutes</li>
-<li>Verify that your installation is complete by downloading the script <a class="reference external" href="https://raw.githubusercontent.com/jttoivon/data-analysis-with-python-spring-2019/master/versions.py">versions.py</a> and run it with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">versions.py</span></code>.</li>
+<li><strong>windows:</strong> In the anaconda navigator, start the conda prompt.</li>
+<li>Verify that your installation is complete by downloading the script <a class="reference external" href="https://raw.githubusercontent.com/saskeli/data-analysis-with-python-summer-2019/master/versions.py">versions.py</a> and run it with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">versions.py</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="(alternative-b)-Install-miniconda-and-Python-packages">
 <h3>(alternative b) Install miniconda and Python packages<a class="headerlink" href="#(alternative-b)-Install-miniconda-and-Python-packages" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">This alternative is not recommended</p>
-</li>
-<li><p class="first">Will take about 2.3 gigabytes of disk space</p>
-</li>
-<li><p class="first">Download miniconda installer (64bits, Python 3) from <a class="reference external" href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
-</li>
-<li><p class="first">Run the installer</p>
 <ul class="simple">
-<li>On the command line run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">nameofthedownloadedfile</span></code></li>
+<li>This alternative is not recommended</li>
+<li>Will take about 2.3 gigabytes of disk space</li>
+<li>Download miniconda installer (64bits, Python 3) from <a class="reference external" href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></li>
+<li>Run the installer<ul>
+<li><strong>Linux:</strong> On the command line run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">nameofthedownloadedfile</span></code></li>
+<li><strong>Windows:</strong> Execute the downloaded installler</li>
 </ul>
 </li>
-<li><p class="first">Activate the miniconda environment</p>
-<ul class="simple">
-<li>With Linux and MacOS: <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/miniconda/install/location/bin/activate</span></code></li>
+<li>Activate the miniconda environment<ul>
+<li><strong>Linux and MacOS:</strong> <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/miniconda/install/location/bin/activate</span></code></li>
+<li><strong>Windows:</strong> Start the anaconda command prompts</li>
 </ul>
 </li>
-<li><p class="first">Download the <a class="reference external" href="https://raw.githubusercontent.com/jttoivon/data-analysis-with-python-spring-2019/master/requirements.txt">requirements.txt</a> file</p>
-</li>
-<li><p class="first">Install the required packages with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`conda install --yes --file requirements.txt`
-</pre></div>
-</div>
-<p>This may take awhile.</p>
-</li>
-<li><p class="first">Takes about 1 min 30 s on fast network</p>
-</li>
+<li>Download the <a class="reference external" href="https://raw.githubusercontent.com/saskeli/data-analysis-with-python-summer-2019/master/requirements.txt">requirements.txt</a> file</li>
+<li>Install the required packages with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">--yes</span> <span class="pre">--file</span> <span class="pre">requirements.txt</span></code> This may take awhile. (About 1 min 30 s on fast network)</li>
 </ul>
 </div>
 </div>
 <div class="section" id="2-Log-in-to-the-course">
 <h2>2 Log in to the course<a class="headerlink" href="#2-Log-in-to-the-course" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Go to the <a class="reference external" href="https://tmc.mooc.fi/org/hy/courses/438">exercise page</a> of the course</li>
+<li>Go to the <a class="reference external" href="https://tmc.mooc.fi/org/hy/courses/488">exercise page</a> of the course</li>
 <li>If you don’t already have an account on this server, press the signup button</li>
 <li>Use your student number as the organizational id, if you want to get credits from this course. Note for old-timers: it is not enough, that you have your student number as your user name in TMC, in fact, that is not even recommended anymore.</li>
 <li>Choose organization Helsingin yliopisto</li>
-<li>Choose course Data Analysis with Python Spring 2019</li>
+<li>Choose course Data Analysis with Python Summer 2019</li>
 </ul>
 </div>
 <div class="section" id="3-Install-TMC-client">
 <h2>3 Install TMC client<a class="headerlink" href="#3-Install-TMC-client" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li>TMC requires a fairly modern java 8 or later to work properly.<ul>
+<li>open jdk 1.8.0_212 for example works</li>
+<li>as do all 11.x and 12.x versions i’ve seen.</li>
+<li>you can try to install and run tmc and update your java install if logging in with the cli fails.</li>
+</ul>
+</li>
 <li>Follow the instructions on the following page to install TMC client <a class="reference external" href="https://github.com/testmycode/tmc-cli">https://github.com/testmycode/tmc-cli</a></li>
 <li>Note that on this course we use the command line version of TMC, not netbeans or any other IDE. So, you need to know the basics of command line use in the terminal/command prompt</li>
 <li>Go to a folder where you want to download the exercises, and issue command <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">login</span></code></li>
 <li>If it asks for a server address, then your TMC client is outdated. Re-install the client. Note, that the installation script was updated very recently (12.3.2019). So, if you had problems with it, you might want to try again.</li>
 <li>Provide login details, and use organization slug <code class="docutils literal notranslate"><span class="pre">hy</span></code></li>
-<li>Then issue command <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">download</span> <span class="pre">hy-data-analysis-with-python-spring-2019</span></code> to download the exercises</li>
+<li>Then issue command <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">download</span> <span class="pre">hy-data-analysis-with-python-summer-2019</span></code> to download the exercises</li>
 <li>Important commands:</li>
 <li><code class="docutils literal notranslate"><span class="pre">tmc</span></code> to show help message</li>
 <li><code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">test</span></code> to test your solution locally</li>
 <li><code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">submit</span></code> to submit your solution to the server for grading</li>
 <li>The above github page of the tmc-client also contains instructions on the use of the client</li>
 </ul>
+<div class="section" id="Note-for-windows-users">
+<h3>Note for windows users<a class="headerlink" href="#Note-for-windows-users" title="Permalink to this headline">¶</a></h3>
+<p>As there is no installer, you get the tmc cli client by downloading the latest <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file from releases. To actually run the tmc cli you issue the exact commands below but substituting <code class="docutils literal notranslate"><span class="pre">tmc</span></code> with <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span> <span class="pre">&lt;path-to-jar-file&gt;.jar</span></code> as specified <a class="reference external" href="https://github.com/testmycode/tmc-cli#manual-installation">here</a>.</p>
+<p>You may want to alias the <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span> <span class="pre">&lt;path-to-jar-file&gt;.jar</span></code> -part of the command so that just the command <code class="docutils literal notranslate"><span class="pre">tmc</span></code> works on windows as well. This can be done according to <a class="reference external" href="https://superuser.com/questions/1134368/create-permanent-doskey-in-windows-cmd">these instructions</a>.</p>
+<ul class="simple">
+<li>Create a <code class="docutils literal notranslate"><span class="pre">aliases.cmd</span></code> file</li>
+<li>Add the following to the file: <code class="docutils literal notranslate"><span class="pre">@echo</span> <span class="pre">off</span>   <span class="pre">doskey</span> <span class="pre">tmc=java</span> <span class="pre">-jar</span> <span class="pre">&lt;Path-to-tmc-jar&gt;</span> <span class="pre">$*</span></code></li>
+<li>In <code class="docutils literal notranslate"><span class="pre">`regedit</span></code> &lt;<a class="reference external" href="https://support.microsoft.com/en-us/help/4027573/windows-10-open-registry-editor">https://support.microsoft.com/en-us/help/4027573/windows-10-open-registry-editor</a>&gt;`__, browse to <code class="docutils literal notranslate"><span class="pre">HKEY_CURRENT_USER\Software\Microsoft\Command</span> <span class="pre">Processor</span></code></li>
+<li>Create a new registry key-value pair of type <code class="docutils literal notranslate"><span class="pre">REG_EXPAND_SZ</span></code>, with name <code class="docutils literal notranslate"><span class="pre">AutoRun</span></code> and the path to the aliases file as value</li>
+<li>Now the <code class="docutils literal notranslate"><span class="pre">tmc</span></code> alias should always be added when a new console is opened</li>
+</ul>
+<p>Thanks to @Eeero for the step-by-step instructions.</p>
 <!--NAVIGATION--></div>
+</div>
 </div>
 </div>
 </div>
 <footer>
 <div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
 <a accesskey="n" class="btn btn-neutral float-right" href="tools.html" rel="next" title="Running Python code">Next <span class="fa fa-arrow-circle-right"></span></a>
-<a accesskey="p" class="btn btn-neutral float-left" href="index.html" rel="prev" title="Welcome to Data analysis with Python - Spring 2019"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="p" class="btn btn-neutral float-left" href="index.html" rel="prev" title="Welcome to Data analysis with Python - Spring 2020"><span class="fa fa-arrow-circle-left"></span> Previous</a>
 </div>
 <hr/>
 <div role="contentinfo">
 <p>
-        © Copyright 2018-2019, Jarkko Toivonen
+        © Copyright 2018-2020, Jarkko Toivonen
 
     </p>
 </div>

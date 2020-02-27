@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Pandas — Data analysis with Python - Spring 2019  documentation</title>
+<title>Pandas — Data analysis with Python - Spring 2020  documentation</title>
 <script src="_static/js/modernizr.min.js" type="text/javascript"></script>
 <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
 <script src="_static/jquery.js" type="text/javascript"></script>
@@ -24,8 +24,8 @@
 <div class="wy-grid-for-nav">
 <nav class="wy-nav-side" data-toggle="wy-nav-shift">
 <div class="wy-side-scroll">
-<div class="wy-side-nav-search">
-<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+<div class="wy-side-nav-search"><a href="http://www.helsinki.fi" style="margin-bottom: 0px;"><img src="https://uni.materialbank.net/NiboWEB/uni/getPublicFile.do?uuid=146263&amp;inline=false&amp;ticket=8a2a112700dc87abd2813d55e149bc0c&amp;type=original" style="margin-bottom: 0px;max-width: 60%;height: auto;width: auto;"/></a>
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2020
           
 
           
@@ -85,17 +85,13 @@
 <li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Week8:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
-</ul>
 </div>
 </div>
 </nav>
 <section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
 <nav aria-label="top navigation" class="wy-nav-top">
 <i class="fa fa-bars" data-toggle="wy-nav-top"></i>
-<a href="index.html">Data analysis with Python - Spring 2019</a>
+<a href="index.html">Data analysis with Python - Spring 2020</a>
 </nav>
 <div class="wy-nav-content">
 <div class="rst-content">
@@ -333,8 +329,8 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <div class="admonition note">
-This page was generated from <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas1.ipynb">pandas1.ipynb</a>.
-<span class="raw-html"><br/><a href="https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas1.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
+This page was generated from <a class="reference external" href="https://github.com/csmastersUH/data_analysis_with_python_spring_2020/blob/master/pandas1.ipynb">pandas1.ipynb</a>.
+<span class="raw-html"><br/><a href="https://colab.research.google.com/github/csmastersUH/data_analysis_with_python_spring_2020/blob/master/pandas1.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
 <span class="raw-html"><br/></span></div>
 <!--NAVIGATION--><table border="1" class="docutils">
 <colgroup>
@@ -368,8 +364,8 @@ This page was generated from <a class="reference external" href="https://github.
 <h1>Pandas<a class="headerlink" href="#Pandas" title="Permalink to this headline">¶</a></h1>
 <p>In the NumPy section we dealt with some arrays, whose columns had each a special meaning. For example, the column number 0 could contain values interpreted as years, and column 1 could contain a month, and so on. It is possible to handle the data this way, but in can be hard to remember, which column number corresponds to which variable. Especially, if you later remove some column from the array, then the numbering of the remaining columns changes. One solution to this is to give a descriptive
 name to each column. These column names stay fixed and attached to their corresponding columns, even if we remove some of the columns. In addition, the rows can be given names as well, these are called <em>indices</em> in Pandas.</p>
-<p>The <a class="reference external" href="http://pandas.pydata.org/">Pandas</a> library is build on top of the NumPy library, and it provides a special kind of two dimensional data structure called <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> allows to give names to the columns, so that one can access a column using its name in place of the index of the column.</p>
-<p>First we will quickly go through few examples to see what is possible with Pandas. You may need to check some details from the Pandas <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/">documentation</a> in order to complete the exercises. We start by doing some standard imports:</p>
+<p>The <a class="reference external" href="http://pandas.pydata.org/">Pandas</a> library is built on top of the NumPy library, and it provides a special kind of two dimensional data structure called <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> allows to give names to the columns, so that one can access a column using its name in place of the index of the column.</p>
+<p>First we will quickly go through a few examples to see what is possible with Pandas. You may need to check some details from the Pandas <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/">documentation</a> in order to complete the exercises. We start by doing some standard imports:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -899,7 +895,7 @@ Name: Grades, dtype: int64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Name: </span><span class="si">%s</span><span class="s2">, dtype: </span><span class="si">%s</span><span class="s2">, size: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Name: </span><span class="si">{s.name}</span><span class="s2">, dtype: </span><span class="si">{s.dtype}</span><span class="s2">, size: </span><span class="si">{s.size}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1245,7 +1241,7 @@ Name: Presidents, dtype: object
 <hr/>
 <div role="contentinfo">
 <p>
-        © Copyright 2018-2019, Jarkko Toivonen
+        © Copyright 2018-2020, Jarkko Toivonen
 
     </p>
 </div>

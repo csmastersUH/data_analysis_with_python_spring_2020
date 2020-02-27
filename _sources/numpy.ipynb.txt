@@ -7,7 +7,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/numpy.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/numpy.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
     "\n",
     "|                                                  -                                                  |                                                  -                                                  |                                                  -                                                  |\n",
     "|-----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|\n",
@@ -337,19 +337,29 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 3,
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T16:18:06.517353Z",
+     "start_time": "2019-06-13T16:18:06.513643Z"
+    }
+   },
    "outputs": [],
    "source": [
     "def info(name, a):\n",
-    "    print(\"%s has dim %i, shape %s, size %i, and dtype %s:\" % (name, a.ndim, a.shape, a.size, a.dtype))\n",
+    "    print(f\"{name} has dim {a.ndim}, shape {a.shape}, size {a.size}, and dtype {a.dtype}:\")\n",
     "    print(a)"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T16:18:07.337848Z",
+     "start_time": "2019-06-13T16:18:07.331054Z"
+    }
+   },
    "outputs": [],
    "source": [
     "b=np.array([[1,2,3], [4,5,6]])\n",
@@ -641,24 +651,34 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T16:30:36.752591Z",
+     "start_time": "2019-06-13T16:30:36.735243Z"
+    }
+   },
    "outputs": [],
    "source": [
     "a=np.arange(2)\n",
     "b=np.arange(2,5)\n",
-    "print(\"a has shape %s: %s\" % (a.shape, a))\n",
-    "print(\"b has shape %s: %s\" % (b.shape, b))\n",
+    "print(f\"a has shape {a.shape}: {a}\")\n",
+    "print(f\"b has shape {b.shape}: {b}\")\n",
     "np.concatenate((a,b))  # concatenating 1d arrays"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T16:31:16.645102Z",
+     "start_time": "2019-06-13T16:31:16.638419Z"
+    }
+   },
    "outputs": [],
    "source": [
     "c=np.arange(1,5).reshape(2,2)\n",
-    "print(\"c has shape %s:\" % (c.shape,), c, sep=\"\\n\")\n",
+    "print(f\"c has shape {c.shape}:\", c, sep=\"\\n\")\n",
     "np.concatenate((c,c))   # concatenating 2d arrays"
    ]
   },
@@ -914,15 +934,20 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T16:33:33.266426Z",
+     "start_time": "2019-06-13T16:33:33.256129Z"
+    }
+   },
    "outputs": [],
    "source": [
     "np.random.seed(0)\n",
     "a=np.random.randint(-100, 100, (4,5))\n",
     "print(a)\n",
-    "print(\"Minimum: %i, maximum: %i\" %(a.min(), a.max()))\n",
-    "print(\"Sum: %i\" % a.sum())\n",
-    "print(\"Mean: %f, standard deviation: %f\" % (a.mean(), a.std()))"
+    "print(f\"Minimum: {a.min()}, maximum: {a.max()}\")\n",
+    "print(f\"Sum: {a.sum()}\")\n",
+    "print(f\"Mean: {a.mean()}, standard deviation: {a.std()}\")"
    ]
   },
   {
@@ -1244,7 +1269,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/numpy.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/numpy.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
    ]
   }
  ],
@@ -1264,7 +1289,36 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.1"
+   "version": "3.6.8"
+  },
+  "varInspector": {
+   "cols": {
+    "lenName": 16,
+    "lenType": 16,
+    "lenVar": 40
+   },
+   "kernels_config": {
+    "python": {
+     "delete_cmd_postfix": "",
+     "delete_cmd_prefix": "del ",
+     "library": "var_list.py",
+     "varRefreshCmd": "print(var_dic_list())"
+    },
+    "r": {
+     "delete_cmd_postfix": ") ",
+     "delete_cmd_prefix": "rm(",
+     "library": "var_list.r",
+     "varRefreshCmd": "cat(var_dic_list()) "
+    }
+   },
+   "types_to_exclude": [
+    "module",
+    "function",
+    "builtin_function_or_method",
+    "instance",
+    "_Feature"
+   ],
+   "window_display": false
   }
  },
  "nbformat": 4,

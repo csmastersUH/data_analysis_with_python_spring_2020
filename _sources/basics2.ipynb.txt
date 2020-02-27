@@ -7,7 +7,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/basics2.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/basics2.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
     "\n",
     "|                                       -                                       |                                       -                                       |                                       -                                       |\n",
     "|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------|\n",
@@ -601,8 +601,13 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
-   "metadata": {},
+   "execution_count": 1,
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T14:52:31.003612Z",
+     "start_time": "2019-06-13T14:52:30.995901Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -623,7 +628,7 @@
     "        \n",
     "for i in range(5):            # And read the first five lines\n",
     "    line = f.readline()\n",
-    "    print(\"Line %i: %s\" % (i, line), end=\"\")\n",
+    "    print(f\"Line {i}: {line}\", end=\"\")\n",
     "f.close()"
    ]
   },
@@ -636,8 +641,13 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
-   "metadata": {},
+   "execution_count": 2,
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T14:52:54.616535Z",
+     "start_time": "2019-06-13T14:52:54.609996Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -656,7 +666,7 @@
     "                                              # when the with block exits\n",
     "    for i in range(5):\n",
     "        line = f.readline()\n",
-    "        print(\"Line %i: %s\" % (i, line), end=\"\")"
+    "        print(f\"Line {i}: {line}\", end=\"\")"
    ]
   },
   {
@@ -668,8 +678,13 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
-   "metadata": {},
+   "execution_count": 3,
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T14:57:40.297056Z",
+     "start_time": "2019-06-13T14:57:40.289012Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -685,7 +700,7 @@
     "    for line in f:    # iterates through all the lines in the file\n",
     "        if len(line) > max_len:\n",
     "            max_len = len(line)\n",
-    "print(\"The longest line in this file has length %i\" % max_len)"
+    "print(f\"The longest line in this file has length {max_len}\")"
    ]
   },
   {
@@ -819,16 +834,12 @@
     "file should contain a floating point number on each line of the file. Make your function read these\n",
     "numbers and then return a triple containing the sum, average, and standard deviation of these numbers for the file.\n",
     "As a reminder, the formula for corrected sample standard deviation is\n",
-    "$\\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\overline x)^2}{n-1}}$,\n",
-    "where $\\overline x$ is the average. Use the `math.sqrt` function from the `math` module in your solution.\n",
+    "$\\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\overline x)^2}{n-1}}$, where $\\overline x$ is the average.\n",
     "\n",
     "The `main` function should call the function summary for each filename in the list `sys.argv[1:]` of command line parameters. (Skip `sys.argv[0]` since it contains the name of the current program.)\n",
     "\n",
     "Example of usage from the command line:\n",
     "`python3 src/summary.py src/example.txt src/example2.txt`\n",
-    "or\n",
-    "`python3 summary.py example.txt example2.txt`\n",
-    "if you are in the folder src.\n",
     "\n",
     "Print floating point numbers using six decimals precision. The output should look like this:\n",
     "```\n",
@@ -889,7 +900,7 @@
     "Write function `file_extensions` that gets as a parameter a filename.\n",
     "It should read through the lines from this file. Each line contains a filename.\n",
     "Find the extension for each filename. The function should return a pair, where the\n",
-    "first element is a list containing all filenames with no extension (no period (`.`) appears in the filename).\n",
+    "first element is a list containing all filenames with no extension (with the preceding period (`.`) removed).\n",
     "The second element of the pair is a dictionary with extensions as keys and corresponding values are lists with filenames having that extension.\n",
     "\n",
     "Sounds a bit complicated, but hopefully the next example will clarify this.\n",
@@ -1099,7 +1110,7 @@
     "also has a method `write(s)` which prints the string `s` prepended with the `start` string.\n",
     "An example of usage:\n",
     "```python\n",
-    "p=Prepend(\"+++ \")\n",
+    "p = Prepend(\"+++ \")\n",
     "p.write(\"Hello\");\n",
     "```\n",
     "Will print\n",
@@ -1508,7 +1519,12 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T15:45:47.719228Z",
+     "start_time": "2019-06-13T15:45:45.198519Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import sys\n",
@@ -1516,7 +1532,7 @@
     "s=s[:-1] # strip the \\n character from the end\n",
     "try:\n",
     "    x=int(s)\n",
-    "    sys.stdout.wr1te(\"You entered %d\\n\" % x)\n",
+    "    sys.stdout.wr1te(f\"You entered {x}\\n\")\n",
     "except Exception:\n",
     "    print(\"You didn’t enter a number\")"
    ]
@@ -1655,7 +1671,12 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-06-13T15:53:43.557681Z",
+     "start_time": "2019-06-13T15:53:43.547036Z"
+    }
+   },
    "outputs": [],
    "source": [
     "def mydate(day=1, month=1):   # Generates dates starting from the given date\n",
@@ -1669,7 +1690,7 @@
     "gen = mydate(26, 2)   # Start from 26th of February\n",
     "for i, (day, month) in enumerate(gen):   \n",
     "    if i == 5: break                 # Print only the first five dates from the generator\n",
-    "    print(\"Index %i, day %i, month %i\" % (i, day, month))"
+    "    print(f\"Index {i}, day {day}, month {month}\")"
    ]
   },
   {
@@ -1688,7 +1709,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/basics2.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/basics2.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
    ]
   }
  ],
@@ -1708,7 +1729,36 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.1"
+   "version": "3.6.8"
+  },
+  "varInspector": {
+   "cols": {
+    "lenName": 16,
+    "lenType": 16,
+    "lenVar": 40
+   },
+   "kernels_config": {
+    "python": {
+     "delete_cmd_postfix": "",
+     "delete_cmd_prefix": "del ",
+     "library": "var_list.py",
+     "varRefreshCmd": "print(var_dic_list())"
+    },
+    "r": {
+     "delete_cmd_postfix": ") ",
+     "delete_cmd_prefix": "rm(",
+     "library": "var_list.r",
+     "varRefreshCmd": "cat(var_dic_list()) "
+    }
+   },
+   "types_to_exclude": [
+    "module",
+    "function",
+    "builtin_function_or_method",
+    "instance",
+    "_Feature"
+   ],
+   "window_display": false
   }
  },
  "nbformat": 4,

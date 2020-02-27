@@ -57,7 +57,7 @@ to open the notebook in Google's colab service. There it is possible
 to edit code and reexecute it.
 
 Alternatively, you can download the notebooks with command
-``git clone https://github.com/jttoivon/data-analysis-with-python-spring-2019``. Then start
+``git clone https://github.com/csmastersUH/data_analysis_with_python_spring_2020``. Then start
 Jupyter notebook with command ``jupyter-notebook``.
 
 Executing a file containing Python code
@@ -88,9 +88,9 @@ For example in the following way:
 
 .. code-block:: none
 		
-    jttoivon@dx6-cs-05:$ python --version
+    saskeli@dx5-cs-01:$ python --version
     Python 2.7.15rc1
-    jttoivon@dx6-cs-05:$ python3 --version
+    saskeli@dx5-cs-01:$ python3 --version
     Python 3.6.7
 
 If you have Anaconda correctly installed, then the Python version should
@@ -116,7 +116,7 @@ The versions of additional libraries that are know to work are:
 
 More recent versions should work as well. You can check the software
 version of your installation with the following Python script:
-`versions.py <https://raw.githubusercontent.com/jttoivon/data-analysis-with-python-spring-2019/master/versions.py>`_
+`versions.py <https://raw.githubusercontent.com/csmastersUH/data_analysis_with_python_spring_2020/master/versions.py>`_
 Download the script and execute it with ``python3 versions.py``.
 
 

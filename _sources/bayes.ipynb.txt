@@ -7,7 +7,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/bayes.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/bayes.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
     "\n",
     "|                                       -                                       |                                       -                                       |                                       -                                       |\n",
     "|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------|\n",
@@ -27,7 +27,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "*Classification* is one form of supervised learning. The aim is to annotate all data points with a label. Those points that have the same label belong to the same class. There can be two or more labels. For example, a lifeforms can be classified (coarsely) with labels animal, plant, fungi, archaea, bacteria, protozoa, and chromista. The data points are observed to have certain features that can be used to predict their labels. For example, if it is has feathers, then it is most likely an animal.\n",
+    "*Classification* is one form of supervised learning. The aim is to annotate all data points with a label. Those points that have the same label belong to the same class. There can be two or more labels. For example, a lifeform can be classified (coarsely) with labels animal, plant, fungi, archaea, bacteria, protozoa, and chromista. The data points are observed to have certain features that can be used to predict their labels. For example, if it is has feathers, then it is most likely an animal.\n",
     "\n",
     "In supervised learning an algorithm is first given a training set of data points with their features and labels. Then the algorithm learns from these features and labels a (probabilistic) model, which can afterwards be used to predict the labels of previously unseen data.\n",
     "\n",
@@ -372,7 +372,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "We use as features the frequencies of each word in the dataset. That is, there as many features as there are distinct words in the dataset. We denote the number of features by $f$. As the features are now counts, it is sensible to use multinomial distribution instead of Gaussian. \n",
+    "We use as features the frequencies of each word in the dataset. That is, there are as many features as there are distinct words in the dataset. We denote the number of features by $f$. As the features are now counts, it is sensible to use multinomial distribution instead of Gaussian. \n",
     "\n",
     "Let's try to model these messages using multinomial distributions. Each message category has its own distribution. A multinomial distribution has $f$ non-negative parameters $\\theta_1,\\ldots , \\theta_f$, which sum up to one. For example, the parameter $\\theta_3$ might tell the the probability of the word \"board\" appearing in a message of the category this distribution is describing.\n",
     "\n",
@@ -433,7 +433,7 @@
    "source": [
     "print(\"Number of words:\", features[0,:].sum())\n",
     "col = vec.vocabulary_[\"it\"]   # Get the column of 'it' word in the feature matrix\n",
-    "print(\"Word 'it' appears in the first message %i times.\" % features[0, col])\n",
+    "print(f\"Word 'it' appears in the first message {features[0, col]} times.\")\n",
     "print()\n",
     "print(train.data[0])   # Let's print the corresponding message as well\n",
     "#print(vec.get_feature_names())"
@@ -541,7 +541,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/bayes.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/bayes.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
    ]
   }
  ],
@@ -561,7 +561,36 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.1"
+   "version": "3.6.8"
+  },
+  "varInspector": {
+   "cols": {
+    "lenName": 16,
+    "lenType": 16,
+    "lenVar": 40
+   },
+   "kernels_config": {
+    "python": {
+     "delete_cmd_postfix": "",
+     "delete_cmd_prefix": "del ",
+     "library": "var_list.py",
+     "varRefreshCmd": "print(var_dic_list())"
+    },
+    "r": {
+     "delete_cmd_postfix": ") ",
+     "delete_cmd_prefix": "rm(",
+     "library": "var_list.r",
+     "varRefreshCmd": "cat(var_dic_list()) "
+    }
+   },
+   "types_to_exclude": [
+    "module",
+    "function",
+    "builtin_function_or_method",
+    "instance",
+    "_Feature"
+   ],
+   "window_display": false
   }
  },
  "nbformat": 4,

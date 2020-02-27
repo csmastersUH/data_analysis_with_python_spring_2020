@@ -7,7 +7,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas1.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/pandas1.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
     "\n",
     "|                                        -                                        |                                        -                                        |                                        -                                        |\n",
     "|---------------------------------------------------------------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------------------------|\n",
@@ -23,9 +23,9 @@
     "\n",
     "In the NumPy section we dealt with some arrays, whose columns had each a special meaning. For example, the column number 0 could contain values interpreted as years, and column 1 could contain a month, and so on. It is possible to handle the data this way, but in can be hard to remember, which column number corresponds to which variable. Especially, if you later remove some column from the array, then the numbering of the remaining columns changes. One solution to this is to give a descriptive name to each column. These column names stay fixed and attached to their corresponding columns, even if we remove some of the columns. In addition, the rows can be given names as well, these are called *indices* in Pandas.\n",
     "\n",
-    "The [Pandas](http://pandas.pydata.org/) library is build on top of the NumPy library, and it provides a special kind of two dimensional data structure called `DataFrame`. The `DataFrame` allows to give names to the columns, so that one can access a column using its name in place of the index of the column.\n",
+    "The [Pandas](http://pandas.pydata.org/) library is built on top of the NumPy library, and it provides a special kind of two dimensional data structure called `DataFrame`. The `DataFrame` allows to give names to the columns, so that one can access a column using its name in place of the index of the column.\n",
     "\n",
-    "First we will quickly go through few examples to see what is possible with Pandas. You may need to check some details from the Pandas [documentation](http://pandas.pydata.org/pandas-docs/stable/) in order to complete the exercises. We start by doing some standard imports:"
+    "First we will quickly go through a few examples to see what is possible with Pandas. You may need to check some details from the Pandas [documentation](http://pandas.pydata.org/pandas-docs/stable/) in order to complete the exercises. We start by doing some standard imports:"
    ]
   },
   {
@@ -194,7 +194,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "print(\"Name: %s, dtype: %s, size: %s\" % (s.name, s.dtype, s.size))"
+    "print(f\"Name: {s.name}, dtype: {s.dtype}, size: {s.size}\")"
    ]
   },
   {
@@ -469,7 +469,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas1.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/pandas1.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
    ]
   }
  ],
@@ -489,7 +489,36 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.1"
+   "version": "3.6.8"
+  },
+  "varInspector": {
+   "cols": {
+    "lenName": 16,
+    "lenType": 16,
+    "lenVar": 40
+   },
+   "kernels_config": {
+    "python": {
+     "delete_cmd_postfix": "",
+     "delete_cmd_prefix": "del ",
+     "library": "var_list.py",
+     "varRefreshCmd": "print(var_dic_list())"
+    },
+    "r": {
+     "delete_cmd_postfix": ") ",
+     "delete_cmd_prefix": "rm(",
+     "library": "var_list.r",
+     "varRefreshCmd": "cat(var_dic_list()) "
+    }
+   },
+   "types_to_exclude": [
+    "module",
+    "function",
+    "builtin_function_or_method",
+    "instance",
+    "_Feature"
+   ],
+   "window_display": false
   }
  },
  "nbformat": 4,

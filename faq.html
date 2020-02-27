@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Frequently asked questions — Data analysis with Python - Spring 2019  documentation</title>
+<title>Frequently asked questions — Data analysis with Python - Spring 2020  documentation</title>
 <script src="_static/js/modernizr.min.js" type="text/javascript"></script>
 <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
 <script src="_static/jquery.js" type="text/javascript"></script>
@@ -24,8 +24,8 @@
 <div class="wy-grid-for-nav">
 <nav class="wy-nav-side" data-toggle="wy-nav-shift">
 <div class="wy-side-scroll">
-<div class="wy-side-nav-search">
-<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+<div class="wy-side-nav-search"><a href="http://www.helsinki.fi" style="margin-bottom: 0px;"><img src="https://uni.materialbank.net/NiboWEB/uni/getPublicFile.do?uuid=146263&amp;inline=false&amp;ticket=8a2a112700dc87abd2813d55e149bc0c&amp;type=original" style="margin-bottom: 0px;max-width: 60%;height: auto;width: auto;"/></a>
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2020
           
 
           
@@ -45,6 +45,9 @@
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently asked questions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#when-logging-to-tmc-first-time-whats-the-server-address-it-asks">When logging to tmc first time, whats the server address it asks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tmc-login-crashes-with-mention-of-tmc-cli-log">TMC login crashes (with mention of tmc-cli.log)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tmc-test-fails-but-all-other-commands-including-submit-work">TMC test fails but all other commands (including submit) work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stuff-generally-doesn-t-seem-to-work-in-the-conda-prompt-on-windows">Stuff generally doesn’t seem to work in the conda prompt on Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tmc-not-found">tmc not found</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tmc-test-says-test-results-0-0-tests-passed"><cite>tmc test</cite> says: “Test results: 0/0 tests passed”</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-version-of-python-should-i-use-what-is-the-name-of-the-executable">What version of Python should I use? What is the name of the executable?</a></li>
@@ -91,17 +94,13 @@
 <li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Week8:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
-</ul>
 </div>
 </div>
 </nav>
 <section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
 <nav aria-label="top navigation" class="wy-nav-top">
 <i class="fa fa-bars" data-toggle="wy-nav-top"></i>
-<a href="index.html">Data analysis with Python - Spring 2019</a>
+<a href="index.html">Data analysis with Python - Spring 2020</a>
 </nav>
 <div class="wy-nav-content">
 <div class="rst-content">
@@ -147,6 +146,25 @@
 <p>Your TMC client is old, load newest version from
 <a class="reference external" href="https://github.com/testmycode/tmc-cli">tmc-cli</a></p>
 </div>
+<div class="section" id="tmc-login-crashes-with-mention-of-tmc-cli-log">
+<h2>TMC login crashes (with mention of tmc-cli.log)<a class="headerlink" href="#tmc-login-crashes-with-mention-of-tmc-cli-log" title="Permalink to this headline">¶</a></h2>
+<p>Your java version is probably too old. If you want, you can check the log file that should be
+located in <code class="docutils literal notranslate"><span class="pre">&lt;user.home&gt;/.config/tmc-cli/logs</span></code>. There should be mention of <code class="docutils literal notranslate"><span class="pre">SSLHandshakeException</span></code>
+or similar security relatd exceptions. In this case you should update to a newer version of java.</p>
+<p>For java 8, at least open jdk 1.8.0_212 and 1.8.0.211 work. All java 11 and 12 version should work.</p>
+</div>
+<div class="section" id="tmc-test-fails-but-all-other-commands-including-submit-work">
+<h2>TMC test fails but all other commands (including submit) work<a class="headerlink" href="#tmc-test-fails-but-all-other-commands-including-submit-work" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Windows and a fairly new installation of conda, you have fallen pray to a bug in
+conda. The python environment variables are not properly set for tmc to be able to run the tests.
+You can use <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">tmc</span></code> in the project root instead. So in the folder where e.g. <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">src/hello_world.py</span></code>
+works as expected the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">tmc</span></code> should run tmc tests properly.</p>
+<p>This workaround shouldn’t be needed after the next version of conda is released.</p>
+</div>
+<div class="section" id="stuff-generally-doesn-t-seem-to-work-in-the-conda-prompt-on-windows">
+<h2>Stuff generally doesn’t seem to work in the conda prompt on Windows<a class="headerlink" href="#stuff-generally-doesn-t-seem-to-work-in-the-conda-prompt-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>Some environment variables appararently may not be properly set in the conda prompt directly after install. Try rebooting your system.</p>
+</div>
 <div class="section" id="tmc-not-found">
 <h2>tmc not found<a class="headerlink" href="#tmc-not-found" title="Permalink to this headline">¶</a></h2>
 <p>You installed the TMC client successfully, but the program is not
@@ -182,25 +200,12 @@ Don’t ever use that!</p>
 </div>
 <div class="section" id="how-to-load-a-file-that-resides-in-the-src-folder">
 <h2>How to load a file that resides in the src folder?<a class="headerlink" href="#how-to-load-a-file-that-resides-in-the-src-folder" title="Permalink to this headline">¶</a></h2>
-<p>If you want to open a file <code class="docutils literal notranslate"><span class="pre">file.txt</span></code> that resides in the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder, use the provided
-function <code class="docutils literal notranslate"><span class="pre">get_path</span></code> like in <code class="docutils literal notranslate"><span class="pre">open(get_path("file.txt"))</span></code>. But if you are requested
-to write a function, say <code class="docutils literal notranslate"><span class="pre">f</span></code>, that gets a filename as a parameter, then calling
-<code class="docutils literal notranslate"><span class="pre">get_path</span></code> is the responsibility of the caller of <code class="docutils literal notranslate"><span class="pre">f</span></code>. If the filename comes from
+<p>TMC runs code from the project root. So for python to find <code class="docutils literal notranslate"><span class="pre">file.txt</span></code>, you need to pass it
+the folder as well. That is <code class="docutils literal notranslate"><span class="pre">src/file.txt</span></code>.</p>
+<p>However, if you are requested to write a function, say <code class="docutils literal notranslate"><span class="pre">f</span></code>, that gets a filename as a parameter,
+then calling setting the correct file path is the responsibility of the caller of <code class="docutils literal notranslate"><span class="pre">f</span></code>. If the filename comes from
 the command line parameters (<code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>), then it is the responsibility of the person
-who runs the program to provided correct path, like <code class="docutils literal notranslate"><span class="pre">src/file.txt</span></code> (no call to <code class="docutils literal notranslate"><span class="pre">get_path</span></code>
-is involved in this case).</p>
-<p>Make sure the <code class="docutils literal notranslate"><span class="pre">get_path</span></code> function has the following definition. The command <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">update</span></code>
-cannot modify files in the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder, so the function definition cannot be automatically updated.
-Now it should work also on Windows.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_path</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">sys</span>
-    <span class="kn">import</span> <span class="nn">os</span>
-    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"src"</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Note: the <code class="docutils literal notranslate"><span class="pre">get_path</span></code> contruct does not work in Jupyter, as the
-first command line parameter (<code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code>) in Jupyter does not refer
-to your program (<code class="docutils literal notranslate"><span class="pre">myprogram.py</span></code>), but instead to a certain system program.</p>
+who runs the program to provided correct path, like <code class="docutils literal notranslate"><span class="pre">src/file.txt</span></code>.</p>
 </div>
 <div class="section" id="tests-complain-about-missing-attribute-assert-called-assert-called-once">
 <h2>Tests complain about missing attribute assert_called, assert_called_once, …<a class="headerlink" href="#tests-complain-about-missing-attribute-assert-called-assert-called-once" title="Permalink to this headline">¶</a></h2>
@@ -235,9 +240,16 @@ you can activate it with</p>
 <p>First run <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">update</span></code> to make sure I haven’t already fixed that
 issue. If the problem persists, make a bug report in:</p>
 <ul class="simple">
-<li>Telegram: <a class="reference external" href="https://t.me/dap19s">https://t.me/dap19s</a></li>
-<li>Github <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/issues">issues</a></li>
+<li>Telegram: <a class="reference external" href="https://t.me/tkt_dap">https://t.me/tkt_dap</a></li>
+<li>Github <a class="reference external" href="https://github.com/csmastersUH/data_analysis_with_python_spring_2020/issues">issues</a></li>
 <li>Give feedback, when using <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">submit</span></code></li>
+</ul>
+<p>Note that reporting that “tests should be better” doesn’t really help. Please try to be more specific with bug reports. You can for example consider the following:</p>
+<ul class="simple">
+<li>What was the error message?</li>
+<li>What was the actual issue if you managed to fix it?</li>
+<li>Link to non-working code</li>
+<li>If reported via Github or Telegram: <strong>What was the excercise in question?</strong></li>
 </ul>
 </div>
 </div>
@@ -251,7 +263,7 @@ issue. If the problem persists, make a bug report in:</p>
 <hr/>
 <div role="contentinfo">
 <p>
-        © Copyright 2018-2019, Jarkko Toivonen
+        © Copyright 2018-2020, Jarkko Toivonen
 
     </p>
 </div>

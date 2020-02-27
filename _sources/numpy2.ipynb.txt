@@ -7,7 +7,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/numpy2.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/numpy2.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
     "\n",
     "|                                         -                                         |                                         -                                         |                                         -                                         |\n",
     "|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|\n",
@@ -480,6 +480,8 @@
    "source": [
     "#### <div class=\"alert alert-info\">Exercise 3 (most frequent first)</div>\n",
     "\n",
+    "**<span style=\"color:red\">Note:</span>** This exercise is fairly difficult. Feel free to skip if you get stuck.\n",
+    "\n",
     "Write function `most_frequent_first` that gets a two dimensional array and an index `c` of a column as parameters. The function should then return the array whose rows are sorted based on column `c`, in the following way. Rows are ordered so that those rows with the most frequent element in column `c` come first, then come the rows with the second most frequent element in column `c`, and so on. Therefore, the values outside column `c` don't affect the ordering in any way.\n",
     "\n",
     "Example of usage:\n",
@@ -544,7 +546,7 @@
    "outputs": [],
    "source": [
     "def info(name, a):\n",
-    "    print(\"%s has dim %i, shape %s, size %i, and dtype %s:\" % (name, a.ndim, a.shape, a.size, a.dtype))\n",
+    "    print(f\"{name} has dim {a.ndim}, shape {a.shape}, size {a.size}, and dtype {a.dtype}:\")\n",
     "    print(a)"
    ]
   },
@@ -771,7 +773,7 @@
     "<!--NAVIGATION-->\n",
     "\n",
     "\n",
-    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/numpy2.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
+    "<a href=\"https://colab.research.google.com/github/saskeli/x/blob/master/numpy2.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
    ]
   }
  ],
@@ -792,6 +794,35 @@
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
    "version": "3.6.8"
+  },
+  "varInspector": {
+   "cols": {
+    "lenName": 16,
+    "lenType": 16,
+    "lenVar": 40
+   },
+   "kernels_config": {
+    "python": {
+     "delete_cmd_postfix": "",
+     "delete_cmd_prefix": "del ",
+     "library": "var_list.py",
+     "varRefreshCmd": "print(var_dic_list())"
+    },
+    "r": {
+     "delete_cmd_postfix": ") ",
+     "delete_cmd_prefix": "rm(",
+     "library": "var_list.r",
+     "varRefreshCmd": "cat(var_dic_list()) "
+    }
+   },
+   "types_to_exclude": [
+    "module",
+    "function",
+    "builtin_function_or_method",
+    "instance",
+    "_Feature"
+   ],
+   "window_display": false
   }
  },
  "nbformat": 4,
