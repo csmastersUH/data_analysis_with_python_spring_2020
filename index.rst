@@ -49,44 +49,15 @@ It is recommended that you do this course in the end of bachelor
 degree or in the beginning of masters degree; preferably
 before the course "Introduction to Data Science".
 
-Passing the course
-------------------
+Conduct of the course
+----------------------
 
-From the weekly programming exercises you need to get 80% of the points.
-If you succeed in this, then you can start doing the project work
-(approximately 1 cu of work). After the project work and
-its peer reviewing is done, the you can take part in the final
-exam. The final exam consists of multiple choice questions on the
-themes discussed in the exercises. The final grade will be based
-on the project work, its peer review, and the exam.
-
-Programming exercises form the 4 cu massive open online part of the course
-(MOOC). We provide a certificate for passing this part. After completing the
-programming exercises, certificates are available from the
-`TMC website <https://tmc.mooc.fi/>`__, under the user page.
-Project work, its peer-review and exam are only available for
-`enrolled students <https://courses.helsinki.fi/fi/aycsm90004en/>`__. These are
-required for getting the course marked with a grade and registered as a 5 cu
-course taken at the University of Helsinki.
+Refer to the `official course page <https://courses.helsinki.fi/fi/aycsm90004en/129239201>`__.
 
 Note that this course requires a lot of work! Depending on your background
 it can take something between 5 to 20 hours per week.
 In addition to reading the course material, you sometimes may need to consult
 the online documentation of Python or its various libraries.
-
-Schedule
---------
-
-Every week there are 15 - 20 programming exercises that you must
-solve and then submit to the TMC system for checking.
-In order to continue with next week's exercises, you
-need to get 80% of the **points** from exercises of the previous week.
-Note that from some exercises it is possible to get more than one point.
-These exercises are divided into *parts*, where the parts are shown
-as Part 1, Part 2, etc. Each part gives one point.
-It is possible to submit, and get points for,
-an exercise you have completed at least partly.
-You can check your points from the `TMC server <https://tmc.mooc.fi/org/hy/courses/488>`__.
 
 Discussion forum
 ----------------
