@@ -29,7 +29,7 @@ This workaround shouldn't be needed after the next version of conda is released.
 Stuff generally doesn't seem to work in the conda prompt on Windows
 -------------------------------------------------------------------
 
-Some environment variables appararently may not be properly set in the conda prompt directly after install. Try rebooting your system.
+Some environment variables apparently may not be properly set in the conda prompt directly after install. Try rebooting your system.
 
 tmc not found
 -------------
@@ -93,7 +93,7 @@ The libraries needed in the course (numpy, pandas, matplotlib, scikit-learn, sci
 are contained in the Anaconda distribution. Either you haven't installed Anaconda or
 it hasn't been activated.
 
-On Windows you it may help, if you use 'Anaconda prompt' from the Windows menu.
+On Windows it may help, if you use 'Anaconda prompt' from the Windows menu.
 That should activate Anaconda automatically.
 
 If you don't want to use 'Anaconda prompt', then in command prompt
