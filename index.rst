@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+Note: This course page is under development and will change before the start of the course.
+
 Welcome to Data analysis with Python - Spring 2020
 ==================================================
 
