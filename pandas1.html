@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pandas — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="pandas2.html" rel="next" title="Pandas (continues)"/>
+<link href="image_processing.html" rel="prev" title="Image processing"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Creation-and-indexing-of-series">Creation and indexing of series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Summary-(week-3)">Summary (week 3)</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html">Docs</a> »</li>
+<li>Pandas</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/pandas1.ipynb.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition note">
+This page was generated from <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas1.ipynb">pandas1.ipynb</a>.
+<span class="raw-html"><br/><a href="https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas1.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
+<span class="raw-html"><br/></span></div>
+<!--NAVIGATION--><table border="1" class="docutils">
+<colgroup>
+<col width="33%"/>
+<col width="33%"/>
+<col width="33%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#Exercise-13-(read-series)">Exercise 13 (read series)</a></td>
+<td><a class="reference external" href="#Exercise-14-(operations-on-series)">Exercise 14 (operations on series)</a></td>
+<td><a class="reference external" href="#Exercise-15-(inverse-series)">Exercise 15 (inverse series)</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="Pandas">
+<h1>Pandas<a class="headerlink" href="#Pandas" title="Permalink to this headline">¶</a></h1>
+<p>In the NumPy section we dealt with some arrays, whose columns had each a special meaning. For example, the column number 0 could contain values interpreted as years, and column 1 could contain a month, and so on. It is possible to handle the data this way, but in can be hard to remember, which column number corresponds to which variable. Especially, if you later remove some column from the array, then the numbering of the remaining columns changes. One solution to this is to give a descriptive
+name to each column. These column names stay fixed and attached to their corresponding columns, even if we remove some of the columns. In addition, the rows can be given names as well, these are called <em>indices</em> in Pandas.</p>
+<p>The <a class="reference external" href="http://pandas.pydata.org/">Pandas</a> library is build on top of the NumPy library, and it provides a special kind of two dimensional data structure called <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> allows to give names to the columns, so that one can access a column using its name in place of the index of the column.</p>
+<p>First we will quickly go through few examples to see what is possible with Pandas. You may need to check some details from the Pandas <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/">documentation</a> in order to complete the exercises. We start by doing some standard imports:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>    <span class="c1"># This is the standard way of importing the Pandas library</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s import some weather data that is in text form in a csv (Commma Separated Values) file. The following call will fetch the data from the internet and convert it to a DataFrame:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"https://www.cs.helsinki.fi/u/jttoivon/dap/data/fmi/kumpula-weather-2017.csv"</span><span class="p">)</span>
+<span class="n">wh</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>   <span class="c1"># The head method prints the first 5 rows</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>m</th>
+<th>d</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation amount (mm)</th>
+<th>Snow depth (cm)</th>
+<th>Air temperature (degC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2017</td>
+<td>1</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>0.6</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2017</td>
+<td>1</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.4</td>
+<td>-1.0</td>
+<td>-3.9</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2017</td>
+<td>1</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2017</td>
+<td>1</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2017</td>
+<td>1</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>We see that the DataFrame contains eight columns, three of which are actual measured variables. Now we can refer to a column by its name:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="p">[</span><span class="s2">"Snow depth (cm)"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>     <span class="c1"># Using the tab key can help enter long column names</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    -1.0
+1    -1.0
+2     7.0
+3    13.0
+4    10.0
+Name: Snow depth (cm), dtype: float64
+</pre></div>
+</div>
+</div>
+<p>There are several summary statistic methods that operate on a column or on all the columns. The next example computes the mean of the temperatures over all rows of the DataFrame:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="p">[</span><span class="s2">"Air temperature (degC)"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>    <span class="c1"># Mean temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>6.5271232876712331
+</pre></div>
+</div>
+</div>
+<p>We can drop some columns from the DataFrame with the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">"Time zone"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>    <span class="c1"># Return a copy with one column removed, the original DataFrame stays intact</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>m</th>
+<th>d</th>
+<th>Time</th>
+<th>Precipitation amount (mm)</th>
+<th>Snow depth (cm)</th>
+<th>Air temperature (degC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2017</td>
+<td>1</td>
+<td>1</td>
+<td>00:00</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>0.6</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2017</td>
+<td>1</td>
+<td>2</td>
+<td>00:00</td>
+<td>4.4</td>
+<td>-1.0</td>
+<td>-3.9</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2017</td>
+<td>1</td>
+<td>3</td>
+<td>00:00</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2017</td>
+<td>1</td>
+<td>4</td>
+<td>00:00</td>
+<td>-1.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2017</td>
+<td>1</td>
+<td>5</td>
+<td>00:00</td>
+<td>-1.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>     <span class="c1"># Original DataFrame is unchanged</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>m</th>
+<th>d</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation amount (mm)</th>
+<th>Snow depth (cm)</th>
+<th>Air temperature (degC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2017</td>
+<td>1</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>0.6</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2017</td>
+<td>1</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.4</td>
+<td>-1.0</td>
+<td>-3.9</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2017</td>
+<td>1</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2017</td>
+<td>1</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2017</td>
+<td>1</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>In case you want to modify the original DataFrame, you can either assign the result to the original DataFrame, or use the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method. Many of the modifying methods of the DataFrame have the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> parameter.</p>
+<p>Addition of a new column works like adding a new key-value pair to a dictionary:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="p">[</span><span class="s2">"Rainy"</span><span class="p">]</span> <span class="o">=</span> <span class="n">wh</span><span class="p">[</span><span class="s2">"Precipitation amount (mm)"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span>
+<span class="n">wh</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>m</th>
+<th>d</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation amount (mm)</th>
+<th>Snow depth (cm)</th>
+<th>Air temperature (degC)</th>
+<th>Rainy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2017</td>
+<td>1</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>0.6</td>
+<td>False</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2017</td>
+<td>1</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.4</td>
+<td>-1.0</td>
+<td>-3.9</td>
+<td>False</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2017</td>
+<td>1</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+<td>True</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2017</td>
+<td>1</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+<td>False</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2017</td>
+<td>1</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>In the next sections we will systematically go through the DataFrame and its one-dimensional version: <em>Series</em>.</p>
+<div class="section" id="Creation-and-indexing-of-series">
+<h2>Creation and indexing of series<a class="headerlink" href="#Creation-and-indexing-of-series" title="Permalink to this headline">¶</a></h2>
+<p>One can turn any one-dimensional iterable into a Series, which is a one-dimensional data structure:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1
+1    4
+2    5
+3    2
+4    5
+5    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+<p>The data type of the elements in this Series is <code class="docutils literal notranslate"><span class="pre">int64</span></code>, integers representable in 64 bits.</p>
+<p>We can also attach a name to this series:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Grades"</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1
+1    4
+2    5
+3    2
+4    5
+5    2
+Name: Grades, dtype: int64
+</pre></div>
+</div>
+</div>
+<p>The common attributes of the series are the <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">dtype</span></code>, and <code class="docutils literal notranslate"><span class="pre">size</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Name: </span><span class="si">%s</span><span class="s2">, dtype: </span><span class="si">%s</span><span class="s2">, size: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Name: Grades, dtype: int64, size: 6
+</pre></div></div>
+</div>
+<p>In addition to the values of the series, also the row indices were printed. All the accessing methods from NumPy arrays also work for the Series: indexing, slicing, masking and fancy indexing.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>4
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s2</span><span class="o">=</span><span class="n">s</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>                    <span class="c1"># Fancy indexing</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0    1
+5    2
+Name: Grades, dtype: int64
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>                    <span class="c1"># Slicing</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>4    5
+5    2
+Name: Grades, dtype: int64
+</pre></div>
+</div>
+</div>
+<p>Note that the indices stick to the corresponding values, they are not renumbered!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>                        <span class="c1"># t[0] would give an error</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>5
+</pre></div>
+</div>
+</div>
+<p>The values as a NumPy array are accessible via the <code class="docutils literal notranslate"><span class="pre">values</span></code> attribute:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s2</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([1, 2])
+</pre></div>
+</div>
+</div>
+<p>And the indices are available through the <code class="docutils literal notranslate"><span class="pre">index</span></code> attribute:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s2</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Int64Index([0, 5], dtype='int64')
+</pre></div>
+</div>
+</div>
+<p>The index is not simply a NumPy array, but a data structure that allows fast access to the elements. The indices need not be integers, as the next example shows:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s3</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcdef"</span><span class="p">))</span>
+<span class="n">s3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>a    1
+b    4
+c    5
+d    2
+e    5
+f    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s3</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Index(['a', 'b', 'c', 'd', 'e', 'f'], dtype='object')
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s3</span><span class="p">[</span><span class="s2">"b"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>4
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+Note a special case here: if the indices are not integers, then the last index of the slice is included in the result. This is contrary to slicing with integers!</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s3</span><span class="p">[</span><span class="s2">"b"</span><span class="p">:</span><span class="s2">"e"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>b    4
+c    5
+d    2
+e    5
+dtype: int64
+</pre></div>
+</div>
+</div>
+<p>It is still possible to access the series using NumPy style <em>implicit integer indices</em>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s3</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>4
+</pre></div>
+</div>
+</div>
+<p>This can be confusing though. Consider the following series:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"Jack"</span><span class="p">,</span> <span class="s2">"Jones"</span><span class="p">,</span> <span class="s2">"James"</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">s4</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>1     Jack
+2    Jones
+3    James
+dtype: object
+</pre></div>
+</div>
+</div>
+<p>What do you think <code class="docutils literal notranslate"><span class="pre">s4[1]</span></code> will print? For this ambiguity Pandas offers attributes <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">iloc</span></code>. The attributes <code class="docutils literal notranslate"><span class="pre">loc</span></code> always uses the explicit index, while the attribute <code class="docutils literal notranslate"><span class="pre">iloc</span></code> always uses the implicit integer index:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">s4</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s4</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Jack
+Jones
+</pre></div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-13-(read-series)">Exercise 13 (read series)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">read_series</span></code> that reads input lines from the user and return a Series. Each line should contain first the index and then the corresponding value, separated by whitespace. The index and values are strings (in this case <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is <code class="docutils literal notranslate"><span class="pre">object</span></code>). An empty line signals the end of Series. Malformed input should cause an exception. An input line is malformed, if it is non-empty and, when split at whitespace, does not result in two parts.</p>
+<p>Test your function from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-14-(operations-on-series)">Exercise 14 (operations on series)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">create_series</span></code> that gets two lists of numbers as parameters. Both lists should have length 3. The function should first create two Series, <code class="docutils literal notranslate"><span class="pre">s1</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code>. The first series should have values from the first parameter list and have corresponding indices <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>. The second series should get its values from the second parameter list and have again the corresponding indices <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>. The function should return the pair of these Series.</p>
+<p>Then, write a function <code class="docutils literal notranslate"><span class="pre">modify_series</span></code> that gets two Series as parameters. It should add to the first Series <code class="docutils literal notranslate"><span class="pre">s1</span></code> a new value with index <code class="docutils literal notranslate"><span class="pre">d</span></code>. The new value should be the same as the value in Series <code class="docutils literal notranslate"><span class="pre">s2</span></code> with index <code class="docutils literal notranslate"><span class="pre">b</span></code>. Then delete the element from <code class="docutils literal notranslate"><span class="pre">s2</span></code> that has index <code class="docutils literal notranslate"><span class="pre">b</span></code>. Now the first Series should have four values, while the second list has only two values. Adding a new element to a Series can be achieved by assignment, like with dictionaries. Deletion of an element from a Series
+can be done with the <code class="docutils literal notranslate"><span class="pre">del</span></code> statement.</p>
+<p>Test these functions from the main function. Try adding together the Series returned by the <code class="docutils literal notranslate"><span class="pre">modify_series</span></code> function. The operations on Series use the indices to keep the element-wise operations <em>aligned</em>. If for some index the operation could not be performed, the resulting value will be <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (Not A Number).</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-15-(inverse-series)">Exercise 15 (inverse series)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">inverse_series</span></code> that get a Series as a parameter and returns a new series, whose indices and values have swapped roles. Test your function from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<p>What happens if some value appears multiple times in the original Series? What happens if you use this value to index the resulting Series?</p>
+<hr/><p>One may notice that there are similarities between Python’s dictionaries and Pandas’ Series, both can be thought to access values using keys. The difference is that Series requires that the indices have all the same type, and similarly, all the values have the same type. This restriction allows creation of fast data structures.</p>
+<p>As a mark of the similaries between these two data structures, Pandas allows creation of a <code class="docutils literal notranslate"><span class="pre">Series</span></code> object from a dictionary:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">2001</span> <span class="p">:</span> <span class="s2">"Bush"</span><span class="p">,</span> <span class="mi">2005</span><span class="p">:</span> <span class="s2">"Bush"</span><span class="p">,</span> <span class="mi">2009</span><span class="p">:</span> <span class="s2">"Obama"</span><span class="p">,</span> <span class="mi">2013</span><span class="p">:</span> <span class="s2">"Obama"</span><span class="p">,</span> <span class="mi">2017</span> <span class="p">:</span> <span class="s2">"Trump"</span><span class="p">}</span>
+<span class="n">s4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Presidents"</span><span class="p">)</span>
+<span class="n">s4</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>2001     Bush
+2005     Bush
+2009    Obama
+2013    Obama
+2017    Trump
+Name: Presidents, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Summary-(week-3)">
+<h2>Summary (week 3)<a class="headerlink" href="#Summary-(week-3)" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You found that comparisons are also vectorized operations, and that the result of a comparison can be used to mask (i.e. restrict) further operations on arrays</li>
+<li>You can select a list of columns using fancy indexing</li>
+<li>An application of NumPy arrays: basic linear algebra operations and solving systems of linear equations</li>
+<li>You know the building blocks of matplotlib’s figures. You can create figures based on NumPy arrays and you can adjust the attributes of figures</li>
+<li>You understand how (raster) images are organized as NumPy arrays. You can manipulate images using Numpy’s array operations.</li>
+<li>In Pandas it is standard to use rows of DataFrames as samples and columns as variables</li>
+<li>Both rows and columns of Pandas DataFrames can have names, i.e. indices<ul>
+<li>Operations maintain these indices even when adding or removing rows or columns</li>
+<li>Indices also allow several operations to be combined meaningfully and easily</li>
+</ul>
+</li>
+</ul>
+<!--NAVIGATION--></div>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="pandas2.html" rel="next" title="Pandas (continues)">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="image_processing.html" rel="prev" title="Image processing"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

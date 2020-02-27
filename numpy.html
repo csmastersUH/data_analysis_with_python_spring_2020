@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NumPy — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="numpy2.html" rel="next" title="NumPy (continues)"/>
+<link href="basics2.html" rel="prev" title="Python (continues)"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Creation-of-arrays">Creation of arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Arrays-with-random-elements">Arrays with random elements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Array-types-and-attributes">Array types and attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Indexing,-slicing-and-reshaping">Indexing, slicing and reshaping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Indexing">Indexing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Slicing">Slicing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Reshaping">Reshaping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Array-concatenation,-splitting-and-stacking">Array concatenation, splitting and stacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Fast-computation-using-universal-functions">Fast computation using universal functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Aggregations:-max,-min,-sum,-mean,-standard-deviation...">Aggregations: max, min, sum, mean, standard deviation…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Broadcasting">Broadcasting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Summary-(week-2)">Summary (week 2)</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html">Docs</a> »</li>
+<li>NumPy</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/numpy.ipynb.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition note">
+This page was generated from <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/blob/master/numpy.ipynb">numpy.ipynb</a>.
+<span class="raw-html"><br/><a href="https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/numpy.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
+<span class="raw-html"><br/></span></div>
+<!--NAVIGATION--><table border="1" class="docutils">
+<colgroup>
+<col width="33%"/>
+<col width="33%"/>
+<col width="33%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#Exercise-11-(rows-and-columns)">Exercise 11 (rows and columns)</a></td>
+<td><a class="reference external" href="#Exercise-12-(row-and-column-vectors)">Exercise 12 (row and column vectors)</a></td>
+<td><a class="reference external" href="#Exercise-13-(diamond)">Exercise 13 (diamond)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#Exercise-14-(vector-lengths)">Exercise 14 (vector lengths)</a></td>
+<td><a class="reference external" href="#Exercise-15-(vector-angles)">Exercise 15 (vector angles)</a></td>
+<td><a class="reference external" href="#Exercise-16-(multiplication-table-revisited)">Exercise 16 (multiplication table revisited)</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="NumPy">
+<h1>NumPy<a class="headerlink" href="#NumPy" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://docs.scipy.org/doc/numpy/">NumPy</a> is a Python library for handling multi-dimensional arrays. It contains both the data structures needed for the storing and accessing arrays, and operations and functions for computation using these arrays. Although the arrays are usually used for storing numbers, other type of data can be stored as well, such as strings. Unlike lists in core Python, NumPy’s fundamental data structure, the array, must have the same data type for all its elements. The
+homogeneity of arrays allows highly optimized functions that use arrays as their inputs and outputs.</p>
+<p>There are several uses for high-dimensional arrays in data analysis. For instance, they can be used to:</p>
+<ul class="simple">
+<li>store matrices, solve systems of linear equations, find eigenvalues/vectors, find matrix decompositions, and solve other problems familiar from linear algebra</li>
+<li>store multi-dimensional measurement data. For example, an element <code class="docutils literal notranslate"><span class="pre">a[i,j]</span></code> in a 2-dimensional array might store the temperature <span class="math notranslate nohighlight">\(t_{ij}\)</span> measured at coordinates i, j on a 2-dimension surface.</li>
+<li>images and videos can be represented as NumPy arrays:</li>
+<li>a gray-scale image can be represented as a two dimensional array</li>
+<li>a color image can be represented as a three dimensional image, the third dimension contains the color components red, green, and blue</li>
+<li>a color video can be represented as a four dimensional array</li>
+<li>a 2-dimensional table might store a sequence of <em>samples</em>, and each sample might be divided into <em>features</em>. For example, we could measure the weather conditions once per day, and the conditions could include the temperature, direction and speed of wind, and the amount of rain. Then we would have one sample per day, and the features would be the temperature, wind, and rain. In the standard representation of this kind of tabular data, the rows corresponds to samples and the columns correspond
+to features. We see more of this kind of data in the chapters on Pandas and Scikit-learn.</li>
+</ul>
+<p>In this chapter we will go through:</p>
+<ul class="simple">
+<li>Creation of arrays</li>
+<li>Array types and attributes</li>
+<li>Accessing arrays with indexing and slicing</li>
+<li>Reshaping of arrays</li>
+<li>Combining and splitting arrays</li>
+<li>Fast operations on arrays</li>
+<li>Aggregations of arrays</li>
+<li>Rules of binary array operations</li>
+<li>Matrix operations familiar from linear algebra</li>
+</ul>
+<p>We start by importing the NumPy library, and we use the standard abbreviation <code class="docutils literal notranslate"><span class="pre">np</span></code> for it.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Creation-of-arrays">
+<h2>Creation of arrays<a class="headerlink" href="#Creation-of-arrays" title="Permalink to this headline">¶</a></h2>
+<p>There are several ways of creating NumPy arrays. One way is to give a (nested) list as a parameter to the <code class="docutils literal notranslate"><span class="pre">array</span></code> constructor:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>   <span class="c1"># one dimensional array</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([1, 2, 3])
+</pre></div>
+</div>
+</div>
+<p>Note that leaving out the brackets from the above expression, i.e. calling <code class="docutils literal notranslate"><span class="pre">np.array(1,2,3)</span></code> will result in an error.</p>
+<p>Two dimensional array can be given by listing the rows of the array:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[1, 2, 3],
+       [4, 5, 6]])
+</pre></div>
+</div>
+</div>
+<p>Similarly, three dimensional array can be described as a list of lists of lists:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[[1, 2],
+        [3, 4]],
+
+       [[5, 6],
+        [7, 8]]])
+</pre></div>
+</div>
+</div>
+<p>There are some helper functions to create common types of arrays:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.]])
+</pre></div>
+</div>
+</div>
+<p>To specify that elements are <code class="docutils literal notranslate"><span class="pre">int</span></code>s instead of <code class="docutils literal notranslate"><span class="pre">float</span></code>s, use the parameter <code class="docutils literal notranslate"><span class="pre">dtype</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[0, 0, 0, 0],
+       [0, 0, 0, 0],
+       [0, 0, 0, 0]])
+</pre></div>
+</div>
+</div>
+<p>Similarly <code class="docutils literal notranslate"><span class="pre">ones</span></code> initializes all elements to one, <code class="docutils literal notranslate"><span class="pre">full</span></code> initializes all elements to a specified value, and <code class="docutils literal notranslate"><span class="pre">empty</span></code> leaves the elements uninitialized:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 1.,  1.,  1.],
+       [ 1.,  1.,  1.]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[7, 7, 7],
+       [7, 7, 7]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[  6.95034303e-310,   6.95034303e-310,   0.00000000e+000,
+          0.00000000e+000],
+       [  0.00000000e+000,   0.00000000e+000,   6.95034303e-310,
+          9.28905864e-317]])
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">eye</span></code> function creates the identity matrix, that is, a matrix with elements on the diagonal are set to one, and non-diagonal elements are set to zero:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[1, 0, 0, 0, 0],
+       [0, 1, 0, 0, 0],
+       [0, 0, 1, 0, 0],
+       [0, 0, 0, 1, 0],
+       [0, 0, 0, 0, 1]])
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">arange</span></code> function works like the <code class="docutils literal notranslate"><span class="pre">range</span></code> function, but produces an array instead of a list.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([0, 2, 4, 6, 8])
+</pre></div>
+</div>
+</div>
+<p>For non-integer ranges it is better to use <code class="docutils literal notranslate"><span class="pre">linspace</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Evenly spaced range with 5 elements</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([ 0.        ,  0.78539816,  1.57079633,  2.35619449,  3.14159265])
+</pre></div>
+</div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">linspace</span></code> one does not have to compute the length of the step, but instead one specifies the wanted number of elements. By default, the endpoint is included in the result, unlike with <code class="docutils literal notranslate"><span class="pre">arange</span></code>.</p>
+<div class="section" id="Arrays-with-random-elements">
+<h3>Arrays with random elements<a class="headerlink" href="#Arrays-with-random-elements" title="Permalink to this headline">¶</a></h3>
+<p>To test our programs we might use real data as input. However, real data is not always available, and it may take time to gather. We could instead generate random numbers to use as substitute. They can be generated really easily with NumPy, and can be sampled from several different distributions, of which we mention below only a few. Random data can simulate real data better than, for example, ranges or constant arrays. Sometimes we also need random numbers in our programs to choose a subset of
+real data (sampling). NumPy can easily produce arrays of wanted shape filled with random numbers. Below are few examples.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>          <span class="c1"># Elements are uniformly distributed from half-open interval [0.0,1.0)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 0.36364292,  0.97033426,  0.31655204,  0.27852809],
+       [ 0.99533686,  0.30955508,  0.26442776,  0.69336657],
+       [ 0.70030953,  0.88013207,  0.89840592,  0.58983944]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>    <span class="c1"># Elements are normally distributed with mean 0 and standard deviation 1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 0.15021675,  1.0356625 , -1.77964847,  0.00671959],
+       [-1.06836794, -0.48577338,  0.21978969, -0.42799599],
+       [ 0.52744593,  0.40093274, -0.35545974, -0.59282596]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  <span class="c1"># Elements are uniformly distributed integers from the half-open interval [-2,10)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 2, -2,  5, -2],
+       [ 3,  8,  2,  4],
+       [ 9,  9, -1,  6]])
+</pre></div>
+</div>
+</div>
+<p>Sometimes it is useful to be able to recreate exactly the same data in every run of our program. For example, if there is a bug in our program, which manifests itself only with certain input, then to debug our program it needs to behave deterministically. We can create random numbers deterministically, if we always start from the same starting point. This starting point is usually an integer, and we call it a <em>seed</em>. Example of use:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[44 47 64 67 67  9 83 21 36 87]
+[ 1.26611853 -0.50587654  2.54520078  1.08081191  0.48431215  0.57914048
+ -0.18158257  1.41020463 -0.37447169  0.27519832]
+</pre></div></div>
+</div>
+<p>If you run the above cell multiple times, it will always give the same numbers, unlike the earlier examples. Try rerunning them now!</p>
+<p>The call to <code class="docutils literal notranslate"><span class="pre">np.random.seed</span></code> initializes the <em>global</em> random number generator. The calls <code class="docutils literal notranslate"><span class="pre">np.random.random</span></code>, <code class="docutils literal notranslate"><span class="pre">np.random.normal</span></code>, etc all use this global random number generator. It is however possible to create new random number generators, and use those to sample random numbers from a distribution. Example on usage:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">new_generator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>  <span class="c1"># RandomState is a class, so we give the seed to its constructor</span>
+<span class="n">new_generator</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([66, 92, 98, 17, 83, 57, 86, 97, 96, 47])
+</pre></div>
+</div>
+</div>
+<p>You will see these used later in the materials and in the exercises, just so we can agree what the random input data is. How else could we agree whether result is correct or not, if we can’t agree what the input is!</p>
+</div>
+</div>
+<div class="section" id="Array-types-and-attributes">
+<h2>Array types and attributes<a class="headerlink" href="#Array-types-and-attributes" title="Permalink to this headline">¶</a></h2>
+<p>An array has several attributes: <code class="docutils literal notranslate"><span class="pre">ndim</span></code> tells the number of dimensions, <code class="docutils literal notranslate"><span class="pre">shape</span></code> tells the size in each dimension, <code class="docutils literal notranslate"><span class="pre">size</span></code> tells the number of elements, and <code class="docutils literal notranslate"><span class="pre">dtype</span></code> tells the element type. Let’s create a helper function to explore these attributes:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> has dim </span><span class="si">%i</span><span class="s2">, shape </span><span class="si">%s</span><span class="s2">, size </span><span class="si">%i</span><span class="s2">, and dtype </span><span class="si">%s</span><span class="s2">:"</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"b"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+b has dim 2, shape (2, 3), size 6, and dtype int64:
+[[1 2 3]
+ [4 5 6]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>          <span class="c1"># Creates a 3-dimensional array</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"c"</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+c has dim 3, shape (2, 2, 3), size 12, and dtype int64:
+[[[1 2 3]
+  [4 5 6]]
+
+ [[1 2 3]
+  [4 5 6]]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">d</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>                <span class="c1"># a row vector</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"d"</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+d has dim 2, shape (1, 4), size 4, and dtype int64:
+[[1 2 3 4]]
+</pre></div></div>
+</div>
+<p>Note above how Python printed the three dimensional array. The general rules of printing an n-dimensional array as a nested list are:</p>
+<ul class="simple">
+<li>the last dimension is printed from left to right,</li>
+<li>the second-to-last is printed from top to bottom,</li>
+<li>the rest are also printed from top to bottom, with each slice separated from the next by an empty line.</li>
+</ul>
+</div>
+<div class="section" id="Indexing,-slicing-and-reshaping">
+<h2>Indexing, slicing and reshaping<a class="headerlink" href="#Indexing,-slicing-and-reshaping" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Indexing">
+<h3>Indexing<a class="headerlink" href="#Indexing" title="Permalink to this headline">¶</a></h3>
+<p>One dimensional array behaves like the list in Python:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4
+9
+</pre></div></div>
+</div>
+<p>For multi-dimensional array the index is a comma separated tuple instead of a single integer:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>    <span class="c1"># row index 1, column index 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>   <span class="c1"># row index 0, column index -1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1 2 3]
+ [4 5 6]]
+6
+3
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># As with lists, modification through indexing is possible</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[10  2  3]
+ [ 4  5  6]]
+</pre></div></div>
+</div>
+<p>Note that if you give only a single index to a multi-dimensional array, it indexes the first dimension of the array, that is the rows. For example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    <span class="c1"># First row</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>    <span class="c1"># Second row</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[10  2  3]
+[4 5 6]
+</pre></div></div>
+</div>
+<div class="section" id="Slicing">
+<h4>Slicing<a class="headerlink" href="#Slicing" title="Permalink to this headline">¶</a></h4>
+<p>Slicing works similarly to lists, but now we can have slices in different dimensions:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>    <span class="c1"># Reverses the array</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1 4 2 7 9 5]
+[4 2]
+[5 9 7 2 4 1]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[10  2  3]
+ [ 4  5  6]]
+[10  4]
+[10  2  3]
+[[2 3]
+ [5 6]]
+</pre></div></div>
+</div>
+<p>We can even assign to a slice:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[10  7  7]
+ [ 4  7  7]]
+</pre></div></div>
+</div>
+<p>A common idiom is to extract rows or columns from an array:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>    <span class="c1"># First column</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">,:])</span>    <span class="c1"># Second row</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[10  4]
+[4 7 7]
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Reshaping">
+<h3>Reshaping<a class="headerlink" href="#Reshaping" title="Permalink to this headline">¶</a></h3>
+<p>When an array is reshaped, its number of elements stays the same, but they are reinterpreted to have a different shape. An example of this is to interpret a one dimensional array as two dimension array:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">anew</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"anew"</span><span class="p">,</span> <span class="n">anew</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+anew has dim 2, shape (3, 3), size 9, and dtype int64:
+[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+a has dim 1, shape (9,), size 9, and dtype int64:
+[0 1 2 3 4 5 6 7 8]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">d</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>             <span class="c1"># 1d array</span>
+<span class="n">dr</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>          <span class="c1"># row vector</span>
+<span class="n">dc</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># column vector</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"d"</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"dr"</span><span class="p">,</span> <span class="n">dr</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"dc"</span><span class="p">,</span> <span class="n">dc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+d has dim 1, shape (4,), size 4, and dtype int64:
+[0 1 2 3]
+dr has dim 2, shape (1, 4), size 4, and dtype int64:
+[[0 1 2 3]]
+dc has dim 2, shape (4, 1), size 4, and dtype int64:
+[[0]
+ [1]
+ [2]
+ [3]]
+</pre></div></div>
+</div>
+<div class="admonition warning">
+Note the 1d array and the row and column vectors, which are 2d arrays, are fundamentally different objects, even though they look similar. They behave differently when we combine or otherwise operate arrays of different shapes, as we shall see in the next section and later in this material.</div>
+<p>An alternative syntax to create, for example, column or row vectors is through the <code class="docutils literal notranslate"><span class="pre">np.newaxis</span></code> keyword. Sometimes this is easier or more natural than with the <code class="docutils literal notranslate"><span class="pre">reshape</span></code> method:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">info</span><span class="p">(</span><span class="s2">"d"</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"drow"</span><span class="p">,</span> <span class="n">d</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"drow"</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"dcol"</span><span class="p">,</span> <span class="n">d</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+d has dim 1, shape (4,), size 4, and dtype int64:
+[0 1 2 3]
+drow has dim 2, shape (4, 1), size 4, and dtype int64:
+[[0]
+ [1]
+ [2]
+ [3]]
+drow has dim 2, shape (1, 4), size 4, and dtype int64:
+[[0 1 2 3]]
+dcol has dim 2, shape (4, 1), size 4, and dtype int64:
+[[0]
+ [1]
+ [2]
+ [3]]
+</pre></div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-11-(rows-and-columns)">Exercise 11 (rows and columns)</a></div>
+<p>Write two functions, <code class="docutils literal notranslate"><span class="pre">get_rows</span></code> and <code class="docutils literal notranslate"><span class="pre">get_columns</span></code>, that get a two dimensional array as parameter. They should return the list of rows and columns of the array, respectively. The rows and columns should be one dimensional arrays. You may use the <em>transpose</em> operation, which flips rows to columns, in your solution. The transpose is done by the <code class="docutils literal notranslate"><span class="pre">T</span></code> method:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[0 1 9 9]
+ [0 4 7 3]
+ [2 7 2 0]
+ [0 4 5 5]]
+[[0 0 2 0]
+ [1 4 7 4]
+ [9 7 2 5]
+ [9 3 0 5]]
+</pre></div></div>
+</div>
+<p>Test your solution in the main function. Example of usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">get_rows</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="p">[</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">])]</span>
+<span class="n">get_columns</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="p">[</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">])]</span>
+</pre></div>
+</div>
+<hr/></div>
+</div>
+<div class="section" id="Array-concatenation,-splitting-and-stacking">
+<h2>Array concatenation, splitting and stacking<a class="headerlink" href="#Array-concatenation,-splitting-and-stacking" title="Permalink to this headline">¶</a></h2>
+<p>The are two ways of combining several arrays into one bigger array: <code class="docutils literal notranslate"><span class="pre">concatenate</span></code> and <code class="docutils literal notranslate"><span class="pre">stack</span></code>. <code class="docutils literal notranslate"><span class="pre">Concatenate</span></code> takes n-dimensional arrays and returns an n-dimensional array, whereas <code class="docutils literal notranslate"><span class="pre">stack</span></code> takes n-dimensional arrays and returns n+1-dimensional array. Few examples of these:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a has shape </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"b has shape </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>  <span class="c1"># concatenating 1d arrays</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+a has shape (2,): [0 1]
+b has shape (3,): [2 3 4]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([0, 1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"c has shape </span><span class="si">%s</span><span class="s2">:"</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">shape</span><span class="p">,),</span> <span class="n">c</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">c</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>   <span class="c1"># concatenating 2d arrays</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+c has shape (2, 2):
+[[1 2]
+ [3 4]]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[1, 2],
+       [3, 4],
+       [1, 2],
+       [3, 4]])
+</pre></div>
+</div>
+</div>
+<p>By default <code class="docutils literal notranslate"><span class="pre">concatenate</span></code> joins the arrays along axis 0. To join the arrays horizontally, add parameter <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">c</span><span class="p">,</span><span class="n">c</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[1, 2, 1, 2],
+       [3, 4, 3, 4]])
+</pre></div>
+</div>
+</div>
+<p>If you want to catenate arrays with different dimensions, for example to add a new column to a 2d array, you must first reshape the arrays to have same number of dimensions:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"New row:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">c</span><span class="p">,</span><span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"New column:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">c</span><span class="p">,</span><span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+New row:
+[[1 2]
+ [3 4]
+ [0 1]]
+New column:
+[[1 2 0]
+ [3 4 1]]
+</pre></div></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">stack</span></code> to create higher dimensional arrays from lower dimensional arrays:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">b</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[2, 3, 4],
+       [2, 3, 4]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">b</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[2, 2],
+       [3, 3],
+       [4, 4]])
+</pre></div>
+</div>
+</div>
+<p>Inverse operation of <code class="docutils literal notranslate"><span class="pre">concatenate</span></code> is <code class="docutils literal notranslate"><span class="pre">split</span></code>. Its argument specifies either the number of equal parts the array is divided into, or it specifies explicitly the break points.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">d</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"d:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">d1</span><span class="p">,</span><span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"d1:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"d2:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+d:
+[[ 0  1]
+ [ 2  3]
+ [ 4  5]
+ [ 6  7]
+ [ 8  9]
+ [10 11]]
+d1:
+[[0 1]
+ [2 3]
+ [4 5]]
+d2:
+[[ 6  7]
+ [ 8  9]
+ [10 11]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">d</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"d:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">parts</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parts</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"part </span><span class="si">%i</span><span class="s2">:"</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+d:
+[[ 0  1  2  3  4  5]
+ [ 6  7  8  9 10 11]]
+part 0:
+[[0 1]
+ [6 7]]
+part 1:
+[[2]
+ [8]]
+part 2:
+[[ 3  4]
+ [ 9 10]]
+part 3:
+[[ 5]
+ [11]]
+</pre></div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-12-(row-and-column-vectors)">Exercise 12 (row and column vectors)</a></div>
+<p>Create function <code class="docutils literal notranslate"><span class="pre">get_row_vectors</span></code> that returns a list of rows from the input array of shape <code class="docutils literal notranslate"><span class="pre">(n,m)</span></code>, but this time the rows must have shape <code class="docutils literal notranslate"><span class="pre">(1,m)</span></code>. Similarly, create function <code class="docutils literal notranslate"><span class="pre">get_columns_vectors</span></code> that returns a list of columns (each having shape <code class="docutils literal notranslate"><span class="pre">(n,1)</span></code>) of the input matrix .</p>
+<p>Example: for a 2x3 input matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">3</span> <span class="mi">7</span> <span class="mi">9</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>the result should be</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Row</span> <span class="n">vectors</span><span class="p">:</span>
+<span class="p">[</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])]</span>
+<span class="n">Column</span> <span class="n">vectors</span><span class="p">:</span>
+<span class="p">[</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">]]),</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">7</span><span class="p">]]),</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">9</span><span class="p">]])]</span>
+</pre></div>
+</div>
+<p>The above output is basically just the returned lists printed with <code class="docutils literal notranslate"><span class="pre">print</span></code>. Only some whitespace is adjusted to make it look nicer. Output is not tested.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-13-(diamond)">Exercise 13 (diamond)</a></div>
+<p>Create a function <code class="docutils literal notranslate"><span class="pre">diamond</span></code> that returns a two dimensional integer array where the <code class="docutils literal notranslate"><span class="pre">1</span></code>s form a diamond shape. Rest of the numbers are <code class="docutils literal notranslate"><span class="pre">0</span></code>. The function should get a parameter that tells the length of a side of the diamond. Do this using the <code class="docutils literal notranslate"><span class="pre">eye</span></code> and <code class="docutils literal notranslate"><span class="pre">concatenate</span></code> functions of NumPy and array slicing.</p>
+<p>Example of usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">diamond</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diamond</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Fast-computation-using-universal-functions">
+<h2>Fast computation using universal functions<a class="headerlink" href="#Fast-computation-using-universal-functions" title="Permalink to this headline">¶</a></h2>
+<p>In addition to providing a way to store and access multi-dimension arrays, NumPy also provides several routines to perform computations on them. One of the reasons for the popularity of NumPy is that these computations can be very efficient, much more efficient than what Python can normally do. The biggest bottle-necks in efficiency are the loops, which can be iterated millions, billions, or even more times. The loops should be as efficient as possible. What slows down loops in Python as the
+fact that Python is dynamically typed language. That means that at each expression Python has find out the types of the arguments of the operations. Let’s consider the following loop:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">L</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="s2">"ab"</span><span class="p">]</span>
+<span class="n">L2</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+    <span class="n">L2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[2, 10.4, 'abab']
+</pre></div></div>
+</div>
+<p>At each iteration of this loop Python has find out the type of the variable x, which can in this example be an int, a float or a string, and depending on this type call a different function to perform the “multiplication” by two. What makes NumPy efficient, is the requirement that each element in an array must be of the same type. This homogeneity of arrays makes it possible to create <em>vectorized</em> operation, which don’t operate on single elements, but on arrays (or subarrays). The previous
+example using vectorized operations of NumPy is shown below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">17.2</span><span class="p">])</span>
+<span class="n">a2</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[  4.2  10.   34.4]
+</pre></div></div>
+</div>
+<p>Because each iteration is using identical operations only the data differs, this can compiled into machine language, and then performed in one go, hence avoiding Python’s dynamic typing. The name vector operation comes from linear algebra where the addition of two vectors <span class="math notranslate nohighlight">\(v=(v_1,v_2, \ldots, v_d)\)</span> and <span class="math notranslate nohighlight">\(w=(w_1,w_2, \ldots, w_d)\)</span> is defined element-wise as <span class="math notranslate nohighlight">\(v+w = (v_1 + w_1,v_2 + w_2, \ldots, v_d + w_d)\)</span>.</p>
+<p>In addition to addition there are several mathematical functions defined in the vector form. The basic arithmetic operations are: addition <code class="docutils literal notranslate"><span class="pre">+</span></code>, subtraction <code class="docutils literal notranslate"><span class="pre">-</span></code>, negation <code class="docutils literal notranslate"><span class="pre">-</span></code>, multiplication <code class="docutils literal notranslate"><span class="pre">*</span></code>, division <code class="docutils literal notranslate"><span class="pre">/</span></code>, floor division <code class="docutils literal notranslate"><span class="pre">//</span></code>, exponentation <code class="docutils literal notranslate"><span class="pre">**</span></code>, and remainder <code class="docutils literal notranslate"><span class="pre">%</span></code>.</p>
+<p>The can be combined into more complicated expressions. An example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[   4.41   -80.    -710.016]
+</pre></div></div>
+</div>
+<p>Several other mathematical functions are defined as well. A few examples of these can be found below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ 1.   3.2  2.4]
+[ 0.54030231 -0.99829478 -0.73739372]
+[  0.36787944  24.5325302   11.02317638]
+[ 0.          1.67807191  1.26303441]
+</pre></div></div>
+</div>
+<p>In NumPy nomenclature these vector operations are called <em>ufuncs</em> (universal functions).</p>
+</div>
+<div class="section" id="Aggregations:-max,-min,-sum,-mean,-standard-deviation...">
+<h2>Aggregations: max, min, sum, mean, standard deviation…<a class="headerlink" href="#Aggregations:-max,-min,-sum,-mean,-standard-deviation..." title="Permalink to this headline">¶</a></h2>
+<p>Aggregations allow us to condense the information in an array into just few numbers.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Minimum: </span><span class="si">%i</span><span class="s2">, maximum: </span><span class="si">%i</span><span class="s2">"</span> <span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Sum: </span><span class="si">%i</span><span class="s2">"</span> <span class="o">%</span> <span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean: </span><span class="si">%f</span><span class="s2">, standard deviation: </span><span class="si">%f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 72 -53  17  92 -33]
+ [ 95   3 -91 -79 -64]
+ [-13 -30 -12  40 -42]
+ [ 93 -61 -13  74 -12]]
+Minimum: -91, maximum: 95
+Sum: -17
+Mean: -0.850000, standard deviation: 58.398866
+</pre></div></div>
+</div>
+<p>Instead of aggregating over the whole array, we can aggregate over certain axes only as well:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Column sums:"</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Row sums:"</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[5 6 8 6]
+ [1 6 4 8]
+ [1 8 5 1]]
+Column sums: [ 7 20 17 15]
+Row sums: [25 19 15]
+</pre></div></div>
+</div>
+<p><img alt="aggregation" src="_images/aggregation.svg"/></p>
+<div class="admonition warning">
+Note that most of the aggregation functions in NumPy have corresponding methods. In addition, Python language has builtin functions <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">any</span></code>, and <code class="docutils literal notranslate"><span class="pre">all</span></code> for sequences. Make sure you don’t accidentally use these for arrays, since they may have slightly different semantics, and they will be significantly slower than NumPy’s functions and methods.</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%"/>
+<col width="34%"/>
+<col width="30%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Python function</th>
+<th class="head">NumPy function</th>
+<th class="head">NumPy method</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sum</td>
+<td>np.sum</td>
+<td>a.sum</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>np.prod</td>
+<td>a.prod</td>
+</tr>
+<tr class="row-even"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>np.mean</td>
+<td>a.mean</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>np.std</td>
+<td>a.std</td>
+</tr>
+<tr class="row-even"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>np.var</td>
+<td>a.var</td>
+</tr>
+<tr class="row-odd"><td>min</td>
+<td>np.min</td>
+<td>a.min</td>
+</tr>
+<tr class="row-even"><td>max</td>
+<td>np.max</td>
+<td>a.max</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>np.argmin</td>
+<td>a.argmin</td>
+</tr>
+<tr class="row-even"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>np.argmax</td>
+<td>a.argmax</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>np.median</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>np.percentile</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>any</td>
+<td>np.any</td>
+<td>a.any</td>
+</tr>
+<tr class="row-even"><td>all</td>
+<td>np.all</td>
+<td>a.all</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s measure how much slower Python’s <code class="docutils literal notranslate"><span class="pre">sum</span></code> function is compared to NumPy’s equivalent when aggregating over an array:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> np.sum(a)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.11 µs ± 81.5 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">timeit</span> sum(a)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+73.1 µs ± 278 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre></div></div>
+</div>
+<p>The speed of NumPy is partly due to the fact that its arrays must have same type for all the elements. This requirement allows some efficient optimizations.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-14-(vector-lengths)">Exercise 14 (vector lengths)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">vector_lengths</span></code> that gets a two dimensional array of shape (n,m) as a parameter. Each row in this array corresponds to a vector. The function should return an array of shape (n,), that has the length of each vector in the input. The length is defined by the usual <a class="reference external" href="https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm">Euclidean norm</a>. Don’t use loops at all in your solution. Instead use vectorized operations. You must use at least the <code class="docutils literal notranslate"><span class="pre">np.sum</span></code> and the <code class="docutils literal notranslate"><span class="pre">np.sqrt</span></code>
+functions. You can’t use the function <code class="docutils literal notranslate"><span class="pre">scipy.linalg.norm</span></code>. Test your function in the main function.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-15-(vector-angles)">Exercise 15 (vector angles)</a></div>
+<p>Let x and y be m-dimensional vectors. The angle <span class="math notranslate nohighlight">\(\alpha\)</span> between two vectors is defined by the equation <span class="math notranslate nohighlight">\(\cos_{xy}(\alpha):=\frac{\langle x,y\rangle}{||x|| ||y||}\)</span>, where the angle brackets denote the <a class="reference external" href="https://en.wikipedia.org/wiki/Inner_product_space#Euclidean_space">inner product</a>, and <span class="math notranslate nohighlight">\(||x||:=\sqrt{\langle x,x \rangle}\)</span>.</p>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">vector_angles</span></code> that gets two arrays X and Y with same shape (n,m) as parameters. Each row in the arrays corresponds to a vector. The function should return vector of shape (n,) with the corresponding angles between vectors of <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> in degrees, not in radians. Again, don’t use loops, but use vectorized operations.</p>
+<p>Note: function <code class="docutils literal notranslate"><span class="pre">np.arccos</span></code> is only defined on the domain [-1.0,1.0]. If you try to compute <code class="docutils literal notranslate"><span class="pre">np.arccos(1.000000001)</span></code>, it will fail. These kind of errors can occur due to use of finite precision in numerical computations. Force the argument to be in the correct range (<code class="docutils literal notranslate"><span class="pre">clip</span></code> method).</p>
+<p>Test your solution in the main program.</p>
+<hr/></div>
+<div class="section" id="Broadcasting">
+<h2>Broadcasting<a class="headerlink" href="#Broadcasting" title="Permalink to this headline">¶</a></h2>
+<p>We have seen that NumPy allows array operations that are performed element-wise. But NumPy also allows binary operations that don’t require the two arrays to have the same shape. For example, we can add 4 to all elements of an array with the following expression:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([4, 5, 6])
+</pre></div>
+</div>
+</div>
+<p>In fact, because an array with only one element, say 4, can be thought of as a scalar 4, NumPy allows the following expression, which is equivalent to the above:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([4, 5, 6])
+</pre></div>
+</div>
+</div>
+<p>To get can idea of what operations are allowed, i.e. what shapes of the two arrays are <em>compatible</em>, it can be useful to think that before the binary operation is performed, NumPy tries to stretch the arrays to have the same shape. For example in above NumPy first stretched the array <code class="docutils literal notranslate"><span class="pre">np.array([4])</span></code> (or the scalar 4), to the array <code class="docutils literal notranslate"><span class="pre">np.array([4,4,4])</span></code> and then performed the element-wise addition. In NumPy this stretching is called <em>broadcasting</em>.</p>
+<p><img alt="broadcast" src="_images/broadcast.svg"/></p>
+<p>The argument arrays can of course have higher dimensions, as the next example shows:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a:"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"b:"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a+b:"</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+a:
+[[5 5 5]
+ [5 5 5]
+ [5 5 5]]
+b: [0 1 2]
+a+b:
+[[5 6 7]
+ [5 6 7]
+ [5 6 7]]
+</pre></div></div>
+</div>
+<p>In this example the second argument was first broadcasted to the array</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[0, 1, 2],
+       [0, 1, 2],
+       [0, 1, 2]])
+</pre></div>
+</div>
+</div>
+<p>and then the addition was performed. And it may be that both of the argument arrays need to be broadcasted as in the next example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"b"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"a+b"</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+a has dim 1, shape (3,), size 3, and dtype int64:
+[0 1 2]
+b has dim 2, shape (3, 1), size 3, and dtype int64:
+[[0]
+ [1]
+ [2]]
+a+b has dim 2, shape (3, 3), size 9, and dtype int64:
+[[0 1 2]
+ [1 2 3]
+ [2 3 4]]
+</pre></div></div>
+</div>
+<p>To see what the arguments were broadcasted to before the binary operation, the function <code class="docutils literal notranslate"><span class="pre">np.broadcast_arrays</span></code> can be used:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">broadcasted_a</span><span class="p">,</span> <span class="n">broadcasted_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"broadcasted_a"</span><span class="p">,</span> <span class="n">broadcasted_a</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"broadcasted_b"</span><span class="p">,</span> <span class="n">broadcasted_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+broadcasted_a has dim 2, shape (3, 3), size 9, and dtype int64:
+[[0 1 2]
+ [0 1 2]
+ [0 1 2]]
+broadcasted_b has dim 2, shape (3, 3), size 9, and dtype int64:
+[[0 0 0]
+ [1 1 1]
+ [2 2 2]]
+</pre></div></div>
+</div>
+<p>So, both arrays were broadcasted, but in different ways. Let’s next go through the <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.14.0/reference/ufuncs.html#broadcasting">rules</a> how the broadcasting work.</p>
+<ol class="arabic simple">
+<li>All input arrays with <code class="docutils literal notranslate"><span class="pre">ndim</span></code> smaller than the input array of largest <code class="docutils literal notranslate"><span class="pre">ndim</span></code>, have 1’s prepended to their shapes.</li>
+<li>The size in each dimension of the output shape is the maximum of all the input sizes in that dimension.</li>
+<li>An input can be used in the calculation if its size in a particular dimension either matches the output size in that dimension, or has value exactly 1.</li>
+<li>If an input has a dimension size of 1 in its shape, the first data entry in that dimension will be used for all calculations along that dimension. In other words, the stepping machinery of the ufunc will simply not step along that dimension (the stride will be 0 for that dimension).</li>
+</ol>
+<p>Finally an example of a situation where the two array are not compatible:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">+</span><span class="n">b</span>                 <span class="c1"># This does not work since it violates the rule 3 above.</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+operands could not be broadcast together with shapes (3,) (2,)
+</pre></div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-16-(multiplication-table-revisited)">Exercise 16 (multiplication table revisited)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">multiplication_table</span></code> that gets a positive integer <code class="docutils literal notranslate"><span class="pre">n</span></code> as parameter. The function should return an array with shape (n,n). The element at index <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code> should be <code class="docutils literal notranslate"><span class="pre">i*j</span></code>. Don’t use <code class="docutils literal notranslate"><span class="pre">for</span></code> loops! In your solution, rely on broadcasting, the <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> function, reshaping and vectorized operators. Example of usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">multiplication_table</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">3</span> <span class="mi">6</span> <span class="mi">9</span><span class="p">]]</span>
+</pre></div>
+</div>
+<hr/></div>
+<div class="section" id="Summary-(week-2)">
+<h2>Summary (week 2)<a class="headerlink" href="#Summary-(week-2)" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>We have learned how regular expressions can be used to specify regular sets of strings<ul>
+<li>We know how to find out if a string matches a regular expression</li>
+<li>We know how to extract pieces of text that match a RE</li>
+<li>We can replace matches to a RE with another string</li>
+</ul>
+</li>
+<li>We can read (and write) a text file either line by line or whole file at the same time</li>
+<li>We also know how to specify the encoding of the file. The utf-8 encoding is a very common and can represent nearly every character or symbol of any (natural) language</li>
+<li>Program’s parameters are in the array <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>, and we can return a value from the program with the function <code class="docutils literal notranslate"><span class="pre">sys.exit</span></code></li>
+<li>The file streams <code class="docutils literal notranslate"><span class="pre">sys.stdin</span></code>, <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>, and <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code> allow basic textual input and output to and from the program</li>
+<li>Every value in Python is an object<ul>
+<li>Classes are user defined data types, they tell how to construct instances (objects) of that type</li>
+<li>Relationship between objects and classes: <code class="docutils literal notranslate"><span class="pre">isinstance</span></code></li>
+<li>Relationship between classes: <code class="docutils literal notranslate"><span class="pre">issubclass</span></code></li>
+</ul>
+</li>
+<li>Exceptions signal exceptional situations, not necessarily errors<ul>
+<li>We know how catch and raise exceptions</li>
+</ul>
+</li>
+<li>The efficiency of NumPy is based on the fact that the same operations can be performed on elements fast, if all the elements have the same type. These are called vectorized operations</li>
+<li>We know how to create, reshape, perform basic access, combine, split, and aggregate arrays</li>
+</ul>
+<!--NAVIGATION--></div>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="numpy2.html" rel="next" title="NumPy (continues)">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="basics2.html" rel="prev" title="Python (continues)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

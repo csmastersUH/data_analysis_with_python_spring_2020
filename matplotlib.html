@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Matplotlib — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="image_processing.html" rel="next" title="Image processing"/>
+<link href="numpy2.html" rel="prev" title="NumPy (continues)"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Matplotlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Simple-figure">Simple figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Subfigures">Subfigures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Other-data-visualization-libraries-for-Python">Other data visualization libraries for Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html">Docs</a> »</li>
+<li>Matplotlib</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/matplotlib.ipynb.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition note">
+This page was generated from <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/blob/master/matplotlib.ipynb">matplotlib.ipynb</a>.
+<span class="raw-html"><br/><a href="https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/matplotlib.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
+<span class="raw-html"><br/></span></div>
+<!--NAVIGATION--><table border="1" class="docutils">
+<colgroup>
+<col width="53%"/>
+<col width="47%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#Exercise-9-(multiple-graphs)">Exercise 9 (multiple graphs)</a></td>
+<td><a class="reference external" href="#Exercise-10-(subfigures)">Exercise 10 (subfigures)</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="Matplotlib">
+<h1>Matplotlib<a class="headerlink" href="#Matplotlib" title="Permalink to this headline">¶</a></h1>
+<p>To understand the data better it helps to be able to visualize it in various ways. <a class="reference external" href="https://matplotlib.org/">Matplotlib</a> is the most common low-level visualization library for Python. It can create line graphs, scatter plots, density plots, histograms, heatmaps, and so on. During this course we will not go deep into details of matplotlib, instead we have just some examples spread throughout the rest of this material of its use.</p>
+<div class="section" id="Simple-figure">
+<h2>Simple figure<a class="headerlink" href="#Simple-figure" title="Permalink to this headline">¶</a></h2>
+<p>We will start with an example. The standard way to import matplotlib is as the abbreviation <code class="docutils literal notranslate"><span class="pre">plt</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># This is needed so that the plotted figures appear embedded in this notebook:</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s first have some data to visualize:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>Below the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function does the actual drawing of the graph, the rest of the function calls adjust some details of the figure. Make sure you understand how the values in the array <code class="docutils literal notranslate"><span class="pre">a</span></code> correspond to the features in the figure!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                <span class="c1"># plot the points in the array a</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"My first figure"</span><span class="p">)</span>  <span class="c1"># Add a title to the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"My x-axis"</span><span class="p">)</span>    <span class="c1"># Give a label to the x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"My y-axis"</span><span class="p">);</span>    <span class="c1"># Give a label to the y-axis</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/matplotlib_6_0.png" src="_images/matplotlib_6_0.png"/>
+</div>
+</div>
+<p>The key components of any matplotlib figure and the terminology is shown in the below image. The toplevel object is <code class="docutils literal notranslate"><span class="pre">figure</span></code> and it can contain one or more <code class="docutils literal notranslate"><span class="pre">subfigures</span></code>, which are strangely called <code class="docutils literal notranslate"><span class="pre">axes</span></code> in matplotlib.</p>
+<p><img alt="components of a figure" src="_images/example_figure2.png"/></p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-9-(multiple-graphs)">Exercise 9 (multiple graphs)</a></div>
+<p>In the above plot the x coordinates were implicitly set to the indices of the array <code class="docutils literal notranslate"><span class="pre">a</span></code>, that is, <code class="docutils literal notranslate"><span class="pre">arange(10)</span></code>. Find out from the documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> how to specify the x coordinates explicitly. Find out also how to draw multiple graphs in one axes.</p>
+<p>Make your <code class="docutils literal notranslate"><span class="pre">main</span></code> function plot the following two graphs in one axes. The first graphs has x coordinates 2,4,6,7 and y coordinates 4,3,5,1. The second graph has x coordinates 1,2,3,4 and y coordinates 4,2,3,1.</p>
+<p>Add also a title and some labels for x axis and y axis. Note that in the non-interactive mode you have to call <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> for the figure to show.</p>
+<hr/></div>
+<div class="section" id="Subfigures">
+<h2>Subfigures<a class="headerlink" href="#Subfigures" title="Permalink to this headline">¶</a></h2>
+<p>One can create a figure with several subfigures using the command <code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code>. It creates a grid of subfigures, where the number of rows and columns in the grid are given as parameters. It returns a pair of a figure object and an array containing the subfigures. In matplotlib the subfigures are called <code class="docutils literal notranslate"><span class="pre">axes</span></code>. Note the one letter difference: axis is singular and axes is plural of axis. So, you can think of <code class="docutils literal notranslate"><span class="pre">axes</span></code> as the pair of x-axis and y-axis that defines a two dimensional
+(sub)figure. An example of this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>          <span class="c1"># top left</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>     <span class="c1"># top right</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>    <span class="c1"># bottom left</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">));</span>  <span class="c1"># bottom right</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(2, 2)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/matplotlib_12_1.png" src="_images/matplotlib_12_1.png"/>
+</div>
+</div>
+<p>Note that in this notebook we have used both the function <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> and the similar method <code class="docutils literal notranslate"><span class="pre">plot</span></code> of the axes object. The functions in <code class="docutils literal notranslate"><span class="pre">plt</span></code> namespace refer to the global variables that tell what is the current figure and what is the current axes. If we want to refer to multiple figures and/or axes’ at the same, we cannot use the function in <code class="docutils literal notranslate"><span class="pre">plt</span></code>. Instead, we can refer to each <code class="docutils literal notranslate"><span class="pre">figure</span></code> or <code class="docutils literal notranslate"><span class="pre">axes</span></code> object and use their methods to do the drawing.</p>
+<p>Note the similarity to the random number generators in Python: the function like <code class="docutils literal notranslate"><span class="pre">np.random.randn</span></code> use the global random number generator. But if you want to use multiple random number generators at the same time, you first have to create the generators using the call <code class="docutils literal notranslate"><span class="pre">rng1=np.random.RandomState(seed)</span></code> and then use the <em>method</em> <code class="docutils literal notranslate"><span class="pre">rng1.randn</span></code>.</p>
+<p>So with both random number generators and matplotlib plots you can choose between using one global object, and functions referring to it, at a time, or using several objects and their methods to refer to multiple objects at the same time.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-10-(subfigures)">Exercise 10 (subfigures)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">subfigures</span></code> that creates a figure that has two subfigures (two <em>axes</em> in matplotlib parlance). The function gets a two dimensional array <code class="docutils literal notranslate"><span class="pre">a</span></code> as a parameter. In the left subfigure draw using the <code class="docutils literal notranslate"><span class="pre">plot</span></code> <em>method</em> a graph, whose x coordinates are in the first column of <code class="docutils literal notranslate"><span class="pre">a</span></code> and the y coordinates are in the second column of <code class="docutils literal notranslate"><span class="pre">a</span></code>. In the right subfigure draw using the <code class="docutils literal notranslate"><span class="pre">scatter</span></code> <em>method</em> a set of points whose x coords are again in the first column of <code class="docutils literal notranslate"><span class="pre">a</span></code> and whose y
+coordinates are in the second column of <code class="docutils literal notranslate"><span class="pre">a</span></code>. Additionally, the points should get their color from the third column of <code class="docutils literal notranslate"><span class="pre">a</span></code>, and size of the point from the fourth column of <code class="docutils literal notranslate"><span class="pre">a</span></code>. For this, use the <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">s</span></code> named parameters of <code class="docutils literal notranslate"><span class="pre">scatter</span></code>, respectively</p>
+<p>Test your function <code class="docutils literal notranslate"><span class="pre">subfigure</span></code> from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<hr/></div>
+<div class="section" id="Other-data-visualization-libraries-for-Python">
+<h2>Other data visualization libraries for Python<a class="headerlink" href="#Other-data-visualization-libraries-for-Python" title="Permalink to this headline">¶</a></h2>
+<p>The development of matplotlib library started already in 2003. In some ways this old age shows as figures that don’t look very pretty compared to the figures created with more modern alternatives. Also, it can be quite complicated to create a simple figure. Here’s a list of some common modern libraries:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://seaborn.pydata.org/index.html">Seaborn</a> is a higher-level plotting library that is build on top of matplotlib. It allows easy creation of more complicated plots. The figures it produces also look prettier than ones created by matplotlib with its default settings.</li>
+<li><a class="reference external" href="https://bokeh.pydata.org/en/latest/">Bokeh</a> creates html pages as output that can be viewed with a web browser. Since it doesn’t create static images, like many other plotting libraries, but html pages which can containg Javascript, this allows the plots to be interactive. Interactive can here mean that you can e.g. zoom or pan the image, or you can have control elements (button, sliders, etc) that adjust the image.</li>
+<li><a class="reference external" href="http://holoviews.org/">Holoviews</a>: even higher-level library build on top of Bokeh and matplotlib</li>
+</ul>
+<!--NAVIGATION--></div>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="image_processing.html" rel="next" title="Image processing">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="numpy2.html" rel="prev" title="NumPy (continues)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Python (continues) — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="numpy.html" rel="next" title="NumPy"/>
+<link href="basics.html" rel="prev" title="Python"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python (continues)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Regular-expressions">Regular expressions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Patterns">Patterns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Match-and-search-functions">Match and search functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Functions-in-the-re-module">Functions in the <code class="docutils literal notranslate"><span class="pre">re</span></code> module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Match-object">Match object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Miscellaneous-stuff">Miscellaneous stuff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Basic-file-processing">Basic file processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Some-common-file-object-methods">Some common file object methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Standard-file-objects">Standard file objects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sys-module">sys module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Objects-and-classes">Objects and classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Instances">Instances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Attribute-lookup">Attribute lookup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Inheritance">Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Special-methods">Special methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Exceptions">Exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Exception-hierarchy">Exception hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Too-general-exception-specifications">Too general exception specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#What-is-the-error-handling-policy-in-Python">What is the error handling policy in Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Sequences,-iterables,-generators:-revisited">Sequences, iterables, generators: revisited</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html">Docs</a> »</li>
+<li>Python (continues)</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/basics2.ipynb.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition note">
+This page was generated from <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/blob/master/basics2.ipynb">basics2.ipynb</a>.
+<span class="raw-html"><br/><a href="https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/basics2.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
+<span class="raw-html"><br/></span></div>
+<!--NAVIGATION--><table border="1" class="docutils">
+<colgroup>
+<col width="33%"/>
+<col width="33%"/>
+<col width="33%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#Exercise-1-(integers-in-brackets)">Exercise 1 (integers in brackets)</a></td>
+<td><a class="reference external" href="#Exercise-2-(file-listing)">Exercise 2 (file listing)</a></td>
+<td><a class="reference external" href="#Exercise-3-(red-green-blue)">Exercise 3 (red green blue)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#Exercise-4-(word-frequencies)">Exercise 4 (word frequencies)</a></td>
+<td><a class="reference external" href="#Exercise-5-(summary)">Exercise 5 (summary)</a></td>
+<td><a class="reference external" href="#Exercise-6-(file-count)">Exercise 6 (file count)</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#Exercise-7-(file-extensions)">Exercise 7 (file extensions)</a></td>
+<td><a class="reference external" href="#Exercise-8-(prepend)">Exercise 8 (prepend)</a></td>
+<td><a class="reference external" href="#Exercise-9-(rational)">Exercise 9 (rational)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#Exercise-10-(extract-numbers)">Exercise 10 (extract numbers)</a></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="Python-(continues)">
+<h1>Python (continues)<a class="headerlink" href="#Python-(continues)" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Regular-expressions">
+<h2>Regular expressions<a class="headerlink" href="#Regular-expressions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Examples">
+<h3>Examples<a class="headerlink" href="#Examples" title="Permalink to this headline">¶</a></h3>
+<p>We have already seen that we can ask from a string <code class="docutils literal notranslate"><span class="pre">str</span></code> whether it begins with some substring as follows: <code class="docutils literal notranslate"><span class="pre">str.startswith('Apple')</span></code>. If we would like to know whether it starts with <code class="docutils literal notranslate"><span class="pre">"Apple"</span></code> or <code class="docutils literal notranslate"><span class="pre">"apple"</span></code>, we would have to call <code class="docutils literal notranslate"><span class="pre">startswith</span></code> method twice. Regular expressions offer a simpler solution: <code class="docutils literal notranslate"><span class="pre">re.match(r"[Aa]pple",</span> <span class="pre">str)</span></code>. The bracket notation is one example of the special syntax of <em>regular expressions</em>. In this case it says that any of the characters inside brackets will do:
+either <code class="docutils literal notranslate"><span class="pre">"A"</span></code> or <code class="docutils literal notranslate"><span class="pre">"a"</span></code>. The other letters in <code class="docutils literal notranslate"><span class="pre">"pple"</span></code> will act normally. The string <code class="docutils literal notranslate"><span class="pre">r"[Aa]pple"</span></code> is called a <em>pattern</em>.</p>
+<p>A more complicated example asks whether the string <code class="docutils literal notranslate"><span class="pre">str</span></code> starts with either <code class="docutils literal notranslate"><span class="pre">apple</span></code> or <code class="docutils literal notranslate"><span class="pre">banana</span></code> (no matter if the first letter is capital or not): <code class="docutils literal notranslate"><span class="pre">re.match(r"[Aa]pple|[Bb]anana",</span> <span class="pre">str)</span></code>. In this example we saw a new special character <code class="docutils literal notranslate"><span class="pre">|</span></code> that denotes an alternative. On either side of the bar character we have a <em>subpattern</em>.</p>
+<p>A legal variable name in Python starts with a letter or an underline character and the following characters can also be digits. So legal names are, for instance: <code class="docutils literal notranslate"><span class="pre">_hidden</span></code>, <code class="docutils literal notranslate"><span class="pre">L_value</span></code>, <code class="docutils literal notranslate"><span class="pre">A123_</span></code>. But the name <code class="docutils literal notranslate"><span class="pre">2abc</span></code> is not a valid variable name. Let’s see what would be the regular expression pattern to recognise valid variable names: <code class="docutils literal notranslate"><span class="pre">r"[A-Za-z_][A-Za-z_0-9]*\Z"</span></code>. Here we have used a shorthand for character ranges: <code class="docutils literal notranslate"><span class="pre">A-Z</span></code>. This means all the characters from <code class="docutils literal notranslate"><span class="pre">A</span></code> to <code class="docutils literal notranslate"><span class="pre">Z</span></code>.</p>
+<p>The first character of the variable name is defined in the first brackets. The subsequent characters are defined in the second brackets. The special character <code class="docutils literal notranslate"><span class="pre">*</span></code> means that we allow any number (0,1,2, … ) of the previous subpattern. For example the pattern <code class="docutils literal notranslate"><span class="pre">r"ba*"</span></code> allows strings <code class="docutils literal notranslate"><span class="pre">"b"</span></code>, <code class="docutils literal notranslate"><span class="pre">"ba"</span></code>, <code class="docutils literal notranslate"><span class="pre">"baa"</span></code>, <code class="docutils literal notranslate"><span class="pre">"baaa"</span></code>, and so on. The special syntax <code class="docutils literal notranslate"><span class="pre">\Z</span></code> denotes the end of the string. Without it we would also accept <code class="docutils literal notranslate"><span class="pre">abc-</span></code> as a valid name since the <code class="docutils literal notranslate"><span class="pre">match</span></code> function normally
+checks only that a string starts with a pattern.</p>
+<p>The special notations, like <code class="docutils literal notranslate"><span class="pre">\Z</span></code>, also cause problems with string handling. Remember that normally in string literals we have some special notation: <code class="docutils literal notranslate"><span class="pre">\n</span></code> stands for newline, <code class="docutils literal notranslate"><span class="pre">\t</span></code> stands for tab, and so on. So, both string literals and regular expressions use similar looking notations, which can create serious confusion. This can be solved by using the so-called <em>raw strings</em>. We denote a raw string by having an <code class="docutils literal notranslate"><span class="pre">r</span></code> letter before the first quotation mark, for example <code class="docutils literal notranslate"><span class="pre">r"ab*\Z"</span></code>. When
+using raw strings, the newline (<code class="docutils literal notranslate"><span class="pre">\n</span></code>), tab (<code class="docutils literal notranslate"><span class="pre">\t</span></code>), and other special string literal notations aren’t interpreted. One should always use raw strings when defining regular expression patterns!</p>
+</div>
+<div class="section" id="Patterns">
+<h3>Patterns<a class="headerlink" href="#Patterns" title="Permalink to this headline">¶</a></h3>
+<p>A pattern represents a set of strings. This set can even be potentially infinite. They can be used to describe a set of strings that have some commonality; some regular structure. Regular expressions (RE) are a classical computer science topic. They are very common in programming tasks. Scripting languages, like Python, are very fluent in regular expressions. Very complex text processing can be achieved using regular expressions.</p>
+<p>In patterns, normal characters (letters, numbers) just represent themselves, unless preceded by a backslash, which may trigger some special meaning. Punctuation characters have special meaning, unless preceded by backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>), which deprives their special meaning. Use <code class="docutils literal notranslate"><span class="pre">\\</span></code> to represent a backslash character without any special meaning. In the following slides we will go through some of the more common RE notations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. Matches any character
+[...] Matches any character contained within the brackets
+[^...] Matches any character not appearing after the hat (ˆ)
+ˆ Matches the start of the string
+$ Matches the end of the string
+* Matches zero or more previous RE
++ Matches one or more previous RE
+{m,n} Matches m to n occurences of previous RE
+? Matches zero or one occurences of previous RE
+</pre></div>
+</div>
+<p>We have already seen that a <code class="docutils literal notranslate"><span class="pre">|</span></code> character denotes alternatives. For example, the pattern <code class="docutils literal notranslate"><span class="pre">r"Get</span> <span class="pre">(on|off|ready)"</span></code> matches the following strings: <code class="docutils literal notranslate"><span class="pre">"Get</span> <span class="pre">on"</span></code>, <code class="docutils literal notranslate"><span class="pre">"Get</span> <span class="pre">off"</span></code>, <code class="docutils literal notranslate"><span class="pre">"Get</span> <span class="pre">ready"</span></code>. We can use parentheses to create groupings inside a pattern: <code class="docutils literal notranslate"><span class="pre">r"(ab)+"</span></code> will match the strings <code class="docutils literal notranslate"><span class="pre">"ab"</span></code>, <code class="docutils literal notranslate"><span class="pre">"abab"</span></code>, <code class="docutils literal notranslate"><span class="pre">"ababab"</span></code>, and so on. These groups are also given a reference number starting from 1. We can refer to groups using backreferences: <code class="docutils literal notranslate"><span class="pre">\number</span></code>. For example, we can find separated
+patterns that get repeated: <code class="docutils literal notranslate"><span class="pre">r"([a-z]{3,})</span> <span class="pre">\1</span> <span class="pre">\1"</span></code>. This will recognise, for example, the following strings: <code class="docutils literal notranslate"><span class="pre">"aca</span> <span class="pre">aca</span> <span class="pre">aca"</span></code>, <code class="docutils literal notranslate"><span class="pre">"turn</span> <span class="pre">turn</span> <span class="pre">turn"</span></code>. But not the strings <code class="docutils literal notranslate"><span class="pre">"aca</span> <span class="pre">aba</span> <span class="pre">aca"</span></code> or <code class="docutils literal notranslate"><span class="pre">"ac</span> <span class="pre">ac</span> <span class="pre">ac"</span></code>.</p>
+<p>In the following, note that a hat (ˆ) as the first character inside brackets will create a complement set of characters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`\d` same as `[0-9]`, matches a digit
+`\D` same as `[ˆ0-9]`, matches anything but a digit
+`\s` matches a whitespace character (space, newline, tab, ... )
+`\S` matches a nonwhitespace character
+`\w` same as `[a-zA-Z0-9_]`, matches one alphanumeric character
+`\W` matches one non-alphanumeric character
+</pre></div>
+</div>
+<p>Using the above notation we can now shorten our previous variable name example to <code class="docutils literal notranslate"><span class="pre">r’[a-zA-Z_]\w*\Z’</span></code></p>
+<p>The patterns <code class="docutils literal notranslate"><span class="pre">\A</span></code>, <code class="docutils literal notranslate"><span class="pre">\b</span></code>, <code class="docutils literal notranslate"><span class="pre">\B</span></code>, and <code class="docutils literal notranslate"><span class="pre">\Z</span></code> will all match an empty string, but in specific places. The patterns <code class="docutils literal notranslate"><span class="pre">\A</span></code> and <code class="docutils literal notranslate"><span class="pre">\Z</span></code> will recognise the beginning and end of the string, respectively. Note that the patterns <code class="docutils literal notranslate"><span class="pre">ˆ</span></code> and <code class="docutils literal notranslate"><span class="pre">$</span></code> can in some cases match also after a newline and before a newline, correspondingly. So, <code class="docutils literal notranslate"><span class="pre">\A</span></code> is distinct from <code class="docutils literal notranslate"><span class="pre">ˆ</span></code>, and <code class="docutils literal notranslate"><span class="pre">\Z</span></code> is distinct from <code class="docutils literal notranslate"><span class="pre">$</span></code>. The pattern <code class="docutils literal notranslate"><span class="pre">\b</span></code> matches at the start or end of a word. The pattern <code class="docutils literal notranslate"><span class="pre">\B</span></code> does the reverse.</p>
+</div>
+<div class="section" id="Match-and-search-functions">
+<h3>Match and search functions<a class="headerlink" href="#Match-and-search-functions" title="Permalink to this headline">¶</a></h3>
+<p>We have so far only used the <code class="docutils literal notranslate"><span class="pre">re.match</span></code> function which tries to find a match at the beginning of a string The function <code class="docutils literal notranslate"><span class="pre">re.search</span></code> allows to match any substring of a string. Example: <code class="docutils literal notranslate"><span class="pre">re.search(r'\bback\b',</span> <span class="pre">s)</span></code> will match strings <code class="docutils literal notranslate"><span class="pre">"back"</span></code>, <code class="docutils literal notranslate"><span class="pre">"a</span> <span class="pre">back,</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">body</span> <span class="pre">part"</span></code>, <code class="docutils literal notranslate"><span class="pre">"get</span> <span class="pre">back"</span></code>. But it will not match the strings <code class="docutils literal notranslate"><span class="pre">"backspace"</span></code> or <code class="docutils literal notranslate"><span class="pre">"comeback"</span></code>.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">re.search</span></code> finds only the first occurence. We can use the <code class="docutils literal notranslate"><span class="pre">re.findall</span></code> function to find all occurences. Let’s say we want to find all present participle words in a string <code class="docutils literal notranslate"><span class="pre">s</span></code>. The present participle words have ending <code class="docutils literal notranslate"><span class="pre">'ing'</span></code>. The function call would look like this: <code class="docutils literal notranslate"><span class="pre">re.findall(r'\w+ing\b',</span> <span class="pre">s)</span></code>. Let’s try running this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">"Doing things, going home, staying awake, sleeping later"</span>
+<span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\w+ing\b'</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>['Doing', 'going', 'staying', 'sleeping']
+</pre></div>
+</div>
+</div>
+<p>Let’s say we want to pick up all the integers from a string. We can try that with the following function call: <code class="docutils literal notranslate"><span class="pre">re.findall(r'[+-]?\d+',</span> <span class="pre">s)</span></code>. An example run:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'[+-]?\d+'</span><span class="p">,</span> <span class="s2">"23 + -24 = -1"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>['23', '-24', '-1']
+</pre></div>
+</div>
+</div>
+<p>Suppose we are given a string of if/then sentences, and we would like to extract the conditions from these sentences. Let’s try the following function call: <code class="docutils literal notranslate"><span class="pre">re.findall(r'[Ii]f</span> <span class="pre">(.*),</span> <span class="pre">then',</span> <span class="pre">s)</span></code>. An example run:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"If I’m not in a hurry, then I should stay. "</span> <span class="o">+</span>
+    <span class="s2">"On the other hand, if I leave, then I can sleep."</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'[Ii]f (.*), then'</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>['I’m not in a hurry, then I should stay. On the other hand, if I leave']
+</pre></div>
+</div>
+</div>
+<p>But I wanted a result: <code class="docutils literal notranslate"><span class="pre">["I'm</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">hurry",</span> <span class="pre">'I</span> <span class="pre">leave']</span></code>. That is, the condition from both sentences. How can this be fixed?</p>
+<p>The problem is that the pattern <code class="docutils literal notranslate"><span class="pre">.*</span></code> tries to match as many characters as possible. This is called <em>greedy matching</em>. One way of solving this problem is to notice that the two sentences are separated by a full-stop (.). So, instead of matching all the characters, we need to match everything but the dot character. This can be achieved by using the complement character class: <code class="docutils literal notranslate"><span class="pre">[^.]</span></code>. The hat character (<code class="docutils literal notranslate"><span class="pre">ˆ</span></code>) in the beginning of a character class means the complement character class</p>
+<p>After the modification the function call looks like this: <code class="docutils literal notranslate"><span class="pre">re.findall(r'[Ii]f</span> <span class="pre">([^.]*),</span> <span class="pre">then',</span> <span class="pre">s)</span></code>. Another way of solving this problem is to use a non-greedy matching. The repetition specifiers <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">?</span></code>, and <code class="docutils literal notranslate"><span class="pre">{m,n}</span></code> have corresponding non-greedy versions: <code class="docutils literal notranslate"><span class="pre">+?</span></code>, <code class="docutils literal notranslate"><span class="pre">*?</span></code>, <code class="docutils literal notranslate"><span class="pre">??</span></code>, and <code class="docutils literal notranslate"><span class="pre">{m,n}?</span></code>. These expressions use as few characters as possible to make the whole pattern match some substring. By using non-greedy version, the function call looks like this:
+<code class="docutils literal notranslate"><span class="pre">re.findall(r’[Ii]f</span> <span class="pre">(.*?),</span> <span class="pre">then’,</span> <span class="pre">s)</span></code>.</p>
+</div>
+<div class="section" id="Functions-in-the-re-module">
+<h3>Functions in the <code class="docutils literal notranslate"><span class="pre">re</span></code> module<a class="headerlink" href="#Functions-in-the-re-module" title="Permalink to this headline">¶</a></h3>
+<p>Below is a list of the most common functions in the <code class="docutils literal notranslate"><span class="pre">re</span></code> module</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">re.match(pattern,</span> <span class="pre">str)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">re.search(pattern,</span> <span class="pre">str)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">re.findall(pattern,</span> <span class="pre">str)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">re.finditer(pattern,</span> <span class="pre">str)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">re.sub(pattern,</span> <span class="pre">replacement,</span> <span class="pre">str,</span> <span class="pre">count=0)</span></code></li>
+</ul>
+<p>Functions <code class="docutils literal notranslate"><span class="pre">match</span></code> and <code class="docutils literal notranslate"><span class="pre">search</span></code> return a <em>match object</em>. A match object describes the found occurence. The function <code class="docutils literal notranslate"><span class="pre">findall</span></code> returns a list of all the occurences of the pattern. The elements in the list are strings. The function <code class="docutils literal notranslate"><span class="pre">finditer</span></code> works like <code class="docutils literal notranslate"><span class="pre">findall</span></code> function except that instead of returning a list, it returns an iterator whose items are match objects. The function <code class="docutils literal notranslate"><span class="pre">sub</span></code> replaces all the occurences of the pattern in <code class="docutils literal notranslate"><span class="pre">str</span></code> with the string replacement and returns the new
+string.</p>
+<p>An example: The following program will replace all “she” words with “he”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="nb">str</span> <span class="o">=</span> <span class="s2">"She goes where she wants to, she's a sheriff."</span>
+<span class="n">newstr</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\b[Ss]he\b'</span><span class="p">,</span> <span class="s1">'he'</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">newstr</span>
+</pre></div>
+</div>
+<p>This will print <code class="docutils literal notranslate"><span class="pre">he</span> <span class="pre">goes</span> <span class="pre">where</span> <span class="pre">he</span> <span class="pre">wants</span> <span class="pre">to,</span> <span class="pre">he's</span> <span class="pre">a</span> <span class="pre">sheriff.</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sub</span></code> function can also use backreferences to refer to the matched string. The backreferences <span class="math">\1</span>, <span class="math">\2</span>, and so on, refer to the groups of the pattern, in order. An example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="nb">str</span> <span class="o">=</span> <span class="s2">"""He is the president of Russia.</span>
+<span class="s2">He’s a powerful man."""</span>
+<span class="n">newstr</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\b[Hh]e\b)'</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'\1 (Putin)'</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">newstr</span>
+</pre></div>
+</div>
+<p>This will print</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>He (Putin) is the president of Russia.
+He’s a powerful man.
+</pre></div>
+</div>
+</div>
+<div class="section" id="Match-object">
+<h3>Match object<a class="headerlink" href="#Match-object" title="Permalink to this headline">¶</a></h3>
+<p>Functions <code class="docutils literal notranslate"><span class="pre">match</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, and <code class="docutils literal notranslate"><span class="pre">finditer</span></code> use <code class="docutils literal notranslate"><span class="pre">match</span></code> objects to describe the found occurence. The method <code class="docutils literal notranslate"><span class="pre">groups()</span></code> of the match object returns the tuple of all the substrings matched by the groups of the pattern. Each pair of parentheses in the pattern creates a new group. These groups are are referred to by indices 1, 2, … The group 0 is a special one: it refers to the match created by the whole pattern.</p>
+<p>Let’s look at the match object returned by the call</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mo</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\d+ (\d+) \d+ (\d+)'</span><span class="p">,</span>
+<span class="s1">'first 123 45 67 890 last'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The call <code class="docutils literal notranslate"><span class="pre">mo.groups()</span></code> returns a tuple <code class="docutils literal notranslate"><span class="pre">(’45’,</span> <span class="pre">’890’)</span></code>. We can access just some individual groups by using the method <code class="docutils literal notranslate"><span class="pre">group(gid,</span> <span class="pre">...)</span></code>. For example, the call <code class="docutils literal notranslate"><span class="pre">mo.group(1)</span></code> will return <code class="docutils literal notranslate"><span class="pre">’45’</span></code>. The zeroth group will represent the whole match: <code class="docutils literal notranslate"><span class="pre">’123</span> <span class="pre">45</span> <span class="pre">67</span> <span class="pre">890’</span></code></p>
+<p>In addition to accessing the strings matched by the pattern and its groups, the corresponding indices of the original string can be accessed:</p>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">start(gid=0)</span></code> and <code class="docutils literal notranslate"><span class="pre">end(gid=0)</span></code> methods return the start and end indices of the matched group gid, correspondingly</li>
+<li>The method <code class="docutils literal notranslate"><span class="pre">span(gid)</span></code> just returns the pair of these start and end indices</li>
+</ul>
+<p>The match object mo can also be used like a boolean value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mo</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">mo</span><span class="p">:</span>
+    <span class="c1"># do something</span>
+</pre></div>
+</div>
+<p>will do something if a match was found. Alternatively, the match object can be converted to a boolean value by the call <code class="docutils literal notranslate"><span class="pre">found</span> <span class="pre">=</span> <span class="pre">bool(mo)</span></code>.</p>
+</div>
+<div class="section" id="Miscellaneous-stuff">
+<h3>Miscellaneous stuff<a class="headerlink" href="#Miscellaneous-stuff" title="Permalink to this headline">¶</a></h3>
+<p>If the same pattern is used in many function calls, it may be wise to precompile the pattern, mainly for efficiency reasons. This can be done using the <code class="docutils literal notranslate"><span class="pre">compile(pattern,</span> <span class="pre">flags=0)</span></code> function in the <code class="docutils literal notranslate"><span class="pre">re</span></code> module. The function returns a so-called RE object. The RE object has method versions of the functions found in module <code class="docutils literal notranslate"><span class="pre">re</span></code>. The only difference is that the first parameter is not the pattern since the precompiled pattern is stored in the RE object.</p>
+<p>The details of matching operation can be specified using optional flags. These flags can be given either inside the pattern or as a parameter to the compile function. Some of the more common flags are given in the following table</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%"/>
+<col width="59%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">x</th>
+<th class="head">Flag</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">(?i)</span></code></td>
+<td>re.IGNORECASE</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">(?m)</span></code></td>
+<td>re.MULTILINE</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">(?s)</span></code></td>
+<td>re.DOTALL</td>
+</tr>
+</tbody>
+</table>
+<p>The elements on the left can appear anywhere in the pattern but preferably in the beginning. On the right there are attributes of the re module that can be given to the compile function as the second parameter</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">IGNORECASE</span></code> flag makes lower- and uppercase characters appear as equal. The <code class="docutils literal notranslate"><span class="pre">MULTILINE</span></code> flag makes the special characters <code class="docutils literal notranslate"><span class="pre">ˆ</span></code> and <code class="docutils literal notranslate"><span class="pre">$</span></code> match the beginning and end of each line in addition to the beginning and end of the whole string. These flags make <code class="docutils literal notranslate"><span class="pre">\A</span></code> differ from <code class="docutils literal notranslate"><span class="pre">ˆ</span></code>, and <code class="docutils literal notranslate"><span class="pre">\Z</span></code> differ from <code class="docutils literal notranslate"><span class="pre">$</span></code>. The <code class="docutils literal notranslate"><span class="pre">DOTALL</span></code> flag makes the character class <code class="docutils literal notranslate"><span class="pre">.</span></code> (dot) also accept the newline character, in addition to all the other letters.</p>
+<p>When giving multiple flags to the compile function, the flags can be separated with the <code class="docutils literal notranslate"><span class="pre">|</span></code> sign. For example, <code class="docutils literal notranslate"><span class="pre">re.compile(pattern,</span> <span class="pre">re.MULTILINE</span> <span class="pre">|</span> <span class="pre">re.DOTALL)</span></code>. This is equal to <code class="docutils literal notranslate"><span class="pre">re.compile('(?m)(?s)'</span> <span class="pre">+</span> <span class="pre">pattern)</span></code>.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-1-(integers-in-brackets)">Exercise 1 (integers in brackets)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">integers_in_brackets</span></code> that finds from a given string all integers that are enclosed in brackets.</p>
+<p>Example run: <code class="docutils literal notranslate"><span class="pre">integers_in_brackets("</span>  <span class="pre">afd</span> <span class="pre">[asd]</span> <span class="pre">[12</span> <span class="pre">]</span> <span class="pre">[a34]</span>  <span class="pre">[</span> <span class="pre">-43</span> <span class="pre">]tt</span> <span class="pre">[+12]xxx")</span></code> returns <code class="docutils literal notranslate"><span class="pre">[12,</span> <span class="pre">-43,</span> <span class="pre">12]</span></code>. So there can be whitespace between the number and the brackets, but no other character besides those that make up the integer.</p>
+<p>Test your function from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<hr/></div>
+</div>
+<div class="section" id="Basic-file-processing">
+<h2>Basic file processing<a class="headerlink" href="#Basic-file-processing" title="Permalink to this headline">¶</a></h2>
+<p>A file can be opened with the <code class="docutils literal notranslate"><span class="pre">open</span></code> function. The call <code class="docutils literal notranslate"><span class="pre">open(filename,</span> <span class="pre">mode="r")</span></code> will return a <em>file object</em>, whose type is <code class="docutils literal notranslate"><span class="pre">file</span></code>. This file object can be used to refer to a file on disk. For example, when we want to read from or write to a file, we can used the methods <code class="docutils literal notranslate"><span class="pre">read</span></code> and <code class="docutils literal notranslate"><span class="pre">write</span></code> of the file object. After the file object is no longer needed, a call to the <code class="docutils literal notranslate"><span class="pre">close</span></code> method should be made.</p>
+<p>We can control what kind of operations we can perform on a file with the <em>mode</em> parameter of the <code class="docutils literal notranslate"><span class="pre">open</span></code> function. Different options include opening a file for reading or writing, whether the file should exists already or be created with the call to open, etc. Here’s a list of all the opening modes:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%"/>
+<col width="86%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Mode</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">r</span></code></td>
+<td>read-only mode, file must exist</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">w</span></code></td>
+<td>write-only mode, creates, or overwrites an existing file</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">a</span></code></td>
+<td>write-only mode, write always appends to the end</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">r+</span></code></td>
+<td>read/write mode, file must already exist</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">w+</span></code></td>
+<td>read/write mode, creates, or overwrites an existing file</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">a+</span></code></td>
+<td>read/write mode, write will append to end</td>
+</tr>
+</tbody>
+</table>
+<p>In the end of the mode string either the letter <code class="docutils literal notranslate"><span class="pre">t</span></code> or <code class="docutils literal notranslate"><span class="pre">b</span></code> can be appended. These stand for text mode and binary mode. If this letter is not given, the file type is text mode by default.</p>
+<p>For binary mode the contents of the file are not interpreted in any way, and the read and write methods handle bytes. (A byte consists of 8 bits and can be used to represent a number in the range 0 to 255.)</p>
+<p>In the text mode two interpretations happen</p>
+<ul class="simple">
+<li>On Windows operating system the end of line in files is encoded by two characters. When the file is read these two charactes are converted to <code class="docutils literal notranslate"><span class="pre">'\n'</span></code> character. During writes to a file this conversion happens in the opposite direction.</li>
+<li>One character is encoded in the file as one or more bytes. This conversion happens automatically during read and write operations. One common encoding between bytes and characters is utf-8. In this encoding, the Finnish character <code class="docutils literal notranslate"><span class="pre">'ä'</span></code>, for example, is encoded as the following sequence of bytes:</li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="s2">"ä"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>b'\xc3\xa4'
+</pre></div>
+</div>
+</div>
+<p>Above the two bytes were expressed as hexadecimals. In decimal notation they would be 195 and 164. (Both in the range from 0 to 255.)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">list</span><span class="p">(</span><span class="s2">"ä"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>              <span class="c1"># Show as a list of integers</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[195, 164]
+</pre></div>
+</div>
+</div>
+<p>What is the utf-8 encoding of the letter <code class="docutils literal notranslate"><span class="pre">'a'</span></code>?</p>
+<p>During this course we will only consider files containing text, so the default text mode is fine for us. But we might sometimes have to specify the encoding of a file, if it is not the usual utf-8.</p>
+<div class="section" id="Some-common-file-object-methods">
+<h3>Some common file object methods<a class="headerlink" href="#Some-common-file-object-methods" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">read(size)</span></code> will read size characters/bytes as a string</li>
+<li><code class="docutils literal notranslate"><span class="pre">write(string)</span></code> will write string/bytes to a file</li>
+<li><code class="docutils literal notranslate"><span class="pre">readline()</span></code> will read a string until and including the next newline character is met</li>
+<li><code class="docutils literal notranslate"><span class="pre">readlines()</span></code> will return a list of all lines of a file</li>
+<li><code class="docutils literal notranslate"><span class="pre">writelines()</span></code> will write a list of lines to a file</li>
+<li><code class="docutils literal notranslate"><span class="pre">flush()</span></code> will try to make sure that the changes made to a file are written to disk immediately</li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"basics.ipynb"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="c1"># Let's open this notebook file,</span>
+                              <span class="c1"># which is essentially a text file.</span>
+                              <span class="c1"># So you can open it in a texteditor as well.</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>            <span class="c1"># And read the first five lines</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Line </span><span class="si">%i</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">line</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Line 0: {
+Line 1:  "cells": [
+Line 2:   {
+Line 3:    "cell_type": "markdown",
+Line 4:    "metadata": {},
+</pre></div></div>
+</div>
+<p>It is easy to forget to close the file. One can use a <em>context manager</em> to solve this problem. A context manager is created with the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement. After the indented block of the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement exits, the file will be automatically closed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"basics.ipynb"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>          <span class="c1"># the file will be automatically closed,</span>
+                                              <span class="c1"># when the with block exits</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Line </span><span class="si">%i</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">line</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Line 0: {
+Line 1:  "cells": [
+Line 2:   {
+Line 3:    "cell_type": "markdown",
+Line 4:    "metadata": {},
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">file</span></code> object is iterable. This means that we can iterate through the lines in the file using a for loop, like in the below example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">max_len</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"basics.ipynb"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>    <span class="c1"># iterates through all the lines in the file</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">:</span>
+            <span class="n">max_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The longest line in this file has length </span><span class="si">%i</span><span class="s2">"</span> <span class="o">%</span> <span class="n">max_len</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The longest line in this file has length 1046
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Standard-file-objects">
+<h3>Standard file objects<a class="headerlink" href="#Standard-file-objects" title="Permalink to this headline">¶</a></h3>
+<p>Python has automatically three file objects open:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">sys.stdin</span></code> for <em>standard input</em></li>
+<li><code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> for <em>standard output</em></li>
+<li><code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code> for <em>standard error</em> To read a line from a user (keyboard), you can call <code class="docutils literal notranslate"><span class="pre">sys.stdin.readline()</span></code>. To write a line to a user (screen), call <code class="docutils literal notranslate"><span class="pre">sys.stdout.write(line)</span></code>. The standard error is meant for error messages only, even though its output often goes to the same destination as standard output.</li>
+</ul>
+<p>The print function uses the file <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> and input function uses the file <code class="docutils literal notranslate"><span class="pre">sys.stdin</span></code>. An example of usage:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="n">i</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Got a positive integer.</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Got a negative integer.</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Got a negative integer.
+</pre></div></div>
+</div>
+<p>These standard file objects are meant to be a basic input/output mechanism in textual form. The destinations of the file objects can be changed to point somewhere else than the usual keyboard and screen. Very often these are redirected to some files. For example, it is usual to point the stderr to a file where all error messages are logged.</p>
+</div>
+</div>
+<div class="section" id="sys-module">
+<h2>sys module<a class="headerlink" href="#sys-module" title="Permalink to this headline">¶</a></h2>
+<p>We saw above that the <code class="docutils literal notranslate"><span class="pre">sys</span></code> module contains the three file objects <code class="docutils literal notranslate"><span class="pre">sys.stdin</span></code>, <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>, and <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>. It has also few other useful attributes. The attribute <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> is the list of folders that Python uses to look for imported modules. The list <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> contains the so called <em>command line parameters</em>. For example in Linux if you are using the terminal, then you can run your program with the command <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">programname.py</span> <span class="pre">param1</span> <span class="pre">param2</span> <span class="pre">...</span></code>. After Python has started
+your program, the command line parameters are visible as follows. The name of the program is in <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code>. The rest of the command line parameters are after the program name in this list: <code class="docutils literal notranslate"><span class="pre">sys.argv[1]=="param1"</span></code>, <code class="docutils literal notranslate"><span class="pre">sys.argv[2]=="param2"</span></code>, and so on. The command line parameters can be useful in adjusting the behaviour of your program. A few examples of these will be in the following exercises. (The terminal window is a textual interface to your computer instead of the usual graphical
+interface.)</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">sys.exit</span></code> can be used to exit immediately your program. The integer parameter given to this function is the return value of the program. Usually the return value 0 means that the program ran successfully, and non-zero integer means that an error occurred. This return value is accessible from the terminal window from where you started the program.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-2-(file-listing)">Exercise 2 (file listing)</a></div>
+<p>The file <code class="docutils literal notranslate"><span class="pre">src/listing.txt</span></code> contains a list of files with one line per file. Each line contains seven fields: access rights, number of references, owner’s name, name of owning group, file size, date, filename. These fields are separated with one or more spaces. Note that there may be spaces also within these seven fields.</p>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">file_listing</span></code> that loads the file <code class="docutils literal notranslate"><span class="pre">src/listing.txt</span></code>. It should return a list of tuples (size, month, day, hour, minute, filename). Use regular expressions to do this (either <code class="docutils literal notranslate"><span class="pre">match</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">findall</span></code>, or <code class="docutils literal notranslate"><span class="pre">finditer</span></code> method).</p>
+<p>An example: for line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">jttoivon</span> <span class="n">hyad</span><span class="o">-</span><span class="nb">all</span>   <span class="mi">25399</span> <span class="n">Nov</span>  <span class="mi">2</span> <span class="mi">21</span><span class="p">:</span><span class="mi">25</span> <span class="n">exception_hierarchy</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>the function should create the tuple <code class="docutils literal notranslate"><span class="pre">(25399,</span> <span class="pre">"Nov",</span> <span class="pre">2,</span> <span class="pre">21,</span> <span class="pre">25,</span> <span class="pre">"exception_hierarchy.pdf")</span></code>.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-3-(red-green-blue)">Exercise 3 (red green blue)</a></div>
+<p>The file <code class="docutils literal notranslate"><span class="pre">src/rgb.txt</span></code> contains names of colors and their numerical representations in RGB format. The RBG format allows a color to be represented as a mixture of red, green, and blue components. Each component can have an integer value in the range [0,255]. Each line in the file contains four fields: red, green, blue, and colorname. Each field is separated by some amount of whitespace (tab or space in this case). The text file is formatted to make it print nicely, but that makes it harder to
+process by a computer. Note that some color names can also contain a space character.</p>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">red_green_blue</span></code> that reads the file <code class="docutils literal notranslate"><span class="pre">rgb.txt</span></code> from the folder <code class="docutils literal notranslate"><span class="pre">src</span></code>. Remove the irrelevant first line of the file. The function should return a list of strings. Clean-up the file so that the strings in the returned list have four fields separated by a single tab character (<code class="docutils literal notranslate"><span class="pre">\t</span></code>). Use regular expressions to do this.</p>
+<p>The first string in the returned list should be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'255</span><span class="se">\t</span><span class="s1">250</span><span class="se">\t</span><span class="s1">250</span><span class="se">\t</span><span class="s1">snow'</span>
+</pre></div>
+</div>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-4-(word-frequencies)">Exercise 4 (word frequencies)</a></div>
+<p>Create function <code class="docutils literal notranslate"><span class="pre">word_frequencies</span></code> that gets a filename as a parameter and returns a dict with the word frequencies. In the dictionary the keys are the words and the corresponding values are the number of times that word occurred in the file specified by the function parameter. Read all the lines from the file and split the lines into words using the <code class="docutils literal notranslate"><span class="pre">split()</span></code> method. Further, remove punctuation from the ends of words using the <code class="docutils literal notranslate"><span class="pre">strip("""!"#$%&amp;'()*,-./:;?@[]_""")</span></code> method call.</p>
+<p>Test this function in the main function using the file <code class="docutils literal notranslate"><span class="pre">alice.txt</span></code>. In the output, there should be a word and its count per line separated by a tab:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span>     <span class="mi">64</span>
+<span class="n">Project</span> <span class="mi">83</span>
+<span class="n">Gutenberg</span>   <span class="mi">26</span>
+<span class="n">EBook</span>   <span class="mi">3</span>
+<span class="n">of</span>      <span class="mi">303</span>
+</pre></div>
+</div>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-5-(summary)">Exercise 5 (summary)</a></div>
+<p>This exercise can give two points at maximum!</p>
+<p>Part 1.</p>
+<p>Create a function called <code class="docutils literal notranslate"><span class="pre">summary</span></code> that gets a filename as a parameter. The input file should contain a floating point number on each line of the file. Make your function read these numbers and then return a triple containing the sum, average, and standard deviation of these numbers for the file. As a reminder, the formula for corrected sample standard deviation is <span class="math notranslate nohighlight">\(\sqrt{\frac{\sum_{i=1}^n (x_i - \overline x)^2}{n-1}}\)</span>, where <span class="math notranslate nohighlight">\(\overline x\)</span> is the average. Use the <code class="docutils literal notranslate"><span class="pre">math.sqrt</span></code>
+function from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module in your solution.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">main</span></code> function should call the function summary for each filename in the list <code class="docutils literal notranslate"><span class="pre">sys.argv[1:]</span></code> of command line parameters. (Skip <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> since it contains the name of the current program.)</p>
+<p>Example of usage from the command line: <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">src/summary.py</span> <span class="pre">src/example.txt</span> <span class="pre">src/example2.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">summary.py</span> <span class="pre">example.txt</span> <span class="pre">example2.txt</span></code> if you are in the folder src.</p>
+<p>Print floating point numbers using six decimals precision. The output should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">File</span><span class="p">:</span> <span class="n">src</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">txt</span> <span class="n">Sum</span><span class="p">:</span> <span class="mf">51.400000</span> <span class="n">Average</span><span class="p">:</span> <span class="mf">10.280000</span> <span class="n">Stddev</span><span class="p">:</span> <span class="mf">8.904606</span>
+<span class="n">File</span><span class="p">:</span> <span class="n">src</span><span class="o">/</span><span class="n">example2</span><span class="o">.</span><span class="n">txt</span> <span class="n">Sum</span><span class="p">:</span> <span class="mf">5446.200000</span> <span class="n">Average</span><span class="p">:</span> <span class="mf">1815.400000</span> <span class="n">Stddev</span><span class="p">:</span> <span class="mf">3124.294045</span>
+</pre></div>
+</div>
+<p>Part 2.</p>
+<p>If some line doesn’t represent a number, you can just ignore that line. You can achieve this with the <em>try-except</em> block. An example of recovering from an exceptional situation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>           <span class="c1"># The float constructor raises ValueError exception if conversion is no possible</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="c1"># Statements in here are executed when the above conversion fails</span>
+</pre></div>
+</div>
+<p>We will cover more about exceptions later in the course.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-6-(file-count)">Exercise 6 (file count)</a></div>
+<p>This exercise can give two points at maximum!</p>
+<p>Part 1.</p>
+<p>Create a function <code class="docutils literal notranslate"><span class="pre">file_count</span></code> that gets a filename as parameter and returns a triple of numbers. The function should read the file, count the number of lines, words, and characters in the file, and return a triple with these count in this order. You get division into words by splitting at whitespace. You don’t have to remove punctuation.</p>
+<p>Part 2.</p>
+<p>Create a main function that in a loop calls <code class="docutils literal notranslate"><span class="pre">file_count</span></code> using each filename in the list of command line parameters <code class="docutils literal notranslate"><span class="pre">sys.argv[1:]</span></code> as a parameter, in turn. For call <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">src/file_count</span> <span class="pre">file1</span> <span class="pre">file2</span> <span class="pre">...</span></code> the output should be</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?      ?       ?       file1
+?      ?       ?       file2
+...
+</pre></div>
+</div>
+<p>The fields are separated by tabs (<code class="docutils literal notranslate"><span class="pre">\t</span></code>). The fields are in order: linecount, wordcount, charactercount, filename.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-7-(file-extensions)">Exercise 7 (file extensions)</a></div>
+<p>This exercise can give two points at maximum!</p>
+<p>Part 1.</p>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">file_extensions</span></code> that gets as a parameter a filename. It should read through the lines from this file. Each line contains a filename. Find the extension for each filename. The function should return a pair, where the first element is a list containing all filenames with no extension (no period (<code class="docutils literal notranslate"><span class="pre">.</span></code>) appears in the filename). The second element of the pair is a dictionary with extensions as keys and corresponding values are lists with filenames having that extension.</p>
+<p>Sounds a bit complicated, but hopefully the next example will clarify this. If the file contains the following lines</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file1</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">mydocument</span><span class="o">.</span><span class="n">pdf</span>
+<span class="n">file2</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">archive</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">test</span>
+</pre></div>
+</div>
+<p>then the return value should be the pair: <code class="docutils literal notranslate"><span class="pre">(["test"],</span> <span class="pre">{</span> <span class="pre">"txt"</span> <span class="pre">:</span> <span class="pre">["file1.txt",</span> <span class="pre">"file2.txt"],</span> <span class="pre">"pdf"</span> <span class="pre">:</span> <span class="pre">["mydocument.pdf"],</span> <span class="pre">"gz"</span> <span class="pre">:</span> <span class="pre">["archive.tar.gz"]</span> <span class="pre">}</span> <span class="pre">)</span></code></p>
+<p>Part 2.</p>
+<p>Write a <code class="docutils literal notranslate"><span class="pre">main</span></code> method that calls the <code class="docutils literal notranslate"><span class="pre">file_extensions</span></code> function with “src/filenames.txt” as the argument. Then print the results so that for each extension there is a line consisting of the extension and the number of files with that extension. The first line of the output should give the number of files without extensions.</p>
+<p>With the example in part 1, the output should be</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">files</span> <span class="k">with</span> <span class="n">no</span> <span class="n">extension</span>
+<span class="n">gz</span> <span class="mi">1</span>
+<span class="n">pdf</span> <span class="mi">1</span>
+<span class="n">txt</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Had there been no filenames without extension then the first line would have been <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">files</span> <span class="pre">with</span> <span class="pre">no</span> <span class="pre">extension</span></code>. In the printout list the extensions in alphabetical order.</p>
+<hr/></div>
+<div class="section" id="Objects-and-classes">
+<h2>Objects and classes<a class="headerlink" href="#Objects-and-classes" title="Permalink to this headline">¶</a></h2>
+<p>Python is an object-oriented programming language like Java and C++. But unlike Java, Python doesn’t force you to use classes, inheritance and methods. If you like, you can also choose the structural programming paradigm with functions and modules.</p>
+<p>Every value in Python is an object. Objects are a way to combine data and the functions that handle that data. This combination is called <em>encapsulation</em>. The data items and functions of objects are called <em>attributes</em>, and in particular the function attributes are called <em>methods</em>. For example, the operator <code class="docutils literal notranslate"><span class="pre">+</span></code> on integers calls a method of integers, and the operator <code class="docutils literal notranslate"><span class="pre">+</span></code> on strings calls a method of strings.</p>
+<p>Functions, modules, methods, classes, etc are all first class objects. This means that these objects can be</p>
+<ul class="simple">
+<li>stored in a container</li>
+<li>passed to a function as a parameter</li>
+<li>returned by a function</li>
+<li>bound to a variable</li>
+</ul>
+<p>One can access an attribute of an object using the <em>dot operator</em>: <code class="docutils literal notranslate"><span class="pre">object.attribute</span></code>. For example: if <code class="docutils literal notranslate"><span class="pre">L</span></code> is a list, we can refer to the method <code class="docutils literal notranslate"><span class="pre">append</span></code> with <code class="docutils literal notranslate"><span class="pre">L.append</span></code>. The method call can look, for instance, like this: <code class="docutils literal notranslate"><span class="pre">L.append(4)</span></code>. Because also modules are objects in Python, we can interpret the expression <code class="docutils literal notranslate"><span class="pre">math.pi</span></code> as accessing the data attribute <code class="docutils literal notranslate"><span class="pre">pi</span></code> of module object <code class="docutils literal notranslate"><span class="pre">math</span></code>.</p>
+<p>Numbers like 2 and 100 are instances of type <code class="docutils literal notranslate"><span class="pre">int</span></code>. Similarly, <code class="docutils literal notranslate"><span class="pre">"hello"</span></code> is an instance of type <code class="docutils literal notranslate"><span class="pre">str</span></code>. When we write <code class="docutils literal notranslate"><span class="pre">s=set()</span></code>, we are actually creating a new instance of type <code class="docutils literal notranslate"><span class="pre">set</span></code>, and bind the resulting instance object to <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
+<p>A user can define his own data types. These are called <em>classes</em>. A user can call these classes like they were functions, and they return a new instance object of that type. Classes can be thought as recipes for creating objects.</p>
+<p>An example of class definition:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Documentation string of the class"""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
+        <span class="s2">"This initialises an instance of type ClassName"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">param1</span> <span class="c1"># creates an instance attribute</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">param2</span>      <span class="c1"># creates a local variable of the function</span>
+        <span class="c1"># statements ...</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">):</span>
+        <span class="sd">"""This is a method of the class"""</span>
+        <span class="c1"># some statements</span>
+
+    <span class="n">a</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># This creates a class attribute</span>
+</pre></div>
+</div>
+<p>The class definition starts with the <code class="docutils literal notranslate"><span class="pre">class</span></code> statement. With this statement you give a name for your new type, and also in parentheses list the base classes of your class. The next indented block is the <em>class body</em>. After the whole class body is read, a new type is created. Note that no instances are created yet. All the attributes and methods of the class are defined in the class body.</p>
+<p>The example class has two methods: <code class="docutils literal notranslate"><span class="pre">__init__</span></code> and <code class="docutils literal notranslate"><span class="pre">f</span></code>. Note that their first parameter is special: <code class="docutils literal notranslate"><span class="pre">self</span></code>. It corresponds to <code class="docutils literal notranslate"><span class="pre">this</span></code> variable of C++ or Java. <code class="docutils literal notranslate"><span class="pre">__init__</span></code> does the initialisation when an instance is created. At instantiation with <code class="docutils literal notranslate"><span class="pre">i=MyClass(2,3)</span></code> the parameters <code class="docutils literal notranslate"><span class="pre">param1</span></code> and <code class="docutils literal notranslate"><span class="pre">param2</span></code> are bound to values 2 and 3, respectively. Now that we have an instance <code class="docutils literal notranslate"><span class="pre">i</span></code>, we can call its method <code class="docutils literal notranslate"><span class="pre">f</span></code> with the dot operator: <code class="docutils literal notranslate"><span class="pre">i.f(1)</span></code>. The parameters of <code class="docutils literal notranslate"><span class="pre">f</span></code> are bound in the
+following way: <code class="docutils literal notranslate"><span class="pre">self=i</span></code> and <code class="docutils literal notranslate"><span class="pre">param1=1</span></code>.</p>
+<p>There are differences in how an assignment inside a class body creates variables. The attribute <code class="docutils literal notranslate"><span class="pre">a</span></code> is at class level and is common for all instances of the class <code class="docutils literal notranslate"><span class="pre">MyClass</span></code>. The variable <code class="docutils literal notranslate"><span class="pre">c</span></code> is a local variable of the function <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, and cannot therefore be used outside the function. The attribute <code class="docutils literal notranslate"><span class="pre">b</span></code> is specific to each instance of <code class="docutils literal notranslate"><span class="pre">MyClass</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">self</span></code> refers to the current instance. An example: for objects <code class="docutils literal notranslate"><span class="pre">x=MyClass(1,0)</span></code> and <code class="docutils literal notranslate"><span class="pre">y=MyClass(2,0)</span></code> we have
+<code class="docutils literal notranslate"><span class="pre">x.b</span> <span class="pre">!=</span> <span class="pre">y.b</span></code>, but <code class="docutils literal notranslate"><span class="pre">x.a</span> <span class="pre">==</span> <span class="pre">y.a</span></code>.</p>
+<p>All methods of a class have a mandatory first parameter which refers to the instance on which you called the method. This parameter is usually named <code class="docutils literal notranslate"><span class="pre">self</span></code>. If you want to access the class attribute <code class="docutils literal notranslate"><span class="pre">a</span></code> from a method of the class, use the fully qualified form <code class="docutils literal notranslate"><span class="pre">MyClass.a</span></code>. The methods whose names both begin and end with two underscores are called <em>special methods</em>. For example, <code class="docutils literal notranslate"><span class="pre">__init__</span></code> is a special method. These methods will be discussed in detail later.</p>
+<div class="section" id="Instances">
+<h3>Instances<a class="headerlink" href="#Instances" title="Permalink to this headline">¶</a></h3>
+<p>We can create instances by calling a class like it were a function: <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">ClassName(...)</span></code>. Then parameters given in the call will be passed to the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function. In the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method you can create the instance specific attributes. If <code class="docutils literal notranslate"><span class="pre">__init__</span></code> is missing, we can create an instance without giving any parameters. As a consequence, the instance has no attributes. Later you can (re)bind attributes with the assignment <code class="docutils literal notranslate"><span class="pre">instance.attribute</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">value</span></code>.</p>
+<p>If that attribute did not exist before, it will be added to the instance with the assigned value. In Python we really can add or delete attributes to/from an existing instance. This is possible because the attribute names and the corresponding values are actually stored in a dictionary. This dictionary is also an attribute of the instance and is called <code class="docutils literal notranslate"><span class="pre">dict</span></code>. Another standard attribute in addition to dict is called <code class="docutils literal notranslate"><span class="pre">__class__</span></code>. This attribute stores the class of the instance. That is, the
+type of the object</p>
+</div>
+<div class="section" id="Attribute-lookup">
+<h3>Attribute lookup<a class="headerlink" href="#Attribute-lookup" title="Permalink to this headline">¶</a></h3>
+<p>Suppose <code class="docutils literal notranslate"><span class="pre">x</span></code> is an instance of class <code class="docutils literal notranslate"><span class="pre">X</span></code>, and we want to read an attribute <code class="docutils literal notranslate"><span class="pre">x.a</span></code>. The lookup has three phases:</p>
+<ul class="simple">
+<li>First it is checked whether the attribute <code class="docutils literal notranslate"><span class="pre">a</span></code> is an attribute of the instance <code class="docutils literal notranslate"><span class="pre">x</span></code></li>
+<li>If not, then it is checked whether <code class="docutils literal notranslate"><span class="pre">a</span></code> is a class attribute of <code class="docutils literal notranslate"><span class="pre">x</span></code>’s class <code class="docutils literal notranslate"><span class="pre">X</span></code></li>
+<li>If not, then the base classes of <code class="docutils literal notranslate"><span class="pre">X</span></code> are checked</li>
+</ul>
+<p>If instead we want to bind the attribute <code class="docutils literal notranslate"><span class="pre">a</span></code>, things are much simpler. <code class="docutils literal notranslate"><span class="pre">x.a</span> <span class="pre">=</span> <span class="pre">value</span></code> will set the instance attribute. And <code class="docutils literal notranslate"><span class="pre">X.a</span> <span class="pre">=</span> <span class="pre">value</span></code> will set the class attribute. Note that if a base of <code class="docutils literal notranslate"><span class="pre">X</span></code>, the class <code class="docutils literal notranslate"><span class="pre">X</span></code>, and the instance <code class="docutils literal notranslate"><span class="pre">x</span></code> each have an attribute called <code class="docutils literal notranslate"><span class="pre">a</span></code>, then <code class="docutils literal notranslate"><span class="pre">x.a</span></code> hides <code class="docutils literal notranslate"><span class="pre">X.a</span></code>, and <code class="docutils literal notranslate"><span class="pre">X.a</span></code> hides the attribute of the base class.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-8-(prepend)">Exercise 8 (prepend)</a></div>
+<p>Create a class called <code class="docutils literal notranslate"><span class="pre">Prepend</span></code>. We create an instance of the class by giving a string as a parameter to the initializer. The initializer stores the parameter in an instance attribute <code class="docutils literal notranslate"><span class="pre">start</span></code>. The class also has a method <code class="docutils literal notranslate"><span class="pre">write(s)</span></code> which prints the string <code class="docutils literal notranslate"><span class="pre">s</span></code> prepended with the <code class="docutils literal notranslate"><span class="pre">start</span></code> string. An example of usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="n">Prepend</span><span class="p">(</span><span class="s2">"+++ "</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Will print</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">Hello</span>
+</pre></div>
+</div>
+<p>Try out using the class from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<hr/></div>
+<div class="section" id="Inheritance">
+<h3>Inheritance<a class="headerlink" href="#Inheritance" title="Permalink to this headline">¶</a></h3>
+<p>Inheritance allows us to reuse the code of an existing class <code class="docutils literal notranslate"><span class="pre">B</span></code> in creating a new class <code class="docutils literal notranslate"><span class="pre">C</span></code>. Let’s recap how the attribute lookup worked for classes. When looking for an attribute, the lookup procedure starts with the instance dictionary, and continues with the class attributes. If both fail, then the attribute is searched from the base classes and, recursively, from their base classes.</p>
+<p>So, it may look like we access an attribute of a class <code class="docutils literal notranslate"><span class="pre">C</span></code>, when in reality we are accessing the attribute of its base class <code class="docutils literal notranslate"><span class="pre">B</span></code>. In this case we say that the class <code class="docutils literal notranslate"><span class="pre">C</span></code> <em>inherits</em> the attribute from its base class <code class="docutils literal notranslate"><span class="pre">B</span></code>. If we have attributes with the same name in both the class and its base class, the attribute of the base class is hidden. We say that the class <code class="docutils literal notranslate"><span class="pre">C</span></code> overrides the attribute of the base class <code class="docutils literal notranslate"><span class="pre">B</span></code>. Terminology: <code class="docutils literal notranslate"><span class="pre">B</span></code> is a base class and <code class="docutils literal notranslate"><span class="pre">C</span></code> is a derived class.</p>
+<p>Example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Executing B.f"</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Executing B.g"</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Executing C.g"</span><span class="p">)</span>
+
+<span class="n">x</span><span class="o">=</span><span class="n">C</span><span class="p">()</span>
+<span class="n">x</span><span class="o">.</span><span class="n">f</span><span class="p">()</span> <span class="c1"># inherited from B</span>
+<span class="n">x</span><span class="o">.</span><span class="n">g</span><span class="p">()</span> <span class="c1"># overridden by C</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Executing B.f
+Executing C.g
+</pre></div></div>
+</div>
+<p>A derived class is sometimes also called a <em>subclass</em> and the base class is called <em>super class</em>. The inheritance relation of two classes <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> can be tested with function <code class="docutils literal notranslate"><span class="pre">issubclass</span></code>: <code class="docutils literal notranslate"><span class="pre">issubclass(C,B)==True</span></code> but <code class="docutils literal notranslate"><span class="pre">issubclass(B,C)==False</span></code> Function <code class="docutils literal notranslate"><span class="pre">isinstance(obj,</span> <span class="pre">cls)</span></code> allows us to test whether an instance has type <code class="docutils literal notranslate"><span class="pre">cls</span></code> or has an ancestor class of type <code class="docutils literal notranslate"><span class="pre">cls</span></code>. Let’s create instances <code class="docutils literal notranslate"><span class="pre">x=C()</span></code> and <code class="docutils literal notranslate"><span class="pre">y=B()</span></code>. Now we have
+<code class="docutils literal notranslate"><span class="pre">isinstance(x,B)==</span> <span class="pre">isinstance(x,C)==isinstance(y,B)==True</span></code>. But <code class="docutils literal notranslate"><span class="pre">isinstance(y,C)==False</span></code>.</p>
+<p><img alt="inheritance hierarchy" src="_images/inheritance_hierarchy.svg"/></p>
+<p><code class="docutils literal notranslate"><span class="pre">object</span></code> should be a base class or an ancestor class of every other class. This means that <code class="docutils literal notranslate"><span class="pre">isinstance(x,</span> <span class="pre">object)==True</span></code> for all instances <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<p>By deriving from an existing class we can modify and/or extend its behaviour, without touching the original class. For example, if we want to add one method to a list class, we can use inheritance. Therefore we have to only code the part that has changed and reuse the rest of the code of type list. Another use of inheritance is to create conceptual hierarchies. For instance, later we will learn about the exception hierarchy of Python. Third use would be to use classes to create interfaces. There
+can be several classes that have same interface (that is, they offer the same attributes), but their behaviour or implementation can be very different. This allows changing a part of your program with minimal changes required elsewhere in the code.</p>
+<p>If in the definition of the method <code class="docutils literal notranslate"><span class="pre">C.f</span></code> we need to call the corresponding method of class <code class="docutils literal notranslate"><span class="pre">A</span></code>, we can use the fully qualified call <code class="docutils literal notranslate"><span class="pre">A.f(...)</span></code>. This is called delegation. It is useful, for instance, when you want to call the init method of the base class from the init of the derived class to initialise the base class attributes.</p>
+</div>
+<div class="section" id="Special-methods">
+<h3>Special methods<a class="headerlink" href="#Special-methods" title="Permalink to this headline">¶</a></h3>
+<p>We have already encountered one special method, namely the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method. This method sets the instance attributes to some initial value. Its first parameter is <code class="docutils literal notranslate"><span class="pre">self</span></code>, and the subsequent parameters are the ones that were passed to the call of the class. The <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method should return no value. Next the main general purpose special methods are introduced. They are executed when certain operations on objects are performed.</p>
+<p>In the following, <code class="docutils literal notranslate"><span class="pre">C</span></code> is a class and <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are its instances. <code class="docutils literal notranslate"><span class="pre">__hash__</span></code> returns an int value, with the following requirement: <code class="docutils literal notranslate"><span class="pre">x==y</span></code> implies <code class="docutils literal notranslate"><span class="pre">x.__hash__()</span> <span class="pre">==</span> <span class="pre">y.__hash__()</span></code>. The value is used in storing objects in dictionaries and sets. The instances <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> must be immutable A class with <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method makes its instances callable. I.e. the call <code class="docutils literal notranslate"><span class="pre">x(a,b,</span> <span class="pre">...)</span></code> will result in calling this special method with the given parameters. The method <code class="docutils literal notranslate"><span class="pre">__del__</span></code> gets called
+when the corresponding instance gets deleted. Method <code class="docutils literal notranslate"><span class="pre">__new__</span></code> is used to control the creation of new instances. It can be used, for example, to create classes that have only one instance.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">__str__</span></code> is called when the print statement needs to print the value of an instance. It returns a string. The print-format expression calls this for conversion <code class="docutils literal notranslate"><span class="pre">%s</span></code>. The method <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> is called when the interactive interpreter prints the value of an evaluated expression, and when the conversion <code class="docutils literal notranslate"><span class="pre">%r</span></code> for print-format expression is used. Returns a canonical representation string that (at least in theory) can be used to recreate the original object. Special methods
+<code class="docutils literal notranslate"><span class="pre">__eq__</span></code>, <code class="docutils literal notranslate"><span class="pre">__ge__</span></code>, <code class="docutils literal notranslate"><span class="pre">__gt__</span></code>, <code class="docutils literal notranslate"><span class="pre">__le__</span></code>, <code class="docutils literal notranslate"><span class="pre">__lt__</span></code>, and <code class="docutils literal notranslate"><span class="pre">__ne__</span></code> get called when the corresponding operators <code class="docutils literal notranslate"><span class="pre">x==y</span></code>, <code class="docutils literal notranslate"><span class="pre">x&gt;=y</span></code>, <code class="docutils literal notranslate"><span class="pre">x&gt;y</span></code>, <code class="docutils literal notranslate"><span class="pre">x&lt;=y</span></code>, <code class="docutils literal notranslate"><span class="pre">x&lt;y</span></code>, and <code class="docutils literal notranslate"><span class="pre">x!=y</span></code> are used.</p>
+<p>If you want the instances of your class to support the numeric operations (like +, -, *, /, etc), you must define a set of special methods in you class. For example, the expression <code class="docutils literal notranslate"><span class="pre">x+y</span></code> will result in a call <code class="docutils literal notranslate"><span class="pre">x.__add__(y)</span></code> which should return the result of the operation. Here are a few of the most common numerical special methods:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%"/>
+<col width="76%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__add__</span></code></td>
+<td>addition (+)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__sub__</span></code></td>
+<td>subtraction (-)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__mul__</span></code></td>
+<td>multiplication (*) | |<code class="docutils literal notranslate"><span class="pre">__truediv__</span></code> | division (/) | |<code class="docutils literal notranslate"><span class="pre">__floordiv__</span></code> |
+division (//) | ———————–</td>
+</tr>
+</tbody>
+</table>
+<p>The corresponding augmented assignments += -= *= /= have special methods iadd , isub , imul , idiv. The conversion functions complex(), float(), int() and long() call the following special methods:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%"/>
+<col width="62%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__complex__</span></code></td>
+<td>convert to a complex number</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__float__</span></code></td>
+<td>convert to a float</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__int__</span></code></td>
+<td>convert to an integer</td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the normal methods of containers, like the <code class="docutils literal notranslate"><span class="pre">append</span></code> method of the list, there are several operations that are handled by calls to special methods of the container class. The test whether <code class="docutils literal notranslate"><span class="pre">x</span></code> is a member of container <code class="docutils literal notranslate"><span class="pre">c</span></code> is done by the operation <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">c</span></code>. The corresponding special method call is <code class="docutils literal notranslate"><span class="pre">x.__contains__(y)</span></code>. Deletion of an element of container <code class="docutils literal notranslate"><span class="pre">c</span></code> can be done with the operation <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">c[key]</span></code>. This will result in the method call <code class="docutils literal notranslate"><span class="pre">x.__delitem__</span></code>.</p>
+<p>Reading an item of a container <code class="docutils literal notranslate"><span class="pre">c</span></code> is done with the operation <code class="docutils literal notranslate"><span class="pre">c[key]</span></code>. The corresponding method call is <code class="docutils literal notranslate"><span class="pre">c.__getitem__(key)</span></code>. Similarly, setting an item with <code class="docutils literal notranslate"><span class="pre">c[key]=value</span></code> results in the call <code class="docutils literal notranslate"><span class="pre">c.__setitem__(key,value)</span></code>. The number of elements in a container <code class="docutils literal notranslate"><span class="pre">c</span></code> can be queried with the function call <code class="docutils literal notranslate"><span class="pre">len(c)</span></code>. This function call actually calls the special method <code class="docutils literal notranslate"><span class="pre">c.__len__</span></code>. The call <code class="docutils literal notranslate"><span class="pre">iter(c)</span></code> will call the special method <code class="docutils literal notranslate"><span class="pre">__iter__</span></code>.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-9-(rational)">Exercise 9 (rational)</a></div>
+<p>Create a class <code class="docutils literal notranslate"><span class="pre">Rational</span></code> whose instances are rational numbers. A new rational number can be created with the call to the class. For example, the call <code class="docutils literal notranslate"><span class="pre">r=Rational(1,4)</span></code> creates a rational number “one quarter”. Make the instances support the following operations: <code class="docutils literal notranslate"><span class="pre">+</span></code> <code class="docutils literal notranslate"><span class="pre">-</span></code> <code class="docutils literal notranslate"><span class="pre">*</span></code> <code class="docutils literal notranslate"><span class="pre">/</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">==</span></code> with their natural behaviour. Make the rationals also printable so that from the printout we can clearly see that they are rational numbers.</p>
+<hr/></div>
+</div>
+<div class="section" id="Exceptions">
+<h2>Exceptions<a class="headerlink" href="#Exceptions" title="Permalink to this headline">¶</a></h2>
+<p>When an error occurs, what can we do?</p>
+<ul class="simple">
+<li>Print an error message</li>
+<li>Stop the execution of a program</li>
+<li>Indicate the error by returning a special value, like -1 or None</li>
+<li>Ignore the error</li>
+<li>…</li>
+</ul>
+<p>These solutions tend to combine the indication of a problem and the reaction to the problem indication. The behaviour of the program in error situations cannot the changed, they are fixed in the implementation of the function. When an erroneous situation is noticed, it may not be clear how to handle the situation. Usually the user or an instance that called a function knows what to do.</p>
+<p>Most modern computer languages have a system called <em>exception handling</em>. This system separates the recognition of errors and the handling of these situations. We can signal an error or anomalous situation by <em>raising</em> an exception. Exceptions can be raised in Python with the <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">raise</span></code> instance</li>
+<li><code class="docutils literal notranslate"><span class="pre">raise</span></code> exception class [, expression]</li>
+</ul>
+<p>In the second form, if the expression exists, it is a tuple of parameters given to exception class.</p>
+<p>The functions of the Python standard library raise exceptions in error situations. Sometimes exceptions aren’t really errors. For example, when an iterator runs out of elements, it will signal this by raising the <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> exception. Another less erroneus exception is the <code class="docutils literal notranslate"><span class="pre">Warning</span></code> exception.</p>
+<p>The general form of exception catching statement is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># here are the statements that can cause exceptions</span>
+<span class="k">except</span> <span class="p">(</span><span class="n">Exceptionname1</span><span class="p">,</span> <span class="n">Exceptionname2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="c1"># here we handle the exceptions</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># this gets executed if try-block caused no exceptions</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1"># this is always executed, clean-up code</span>
+</pre></div>
+</div>
+<p>Usually, just the try and except parts are needed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">L</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Index does not exist"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index does not exist
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">compute_average</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> <span class="c1"># error is noticed here !!!</span>
+<span class="n">mylist</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">x</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Give a number (non-number quits): "</span><span class="p">))</span>
+        <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">average</span><span class="o">=</span><span class="n">compute_average</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Average is"</span><span class="p">,</span> <span class="n">average</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="c1"># and the error is handled here</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Tried to compute the average of empty list of numbers"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Something strange happened"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Give a number (non-number quits): 3
+Give a number (non-number quits): x
+Average is 3.0
+</pre></div></div>
+</div>
+<div class="section" id="Exception-hierarchy">
+<h3>Exception hierarchy<a class="headerlink" href="#Exception-hierarchy" title="Permalink to this headline">¶</a></h3>
+<p>In Python exceptions are objects, like all values in Python. These objects are instantiated from exception classes. Exception classes form naturally hierarchies:</p>
+<ul class="simple">
+<li>New exception classes can be made by inheriting from existing exception classes and extending them</li>
+<li>The root of this hierarchy is the class <code class="docutils literal notranslate"><span class="pre">Exception</span></code></li>
+<li>Python defines several base classes to derive from, and several ready-to-use exception classes</li>
+</ul>
+<p><img alt="exception hierarchy" src="_images/exception_hierarchy.svg"/></p>
+</div>
+<div class="section" id="Too-general-exception-specifications">
+<h3>Too general exception specifications<a class="headerlink" href="#Too-general-exception-specifications" title="Permalink to this headline">¶</a></h3>
+<p>The exception hierarchy allows to catch multiple similar exceptions by catching their common base class. This feature has to be used carefully. Over-general exception specification, like <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">Exception:</span></code>, can hide the real reason for an error. Example of this:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">s</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Give a number: "</span><span class="p">)</span>
+<span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># strip the \n character from the end</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">wr1te</span><span class="p">(</span><span class="s2">"You entered </span><span class="si">%d</span><span class="se">\n</span><span class="s2">"</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"You didn’t enter a number"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>In the previous example, if the user doesn’t enter a string that represents an integer, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised by the <code class="docutils literal notranslate"><span class="pre">int</span></code> function. Instead of catching the <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, we catch the root of the exception hierarchy, namely <code class="docutils literal notranslate"><span class="pre">Exception</span></code>. This results in catching all possible exceptions. But this will cause one typing error in the program to go undetected. Change the exception specification from <code class="docutils literal notranslate"><span class="pre">Exception</span></code> to <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> to see what this error is.</p>
+</div>
+<div class="section" id="What-is-the-error-handling-policy-in-Python">
+<h3>What is the error handling policy in Python<a class="headerlink" href="#What-is-the-error-handling-policy-in-Python" title="Permalink to this headline">¶</a></h3>
+<p>Python uses a different approach to error checking than many other common languages. Instead of trying to beforehand check that all the inputs are of correct type and then contents of input variables are sensible for some operations, Python first tries the operations and then checks whether they caused any exceptions. This is partly what duck typing is about: a function works for a set of inputs if all the operations in the function body make sense for those inputs. So, that’s why the parameters
+of functions aren’t specified to be of any certain type.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-10-(extract-numbers)">Exercise 10 (extract numbers)</a></div>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">extract_numbers</span></code> that gets a string as a parameter. It should return a list of numbers that can be both ints and floats. Split the string to words at whitespace using the <code class="docutils literal notranslate"><span class="pre">split()</span></code> method. Then iterate through each word, and initially try to convert to an int. If unsuccesful, then try to convert to a float. If not a number then skip the word.</p>
+<p>Example run: <code class="docutils literal notranslate"><span class="pre">print(extract_numbers("abd</span> <span class="pre">123</span> <span class="pre">1.2</span> <span class="pre">test</span> <span class="pre">13.2</span> <span class="pre">-1"))</span></code> will return <code class="docutils literal notranslate"><span class="pre">[123,</span> <span class="pre">1.2,</span> <span class="pre">13.2,</span> <span class="pre">-1]</span></code></p>
+<hr/></div>
+</div>
+<div class="section" id="Sequences,-iterables,-generators:-revisited">
+<h2>Sequences, iterables, generators: revisited<a class="headerlink" href="#Sequences,-iterables,-generators:-revisited" title="Permalink to this headline">¶</a></h2>
+<p>In simple terms, a container is <em>iterable</em>, if we can go through all its elements using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. All the sequences are iterable, but there are other iterable objects as well. We can even create iterable types ourselves. In our class there needs to be a special method <code class="docutils literal notranslate"><span class="pre">__iter__</span></code> that returns an <em>iterator</em> for the container. An iterator is an object that has method <code class="docutils literal notranslate"><span class="pre">__next__</span></code>, which returns the next element from the container. Let’s have a look at a simple example where the container
+and its iterator is the same class.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">WeekdayIterator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""Iterator over the weekdays."""</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span>           <span class="c1"># Start from Monday</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weekdays</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"Monday"</span><span class="p">,</span><span class="s2">"Tuesday"</span><span class="p">,</span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="s2">"Thursday"</span><span class="p">,</span><span class="s2">"Friday"</span><span class="p">,</span><span class="s2">"Saturday"</span><span class="p">,</span><span class="s2">"Sunday"</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="c1"># If this object were a container, then this method would return the iterator over the</span>
+                           <span class="c1"># elements of the container.</span>
+        <span class="k">return</span> <span class="bp">self</span>        <span class="c1"># However, this object is already an iterator, hence we return self.</span>
+    <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="c1"># Returns the next weekday</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">StopIteration</span> <span class="c1"># Signal that all weekdays were already iterated over</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">weekday</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weekdays</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">weekday</span>
+
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">WeekdayIterator</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can now check whether the WeekdayIterator is a Sequence type:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">abc</span>  <span class="c1"># Get the abstract base classes</span>
+<span class="n">containers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"efg"</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">WeekdayIterator</span><span class="p">()]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">containers</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s2">"is a sequence"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s2">"is not a sequence"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Weekday is not a sequence because, for instance, you cannot index it with the brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>, but it is an iterable:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">WeekdayIterator</span><span class="p">(),</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>So it is possible to create iterators ourselves, but the syntax was quite complicated. There is an easier option using <em>generators</em>. A generator is a function that contains a <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement. Note the difference between generators and generator expressions we saw in the first week. Both however produce iterables. Here’s an example of a generator:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">mydate</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>   <span class="c1"># Generates dates starting from the given date</span>
+    <span class="n">lengths</span><span class="o">=</span><span class="p">(</span><span class="mi">31</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>   <span class="c1"># How many days in a month</span>
+    <span class="n">first_day</span><span class="o">=</span><span class="n">day</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">first_day</span><span class="p">,</span> <span class="n">lengths</span><span class="p">[</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+        <span class="n">first_day</span><span class="o">=</span><span class="mi">1</span>
+<span class="c1"># Create the generator by calling the function:</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">mydate</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Start from 26th of February</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gen</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span> <span class="k">break</span>                 <span class="c1"># Print only the first five dates from the generator</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Index </span><span class="si">%i</span><span class="s2">, day </span><span class="si">%i</span><span class="s2">, month </span><span class="si">%i</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>Note that it would not be possible to write the above iterable using a generator expression, and it would have been very clumsy to explicitly write it as an iterator like we did the <code class="docutils literal notranslate"><span class="pre">WeekdayIterator</span></code>. The below figure shows the relationships between different iterables we have seen:</p>
+<p><img alt="iterables.svg" src="_images/iterables.svg"/></p>
+<!--NAVIGATION--></div>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="numpy.html" rel="next" title="NumPy">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="basics.html" rel="prev" title="Python"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!--NAVIGATION-->\n",
+    "\n",
+    "\n",
+    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/instructions.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Initializing course environment"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1 Install Python and the needed external packages\n",
+    "\n",
+    "### (alternative a) Install full anaconda distribution\n",
+    "* This is the recommended alternative\n",
+    "* Will take about 3.3 gigabytes of disk space\n",
+    "* Download the anaconda installer (64bits, Python 3) from https://www.anaconda.com/download\n",
+    "* On command line run `bash nameofthedownloadedfile` on Linux (and maybe on macOS)\n",
+    "* Follow the instructions of the installer\n",
+    "* Takes about 3 minutes\n",
+    "* Verify that your installation is complete by downloading the script [versions.py](https://raw.githubusercontent.com/jttoivon/data-analysis-with-python-spring-2019/master/versions.py) and run it with `python3 versions.py`.\n",
+    "\n",
+    "### (alternative b) Install miniconda and Python packages\n",
+    "* This alternative is not recommended\n",
+    "* Will take about 2.3 gigabytes of disk space\n",
+    "* Download miniconda installer (64bits, Python 3) from https://conda.io/miniconda.html\n",
+    "* Run the installer\n",
+    "\n",
+    "    * On the command line run `bash nameofthedownloadedfile`\n",
+    "  \n",
+    "* Activate the miniconda environment\n",
+    "\n",
+    "    * With Linux and MacOS:\n",
+    "        `source /miniconda/install/location/bin/activate`\n",
+    "* Download the [requirements.txt](https://raw.githubusercontent.com/jttoivon/data-analysis-with-python-spring-2019/master/requirements.txt) file\n",
+    "* Install the required packages with\n",
+    "\n",
+    "         `conda install --yes --file requirements.txt`\n",
+    "  This may take awhile.\n",
+    "  \n",
+    "* Takes about 1 min 30 s on fast network"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2 Log in to the course\n",
+    "\n",
+    "* Go to the [exercise page](https://tmc.mooc.fi/org/hy/courses/438) of the course\n",
+    "* If you don't already have an account on this server, press the signup button\n",
+    "* Use your student number as the organizational id, if you want to get credits from this course.\n",
+    "  Note for old-timers: it is not enough, that you have your student number as your user name in TMC, \n",
+    "  in fact, that is not even recommended anymore.\n",
+    "* Choose organization Helsingin yliopisto\n",
+    "* Choose course Data Analysis with Python Spring 2019"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3 Install TMC client\n",
+    "\n",
+    "* Follow the instructions on the following page to install TMC client \n",
+    "    https://github.com/testmycode/tmc-cli\n",
+    "* Note that on this course we use the command line version of TMC, not netbeans or any other IDE. So, you need to know the basics of command line use in the terminal/command prompt\n",
+    "* Go to a folder where you want to download the exercises, and issue command `tmc login`\n",
+    "* If it asks for a server address, then your TMC client is outdated. Re-install the client. Note, that the installation script was updated very recently (12.3.2019). So, if you had problems with it, you might want to try again.\n",
+    "* Provide login details, and use organization slug `hy`\n",
+    "* Then issue command `tmc download hy-data-analysis-with-python-spring-2019` to download the exercises\n",
+    "* Important commands:\n",
+    "  * `tmc` to show help message\n",
+    "  * `tmc test` to test your solution locally\n",
+    "  * `tmc submit` to submit your solution to the server for grading\n",
+    "* The above github page of the tmc-client also contains instructions on the use of the client"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!--NAVIGATION-->\n",
+    "\n",
+    "\n",
+    "<a href=\"https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/instructions.ipynb\"><img align=\"left\" src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open in Colab\" title=\"Open and Execute in Google Colaboratory\"></a>\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

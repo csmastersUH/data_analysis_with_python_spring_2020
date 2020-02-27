@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NumPy (continues) — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="matplotlib.html" rel="next" title="Matplotlib"/>
+<link href="numpy.html" rel="prev" title="NumPy"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NumPy (continues)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Comparisons-and-masking">Comparisons and masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Fancy-indexing">Fancy indexing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Sorting-arrays">Sorting arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Matrix-operations">Matrix operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Solving-system-of-linear-equations">Solving system of linear equations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html">Docs</a> »</li>
+<li>NumPy (continues)</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/numpy2.ipynb.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition note">
+This page was generated from <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/blob/master/numpy2.ipynb">numpy2.ipynb</a>.
+<span class="raw-html"><br/><a href="https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/numpy2.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
+<span class="raw-html"><br/></span></div>
+<!--NAVIGATION--><table border="1" class="docutils">
+<colgroup>
+<col width="33%"/>
+<col width="33%"/>
+<col width="33%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#Exercise-1-(column-comparison)">Exercise 1 (column comparison)</a></td>
+<td><a class="reference external" href="#Exercise-2-(first-half-second-half)">Exercise 2 (first half second half)</a></td>
+<td><a class="reference external" href="#Exercise-3-(most-frequent-first)">Exercise 3 (most frequent first)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#Exercise-4-(matrix-power)">Exercise 4 (matrix power)</a></td>
+<td><a class="reference external" href="#Exercise-5-(correlation)">Exercise 5 (correlation)</a></td>
+<td><a class="reference external" href="#Exercise-6-(meeting-lines)">Exercise 6 (meeting lines)</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#Exercise-7-(meeting-planes)">Exercise 7 (meeting planes)</a></td>
+<td><a class="reference external" href="#Exercise-8-(almost-meeting-lines)">Exercise 8 (almost meeting lines)</a></td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="NumPy-(continues)">
+<h1>NumPy (continues)<a class="headerlink" href="#NumPy-(continues)" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Comparisons-and-masking">
+<h2>Comparisons and masking<a class="headerlink" href="#Comparisons-and-masking" title="Permalink to this headline">¶</a></h2>
+<p>Just like NumPy allows element-wise arithmetic operations between arrays, for example addition of two arrays, it is also possible to compare two arrays element-wise. For example</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ True False  True]
+</pre></div></div>
+</div>
+<p>Now we can query whether all comparisons resulted <code class="docutils literal notranslate"><span class="pre">True</span></code>, or whether some comparison resulted <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>   <span class="c1"># were all True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>   <span class="c1"># was some comparison True</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+True
+</pre></div></div>
+</div>
+<p>We can also count the number of comparisons that were <code class="docutils literal notranslate"><span class="pre">True</span></code>. This solution relies on the interpretation that <code class="docutils literal notranslate"><span class="pre">True</span></code> corresponds to 1 and <code class="docutils literal notranslate"><span class="pre">False</span></code> corresponds to 0:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+</pre></div></div>
+</div>
+<p>Because the broadcasting rules apply also to comparison, we can write</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ True  True  True]
+</pre></div></div>
+</div>
+<p>To try these operations on real data, we download some weather statistics from Helsinki (Kumpula) weather station. More precisely, we will get the daily average temperatures from year 2017. We use the Pandas library, which we will cover later during this course, to load the data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">a</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"https://www.cs.helsinki.fi/u/jttoivon/dap/data/fmi/kumpula-weather-2017.csv"</span><span class="p">)[</span><span class="s1">'Air temperature (degC)'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([  0.6,  -3.9,  -6.5, -12.8, -17.8, -17.8,  -3.8,  -0.5,   0.5,
+         1.7,  -1.6,  -2.8,   1.1,   0.8,  -2.8,  -4.2,  -3.5,   1.1,
+         1.6,  -0.6,  -1.8,   1. ,   0.1,  -2.2,  -3.8,   1.9,   1.6,
+         0.8,   0.6,   1. ,   0.2,  -0.6,  -0.8,  -0.2,   0.4,  -2.5,
+        -7.3, -12.1,  -8.8, -10.1,  -8.3,  -5.4,  -2.7,   1.5,   4.4,
+         0. ,   0.5,   1.5,   1.9,   2.2,   0.4,  -2.5,  -4.6,  -0.7,
+        -5.3,  -5.6,  -2. ,  -2.3,   2.1,   1.5,   1.5,   0.9,  -1.8,
+        -4.2,  -4.2,  -2.9,   0.2,   1.2,   1.4,   2.2,  -0.9,   0.6,
+         0.6,   3.8,   3.4,   2. ,   1.6,   0.6,   0.2,   1.6,   2.3,
+         2.5,   0.5,   1.9,   4.8,   6.6,   2.4,   0.4,  -0.4,   0.2,
+         1.5,   4.3,   3. ,   3.8,   3.3,   4.7,   4.1,   3.3,   3.7,
+         6. ,   4.3,   1.8,   1.2,  -0.5,  -1.4,  -1.7,   0.6,   0.3,
+         1.2,   2.5,   5.7,   3.1,   2.9,   3.6,   2.8,   3.2,   4.4,
+         4.1,   2.3,   2.2,   7.6,   9.4,   9.2,   6.7,  10.1,  11.1,
+         6.1,   4.4,   1.5,   1.5,   2.9,   5.1,   7.5,   9.8,   9. ,
+         7.3,   9.4,  11.2,  16.1,  16.9,  14.7,  14.6,  13.3,  12.4,
+        14.1,  14.1,   9.6,  13.2,  14.1,   9.6,  10.8,   6.5,   6.2,
+        10. ,   9.9,  10.4,  14.5,  16.4,  12.3,  14. ,  16.3,  16.8,
+        12.6,  12.6,  14.8,  15.1,  18.4,  19.3,  16.9,  17.8,  12.7,
+        12.4,  12.2,  10.8,  12.9,  14. ,  13.5,  13.7,  15.3,  16.3,
+        17.2,  14.1,  16.4,  14.5,  14.1,  14. ,  11.5,  14.7,  16.1,
+        17.4,  18. ,  16.8,  16.8,  14.7,  15.3,  16.7,  18. ,  15.4,
+        15. ,  13.7,  14.6,  15.8,  15.6,  16.9,  15.7,  16.1,  17.2,
+        19. ,  19.1,  17.8,  18.3,  17.8,  18.9,  17.5,  18.2,  16.6,
+        17.1,  16. ,  15.2,  17.2,  18.3,  18.7,  18.1,  19.6,  17.4,
+        16.1,  16.4,  17.6,  19. ,  18. ,  18.2,  17.4,  16.2,  14.9,
+        13.5,  12.9,  11.2,  10.4,  10.7,  12. ,  14.4,  16.8,  17.2,
+        15.1,  12.9,  12.9,  11.9,  11.4,  10.4,  10.3,  10.6,  13.1,
+        14.6,  14.6,  14.9,  14.4,  12.9,  12.2,  12.1,   9.9,   8.7,
+         9. ,   9.2,  12.4,  11.5,  12.8,  12.5,  12.6,  12. ,  12.1,
+        10.1,   8.9,   8.8,   9.1,   9.2,   8.3,  11.2,   8.8,   7.7,
+         8.1,   9.3,   8.6,   8.1,   6.9,   6. ,   7.5,   7.2,   8.3,
+        10.7,   8.5,   8.3,   4.6,   2. ,   0.2,   0.1,   1.3,   0.8,
+         2.1,   0.3,  -0.3,   3.3,   2.1,   1.2,  -0.4,   0.1,   0.5,
+         3.2,   8. ,   8.4,   7.5,   3.9,   5.9,   6.7,   7.2,   5.9,
+         3.1,   2.4,   1.8,   3.1,   3.5,   5.8,   5.9,   4. ,   1.2,
+         0.9,   1. ,   1.5,   6.1,   4.2,   2.3,   4.6,   3.9,   2.8,
+         3.1,   0.9,   1.4,   5. ,   1.3,   0. ,  -1.2,  -0.8,   5.2,
+         4.2,   2. ,   1.4,   1.6,   1.6,   1.6,   1.7,   2.4,   0.1,
+         2. ,   1. ,   2.6,   2.5,  -0.1,   1.2,  -0.3,   0.3,   1.9,
+         3.8,   2.8,   3.8,   2.5,   1.6])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Number of days with the temperature below zero"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Number of days with the temperature below zero 49
+</pre></div></div>
+</div>
+<p>In core Python we can combine truth values using the <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">not</span></code> keywords. For boolean array however we have to use the elementwise operators <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>, and <code class="docutils literal notranslate"><span class="pre">~</span></code>, respectively. An example of these:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">))</span>     <span class="c1"># Temperature is greater than 0 and less that 10</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>185
+</pre></div>
+</div>
+</div>
+<p>Note that we had to use parentheses around the comparisons, because the precedence of the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> is higher than that of <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, and so it would have been performed before the comparisons.</p>
+<p>Another use of boolean arrays is that they can be used to select a subset of elements. For example</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>    <span class="c1"># print only the first ten elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>      <span class="c1"># Select only the positive temperatures</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ True False False False False False False False  True  True]
+[  0.6   0.5   1.7   1.1   0.8   1.1   1.6   1.    0.1   1.9   1.6   0.8
+   0.6   1.    0.2   0.4   1.5   4.4   0.5   1.5   1.9   2.2   0.4   2.1
+   1.5   1.5   0.9   0.2   1.2   1.4   2.2   0.6   0.6   3.8   3.4   2.
+   1.6   0.6   0.2   1.6   2.3   2.5   0.5   1.9   4.8   6.6   2.4   0.4
+   0.2   1.5   4.3   3.    3.8   3.3   4.7   4.1   3.3   3.7   6.    4.3
+   1.8   1.2   0.6   0.3   1.2   2.5   5.7   3.1   2.9   3.6   2.8   3.2
+   4.4   4.1   2.3   2.2   7.6   9.4   9.2   6.7  10.1  11.1   6.1   4.4
+   1.5   1.5   2.9   5.1   7.5   9.8   9.    7.3   9.4  11.2  16.1  16.9
+  14.7  14.6  13.3  12.4  14.1  14.1   9.6  13.2  14.1   9.6  10.8   6.5
+   6.2  10.    9.9  10.4  14.5  16.4  12.3  14.   16.3  16.8  12.6  12.6
+  14.8  15.1  18.4  19.3  16.9  17.8  12.7  12.4  12.2  10.8  12.9  14.
+  13.5  13.7  15.3  16.3  17.2  14.1  16.4  14.5  14.1  14.   11.5  14.7
+  16.1  17.4  18.   16.8  16.8  14.7  15.3  16.7  18.   15.4  15.   13.7
+  14.6  15.8  15.6  16.9  15.7  16.1  17.2  19.   19.1  17.8  18.3  17.8
+  18.9  17.5  18.2  16.6  17.1  16.   15.2  17.2  18.3  18.7  18.1  19.6
+  17.4  16.1  16.4  17.6  19.   18.   18.2  17.4  16.2  14.9  13.5  12.9
+  11.2  10.4  10.7  12.   14.4  16.8  17.2  15.1  12.9  12.9  11.9  11.4
+  10.4  10.3  10.6  13.1  14.6  14.6  14.9  14.4  12.9  12.2  12.1   9.9
+   8.7   9.    9.2  12.4  11.5  12.8  12.5  12.6  12.   12.1  10.1   8.9
+   8.8   9.1   9.2   8.3  11.2   8.8   7.7   8.1   9.3   8.6   8.1   6.9
+   6.    7.5   7.2   8.3  10.7   8.5   8.3   4.6   2.    0.2   0.1   1.3
+   0.8   2.1   0.3   3.3   2.1   1.2   0.1   0.5   3.2   8.    8.4   7.5
+   3.9   5.9   6.7   7.2   5.9   3.1   2.4   1.8   3.1   3.5   5.8   5.9
+   4.    1.2   0.9   1.    1.5   6.1   4.2   2.3   4.6   3.9   2.8   3.1
+   0.9   1.4   5.    1.3   5.2   4.2   2.    1.4   1.6   1.6   1.6   1.7
+   2.4   0.1   2.    1.    2.6   2.5   1.2   0.3   1.9   3.8   2.8   3.8
+   2.5   1.6]
+</pre></div></div>
+</div>
+<p>This operation is called <em>masking</em>. It can also be used to assign a new value. For example the following zeroes out the negative temperatures:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="p">[</span><span class="o">~</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[  0.6   0.    0.    0.    0.    0.    0.    0.    0.5   1.7   0.    0.
+   1.1   0.8   0.    0.    0.    1.1   1.6   0.    0.    1.    0.1   0.
+   0.    1.9   1.6   0.8   0.6   1.    0.2   0.    0.    0.    0.4   0.
+   0.    0.    0.    0.    0.    0.    0.    1.5   4.4   0.    0.5   1.5
+   1.9   2.2   0.4   0.    0.    0.    0.    0.    0.    0.    2.1   1.5
+   1.5   0.9   0.    0.    0.    0.    0.2   1.2   1.4   2.2   0.    0.6
+   0.6   3.8   3.4   2.    1.6   0.6   0.2   1.6   2.3   2.5   0.5   1.9
+   4.8   6.6   2.4   0.4   0.    0.2   1.5   4.3   3.    3.8   3.3   4.7
+   4.1   3.3   3.7   6.    4.3   1.8   1.2   0.    0.    0.    0.6   0.3
+   1.2   2.5   5.7   3.1   2.9   3.6   2.8   3.2   4.4   4.1   2.3   2.2
+   7.6   9.4   9.2   6.7  10.1  11.1   6.1   4.4   1.5   1.5   2.9   5.1
+   7.5   9.8   9.    7.3   9.4  11.2  16.1  16.9  14.7  14.6  13.3  12.4
+  14.1  14.1   9.6  13.2  14.1   9.6  10.8   6.5   6.2  10.    9.9  10.4
+  14.5  16.4  12.3  14.   16.3  16.8  12.6  12.6  14.8  15.1  18.4  19.3
+  16.9  17.8  12.7  12.4  12.2  10.8  12.9  14.   13.5  13.7  15.3  16.3
+  17.2  14.1  16.4  14.5  14.1  14.   11.5  14.7  16.1  17.4  18.   16.8
+  16.8  14.7  15.3  16.7  18.   15.4  15.   13.7  14.6  15.8  15.6  16.9
+  15.7  16.1  17.2  19.   19.1  17.8  18.3  17.8  18.9  17.5  18.2  16.6
+  17.1  16.   15.2  17.2  18.3  18.7  18.1  19.6  17.4  16.1  16.4  17.6
+  19.   18.   18.2  17.4  16.2  14.9  13.5  12.9  11.2  10.4  10.7  12.
+  14.4  16.8  17.2  15.1  12.9  12.9  11.9  11.4  10.4  10.3  10.6  13.1
+  14.6  14.6  14.9  14.4  12.9  12.2  12.1   9.9   8.7   9.    9.2  12.4
+  11.5  12.8  12.5  12.6  12.   12.1  10.1   8.9   8.8   9.1   9.2   8.3
+  11.2   8.8   7.7   8.1   9.3   8.6   8.1   6.9   6.    7.5   7.2   8.3
+  10.7   8.5   8.3   4.6   2.    0.2   0.1   1.3   0.8   2.1   0.3   0.
+   3.3   2.1   1.2   0.    0.1   0.5   3.2   8.    8.4   7.5   3.9   5.9
+   6.7   7.2   5.9   3.1   2.4   1.8   3.1   3.5   5.8   5.9   4.    1.2
+   0.9   1.    1.5   6.1   4.2   2.3   4.6   3.9   2.8   3.1   0.9   1.4
+   5.    1.3   0.    0.    0.    5.2   4.2   2.    1.4   1.6   1.6   1.6
+   1.7   2.4   0.1   2.    1.    2.6   2.5   0.    1.2   0.    0.3   1.9
+   3.8   2.8   3.8   2.5   1.6]
+</pre></div></div>
+</div>
+<p>Compare this result with the original array <code class="docutils literal notranslate"><span class="pre">a</span></code> to make sure you understand what’s going on!</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-1-(column-comparison)">Exercise 1 (column comparison)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">column_comparison</span></code> that gets a two dimensional array as parameter. The function should return a new array containing those rows from the input that have the value in the second column larger than in the second last column. You may assume that the input contains at least two columns. Don’t use loops, but instead vectorized operations. Try out your function in the main function.</p>
+<p>For array</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">8</span> <span class="mi">9</span> <span class="mi">3</span> <span class="mi">8</span> <span class="mi">8</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">3</span> <span class="mi">9</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">5</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">7</span> <span class="mi">8</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>the result would be</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">8</span> <span class="mi">9</span> <span class="mi">3</span> <span class="mi">8</span> <span class="mi">8</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">5</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">7</span> <span class="mi">8</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-2-(first-half-second-half)">Exercise 2 (first half second half)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">first_half_second_half</span></code> that gets a two dimensional array of shape <code class="docutils literal notranslate"><span class="pre">(n,2*m)</span></code> as a parameter. The input array has <code class="docutils literal notranslate"><span class="pre">2*m</span></code> columns. The output from the function should be a matrix with those rows from the input that have the sum of the first <code class="docutils literal notranslate"><span class="pre">m</span></code> elements larger than the sum of the last <code class="docutils literal notranslate"><span class="pre">m</span></code> elements on the row. Your solution should call the <code class="docutils literal notranslate"><span class="pre">np.sum</span></code> function or the corresponding method exactly twice.</p>
+<p>Example of usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">first_half_second_half</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+</pre></div>
+</div>
+<hr/></div>
+<div class="section" id="Fancy-indexing">
+<h2>Fancy indexing<a class="headerlink" href="#Fancy-indexing" title="Permalink to this headline">¶</a></h2>
+<p>Using indexing we can get a single elements from an array. If we wanted multiple (not necessarily contiguous) elements, we would have to index several times:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">a2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">7</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[12 15  0  3  3  7  9 19 18  4  6 12  1  6  7 14 17  5 13  8]
+[ 0  7 19]
+</pre></div></div>
+</div>
+<p>That’s quite verbose. <em>Fancy indexing</em> provides a concise syntax for accessing multiple elements:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">idx</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>           <span class="c1"># List of indices</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>         <span class="c1"># In fancy indexing in place of a single index, we can provide a list of indices</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]])</span>     <span class="c1"># Or directly</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ 0  7 19]
+[ 0  7 19]
+</pre></div></div>
+</div>
+<p>We can also assign to multiple elements through fancy indexing:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[12 15 -1  3  3 -1  9 -1 18  4  6 12  1  6  7 14 17  5 13  8]
+</pre></div></div>
+</div>
+<p>Fancy indexing works also for higher dimensional arrays:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">row</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">col</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]
+ [12 13 14 15]]
+[ 1 11]
+</pre></div></div>
+</div>
+<p>Note that the result array was one dimensional! The shape of the result array is defined by the shape of the index arrays, not by the shape of the original array. The next example will demonstrate this.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">row2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">col2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">col2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">row2</span><span class="p">,</span> <span class="n">col2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[0 0]
+ [2 2]]
+[[1 3]
+ [1 3]]
+[[ 1  3]
+ [ 9 11]]
+</pre></div></div>
+</div>
+<p>Both index arrays, row and col, had shape (2,2), so also the result was of shape (2,2). However, this form has some repetition in the indices. But we can rely that the broadcasting rules will enable us to avoid the repetition:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">row2</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># has shape (2, 1)</span>
+<span class="n">col2</span><span class="o">=</span><span class="n">col</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># has shape (1, 2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">col2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">row2</span><span class="p">,</span> <span class="n">col2</span><span class="p">])</span>    <span class="c1"># the index arrays will be broadcasted here to shape (2,2)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[0]
+ [2]]
+[[1 3]]
+[[ 1  3]
+ [ 9 11]]
+</pre></div></div>
+</div>
+<p>One can also combine normal indexing, slicing and fancy indexing:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 0,  2],
+       [ 4,  6],
+       [ 8, 10],
+       [12, 14]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Sorting-arrays">
+<h2>Sorting arrays<a class="headerlink" href="#Sorting-arrays" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>          <span class="c1"># Does not modify the argument</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1 2 3 4 5]
+[2 1 4 3 5]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>            <span class="c1"># Modifies the argument</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1 2 3 4 5]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[9 4 3 0]
+ [3 5 0 2]
+ [3 8 1 3]
+ [3 3 7 0]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>           <span class="c1"># sort each column</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[3, 3, 0, 0],
+       [3, 4, 1, 0],
+       [3, 5, 3, 2],
+       [9, 8, 7, 3]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>           <span class="c1"># Sort each row</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[0, 3, 4, 9],
+       [0, 2, 3, 5],
+       [1, 3, 3, 8],
+       [0, 3, 3, 7]])
+</pre></div>
+</div>
+</div>
+<p>Note that each row or column is sorted independently.</p>
+<p>A related operation is the <code class="docutils literal notranslate"><span class="pre">argsort</span></code> function. Which doesn’t sort the elements, but returns the indices of the sorted elements. An example will demonstrate this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">23</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">59</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Array a:"</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices:"</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Array a: [23 12 47 35 59]
+Indices: [1 0 3 2 4]
+</pre></div></div>
+</div>
+<p>These indices say that the smallest element of the array is in position 1 of <code class="docutils literal notranslate"><span class="pre">a</span></code>, second smallest elements is in position 0 of <code class="docutils literal notranslate"><span class="pre">a</span></code>, third smallest is in position 3, and so on. We can verify that these indices will indeed order the elements using fancy indexing:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[12 23 35 47 59]
+</pre></div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-3-(most-frequent-first)">Exercise 3 (most frequent first)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">most_frequent_first</span></code> that gets a two dimensional array and an index <code class="docutils literal notranslate"><span class="pre">c</span></code> of a column as parameters. The function should then return the array whose rows are sorted based on column <code class="docutils literal notranslate"><span class="pre">c</span></code>, in the following way. Rows are ordered so that those rows with the most frequent element in column <code class="docutils literal notranslate"><span class="pre">c</span></code> come first, then come the rows with the second most frequent element in column <code class="docutils literal notranslate"><span class="pre">c</span></code>, and so on. Therefore, the values outside column <code class="docutils literal notranslate"><span class="pre">c</span></code> don’t affect the ordering in any way.</p>
+<p>Example of usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">:</span>
+ <span class="p">[[</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">7</span> <span class="mi">9</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">7</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">8</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">5</span> <span class="mi">9</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">8</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">7</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">9</span> <span class="mi">9</span> <span class="mi">0</span> <span class="mi">4</span> <span class="mi">7</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">7</span> <span class="mi">2</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">4</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">9</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">8</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">7</span> <span class="mi">9</span> <span class="mi">9</span> <span class="mi">3</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">9</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">4</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">7</span> <span class="mi">5</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">5</span> <span class="mi">9</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">most_frequent_first</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+ <span class="p">[[</span><span class="mi">4</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">7</span> <span class="mi">5</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">8</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">7</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">7</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">8</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">5</span> <span class="mi">9</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">8</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">7</span> <span class="mi">9</span> <span class="mi">9</span> <span class="mi">3</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">9</span> <span class="mi">9</span> <span class="mi">0</span> <span class="mi">4</span> <span class="mi">7</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">7</span> <span class="mi">2</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">5</span> <span class="mi">9</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">9</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">4</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">9</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">7</span> <span class="mi">9</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>If we look at the last column, we see that the number 1 appears three times, then both numbers 2 and 0 appear twice, and lastly numbers 3, 9, and 4 appear only once. Note that, for example, among those rows that contain in column <code class="docutils literal notranslate"><span class="pre">c</span></code> a number that appear twice in column <code class="docutils literal notranslate"><span class="pre">c</span></code> the order can be arbitrary.</p>
+<p>Hint: the function <code class="docutils literal notranslate"><span class="pre">np.unique</span></code> may be useful.</p>
+<hr/></div>
+<div class="section" id="Matrix-operations">
+<h2>Matrix operations<a class="headerlink" href="#Matrix-operations" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">*</span></code> operator in NumPy corresponds to the element-wise product of two arrays. However, very often we would like to use the <em>matrix multiplication</em>. As a reminder, if <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are two matrices with shapes <span class="math notranslate nohighlight">\(n \times k\)</span> and <span class="math notranslate nohighlight">\(k \times m\)</span> respectively, then the matrix product of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> is the matrix <span class="math notranslate nohighlight">\(c\)</span> with shape <span class="math notranslate nohighlight">\(n \times m\)</span>, where <span class="math notranslate nohighlight">\(c_{ij} = \sum_{h=1}^k a_{ih} b_{hj}\)</span> for <span class="math notranslate nohighlight">\(1 \le i \le n\)</span> and <span class="math notranslate nohighlight">\(1 \le j \le m\)</span>. In NumPy we
+can compute the matrix product using the <code class="docutils literal notranslate"><span class="pre">np.matmul</span></code> function or the <code class="docutils literal notranslate"><span class="pre">@</span></code> operator. An example of this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[5 0]
+ [3 3]
+ [7 9]]
+[[3 5 2 4]
+ [7 6 8 8]]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> has dim </span><span class="si">%i</span><span class="s2">, shape </span><span class="si">%s</span><span class="s2">, size </span><span class="si">%i</span><span class="s2">, and dtype </span><span class="si">%s</span><span class="s2">:"</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="n">info</span><span class="p">(</span><span class="s2">"c"</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+c has dim 2, shape (3, 4), size 12, and dtype int64:
+[[ 15  25  10  20]
+ [ 30  33  30  36]
+ [ 84  89  86 100]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="nd">@b</span><span class="p">)</span>      <span class="c1"># This can be more convenient when complex expressions are used</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 15  25  10  20]
+ [ 30  33  30  36]
+ [ 84  89  86 100]]
+</pre></div></div>
+</div>
+<p>So, matrices are just two dimensional arrays with the product defined differently from the element-wise product. Note that for the matrix product to be defined, the two matrices have to have compatible shapes. So the following would produce an error:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># a@a   # Try uncommenting and running to see the error message</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s test some basic identities that should hold for an <a class="reference external" href="https://en.wikipedia.org/wiki/Invertible_matrix">invertible matrix</a>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Original matrix:"</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">s_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Inverted matrix:"</span><span class="p">,</span> <span class="n">s_inv</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Matrix product:"</span><span class="p">,</span> <span class="n">s</span> <span class="o">@</span> <span class="n">s_inv</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>                            <span class="c1"># This should be pretty close to the identity matrix np.eye(3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Matrix product the other way:"</span><span class="p">,</span> <span class="n">s_inv</span> <span class="o">@</span> <span class="n">s</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>                            <span class="c1"># Same here</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original matrix:
+[[1 6 7]
+ [7 8 1]
+ [5 9 8]]
+Inverted matrix:
+[[-0.61111111 -0.16666667  0.55555556]
+ [ 0.56666667  0.3        -0.53333333]
+ [-0.25555556 -0.23333333  0.37777778]]
+Matrix product:
+[[  1.00000000e+00  -2.77555756e-17   3.33066907e-16]
+ [  7.21644966e-16   1.00000000e+00   1.11022302e-16]
+ [  0.00000000e+00  -2.22044605e-16   1.00000000e+00]]
+Matrix product the other way:
+[[  1.00000000e+00  -5.55111512e-16   0.00000000e+00]
+ [ -2.22044605e-16   1.00000000e+00   8.88178420e-16]
+ [  1.11022302e-16  -3.33066907e-16   1.00000000e+00]]
+</pre></div></div>
+</div>
+<p>Let’s try mapping a vector with the matrix and its inverse:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">s</span> <span class="o">@</span> <span class="n">x</span>                  <span class="c1"># Transforms x to y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_inv</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>           <span class="c1"># Transforms y back to x</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[39 41 57]
+[ 1.  4.  2.]
+</pre></div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-4-(matrix-power)">Exercise 4 (matrix power)</a></div>
+<p>Repeat the functionality of the NumPy function <code class="docutils literal notranslate"><span class="pre">numpy.linalg.matrix_power</span></code>, which raises a square matrix of shape (m,m) to the <code class="docutils literal notranslate"><span class="pre">n</span></code>th power. Here the multiplication is the matrix multiplication. Square matrix <code class="docutils literal notranslate"><span class="pre">a</span></code> raised to power <code class="docutils literal notranslate"><span class="pre">n</span></code> is therefore <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">@</span> <span class="pre">a</span> <span class="pre">@</span> <span class="pre">...</span> <span class="pre">@</span> <span class="pre">a</span></code> where <code class="docutils literal notranslate"><span class="pre">a</span></code> is repeated <code class="docutils literal notranslate"><span class="pre">n</span></code> times. When n is zero then <span class="math notranslate nohighlight">\(a^0\)</span> is equal to <code class="docutils literal notranslate"><span class="pre">np.eye(m)</span></code>.</p>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">matrix_power</span></code> that gets as first argument a square matrix <code class="docutils literal notranslate"><span class="pre">a</span></code> and as second argument a non-negative integer <code class="docutils literal notranslate"><span class="pre">n</span></code>. The function should return the matrix <code class="docutils literal notranslate"><span class="pre">a</span></code> multiplied by itself <code class="docutils literal notranslate"><span class="pre">n-1</span></code> times. Use Python’s <code class="docutils literal notranslate"><span class="pre">reduce</span></code> function and a generator expression.</p>
+<p>Extend the <code class="docutils literal notranslate"><span class="pre">matrix_power</span></code> function. For negative powers, we define <span class="math notranslate nohighlight">\(a^{-1}\)</span> to be equal to the multiplicative inverse of <code class="docutils literal notranslate"><span class="pre">a</span></code>. You can use NumPy’s function <code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv</span></code> for this. And you may assume that the input matrix is invertible.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-5-(correlation)">Exercise 5 (correlation)</a></div>
+<p>This exercise can give two points at maximum!</p>
+<p>Load the iris dataset using the provided function <code class="docutils literal notranslate"><span class="pre">load()</span></code> in the stub solution. The four columns of the returned array correspond to</p>
+<ul class="simple">
+<li>sepal length (cm)</li>
+<li>sepal width (cm)</li>
+<li>petal length (cm)</li>
+<li>petal width (cm)</li>
+</ul>
+<p>Part 1. What is the Pearson correlation between the variables <code class="docutils literal notranslate"><span class="pre">sepal</span> <span class="pre">length</span></code> and <code class="docutils literal notranslate"><span class="pre">petal</span> <span class="pre">length</span></code>. Compute this using the <code class="docutils literal notranslate"><span class="pre">scipy.stats.pearsonr</span></code> function. It returns a tuple whose first element is the correlation. Write a function <code class="docutils literal notranslate"><span class="pre">lengths</span></code> that loads the data and returns the correlation.</p>
+<p>Part 2. What are the correlations between all the variables. Write a function <code class="docutils literal notranslate"><span class="pre">correlations</span></code> that returns an array of shape (4,4) containing the correlations. Use the function <code class="docutils literal notranslate"><span class="pre">np.corrcoef</span></code>. Which pair of variables is the most highly correlated?</p>
+<p>Note the input formats of both functions <code class="docutils literal notranslate"><span class="pre">pearsonr</span></code> and <code class="docutils literal notranslate"><span class="pre">corrcoef</span></code>.</p>
+<p><strong>Note.</strong> There is a problem with the definition of load function in that it tries to load the data from the internet if it isn’t in the cache. This may cause failure when submitting, since the internet connection from the test server to the internet is restricted. To fix this, first store the data in the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder. Then you can load the data in your program with the following modified version of the <code class="docutils literal notranslate"><span class="pre">load</span></code> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_path</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"src"</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">get_path</span><span class="p">(</span><span class="s2">"iris.csv"</span><span class="p">))</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'species'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+<p>To store the data on disk give the following line in IPython shell or in Jupyter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"iris"</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"iris.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And make sure the created file <code class="docutils literal notranslate"><span class="pre">iris.csv</span></code> is located in the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder.</p>
+<hr/></div>
+<div class="section" id="Solving-system-of-linear-equations">
+<h2>Solving system of linear equations<a class="headerlink" href="#Solving-system-of-linear-equations" title="Permalink to this headline">¶</a></h2>
+<p>The NumPy library has function <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.solve.html">np.linalg.solve</a> to solve systems of linear equations. The <code class="docutils literal notranslate"><span class="pre">solve</span></code> function gets as parameters the coefficient matrix and the vector containing the constant term. Below is an example of the general system of linear equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_{11}x_1 + a_{12}x_2 + \cdots a_{1m}x_m = b_1\\
+a_{21}x_1 + a_{22}x_2 + \cdots a_{2m}x_m = b_2\\
+\cdots\\
+a_{n1}x_1 + a_{n2}x_2 + \cdots a_{nm}x_m = b_n\\\end{split}\]</div>
+<p>and the equivalent matrix form</p>
+<div class="math notranslate nohighlight">
+\[A \cdot x = b\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> has shape <code class="docutils literal notranslate"><span class="pre">(n,m)</span></code>, the unknown <span class="math notranslate nohighlight">\(x\)</span> has shape <code class="docutils literal notranslate"><span class="pre">(m,1)</span></code>, and <span class="math notranslate nohighlight">\(b\)</span> has shape <code class="docutils literal notranslate"><span class="pre">(n,1)</span></code>.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-6-(meeting-lines)">Exercise 6 (meeting lines)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">meeting_lines</span></code> that gets the coefficients of two lines as parameters and returns the point where the two lines meet. The equations for the lines are <span class="math notranslate nohighlight">\(y=a_1x + b_1\)</span> and <span class="math notranslate nohighlight">\(y=a_2x + b_2\)</span>. Use the <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code> function. Create a main function to test your solution.</p>
+<p>Example of usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">meeting_lines</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-7-(meeting-planes)">Exercise 7 (meeting planes)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">meeting_planes</span></code> that gets the coefficients of three planes as parameters and returns the point where the planes meet. The equations for the planes are: <span class="math notranslate nohighlight">\(z =a_1y + b_1x+ c_1\)</span>, <span class="math notranslate nohighlight">\(z =a_2y + b_2x+ c_2\)</span>, and <span class="math notranslate nohighlight">\(z =a_3y + b_3x+ c_3\)</span>.</p>
+<p>Example of usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">meeting_planes</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span>  <span class="n">a2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span>  <span class="n">a3</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">c3</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-8-(almost-meeting-lines)">Exercise 8 (almost meeting lines)</a></div>
+<p>In the earlier “meeting lines” exercise there is a problem if the lines don’t meet at all. Extend that solution so that it tells the meeting point if it exists, and otherwise finds the point that is closest to the both lines. You can use the <code class="docutils literal notranslate"><span class="pre">numpy.linalg.lstsq</span></code> for this.</p>
+<p>Example of usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">exact</span> <span class="o">=</span> <span class="n">almost_meeting_lines</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">exact</span><span class="p">)</span>
+<span class="o">-</span><span class="mf">1.000000</span> <span class="mf">1.000000</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<hr/><!--NAVIGATION--></div>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="matplotlib.html" rel="next" title="Matplotlib">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="numpy.html" rel="prev" title="NumPy"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

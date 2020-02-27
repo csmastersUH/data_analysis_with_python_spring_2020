@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Running Python code — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="faq.html" rel="next" title="Frequently asked questions"/>
+<link href="instructions.html" rel="prev" title="Initializing course environment"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running Python code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ipython">IPython</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jupyter-notebook">Jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#executing-a-file-containing-python-code">Executing a file containing Python code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#correct-software-versions">Correct software versions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html">Docs</a> »</li>
+<li>Running Python code</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/tools.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="running-python-code">
+<h1>Running Python code<a class="headerlink" href="#running-python-code" title="Permalink to this headline">¶</a></h1>
+<p>If I would like to try out some Python code, for example a hello world
+program, then where should I put it?
+There are three methods of running Python code:</p>
+<ul class="simple">
+<li>IPython (interactive)</li>
+<li>Jupyter Notebook (interactive)</li>
+<li>running the program code from a text file (non-interactive)</li>
+</ul>
+<div class="section" id="ipython">
+<h2>IPython<a class="headerlink" href="#ipython" title="Permalink to this headline">¶</a></h2>
+<p>If you just quickly want to try out something, then maybe the easiest
+option is to use the IPython interactive shell. To do this,
+first start the terminal program to get a command prompt.
+Then give the command <code class="docutils literal notranslate"><span class="pre">ipython3</span></code> and press enter.
+Then you can write Python commands and execute them by pressing enter.
+Note that IPython supports tab completion. Try this out
+by first writing <code class="docutils literal notranslate"><span class="pre">pri</span></code> and then pressing the tabulator key.
+It should complete the command to <code class="docutils literal notranslate"><span class="pre">print</span></code>. IPython can tab complete
+keywords; function, module, method, and variable names, and so on.
+You can quit the the IPython shell by given the command <code class="docutils literal notranslate"><span class="pre">exit</span></code> and
+pressing enter.</p>
+<p>The following video will show an example session of using IPython.</p>
+<script async="" id="asciicast-GssT7MymqOsusdvOqZUgH9JMC" src="https://asciinema.org/a/GssT7MymqOsusdvOqZUgH9JMC.js">
+</script></div>
+<div class="section" id="jupyter-notebook">
+<h2>Jupyter notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h2>
+<p>Again in the command prompt, issue command <code class="docutils literal notranslate"><span class="pre">jupyter-notebook</span></code>.
+It should start the Jupyter server and open a tab in the web browser
+that is connected to the server. There you can click the <code class="docutils literal notranslate"><span class="pre">new</span></code> button
+and select <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3</span></code>. Click on the cell, write your Python code
+there, and execute it by pressing control-enter.
+You can check the following video for introduction to Jupyter notebook:</p>
+<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope;
+picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/HW29067qVWk" width="560">
+</iframe><p>The material of this course was written as Jupyter notebooks, and
+then rendered as html pages, which you are reading now.
+While the static html pages do not allow modification of pieces of
+Python code, you can click the ‘open in colab’ link at the top of the page
+to open the notebook in Google’s colab service. There it is possible
+to edit code and reexecute it.</p>
+<p>Alternatively, you can download the notebooks with command
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/jttoivon/data-analysis-with-python-spring-2019</span></code>. Then start
+Jupyter notebook with command <code class="docutils literal notranslate"><span class="pre">jupyter-notebook</span></code>.</p>
+</div>
+<div class="section" id="executing-a-file-containing-python-code">
+<h2>Executing a file containing Python code<a class="headerlink" href="#executing-a-file-containing-python-code" title="Permalink to this headline">¶</a></h2>
+<p>In your favorite text editor write some Python code, and save
+it to a file with <code class="docutils literal notranslate"><span class="pre">.py</span></code> ext`ension, for example <code class="docutils literal notranslate"><span class="pre">myprogram.py</span></code>. Then you can execute
+the program with the command <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">myprogram.py</span></code>. In all the exercises
+of this course you write your solution to a text file (a stub file is provided
+where you can add the missing pieces). To run your solution to an exercise, for example
+the “hello world” exercise, use <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">src/hello_world.py</span></code>. This
+of course depends on what is your currect folder.</p>
+<p>If you are running some unix based operation system, like Linux or macOS, you
+can make the file directly executable in the following way. Add as the first line of you
+program the line <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">python</span></code> and
+on command line issue command <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">u+x</span> <span class="pre">myprogram.py</span></code>. Then
+you can execute the file from command line with <code class="docutils literal notranslate"><span class="pre">./myprogram.py</span></code>.</p>
+</div>
+<div class="section" id="correct-software-versions">
+<h2>Correct software versions<a class="headerlink" href="#correct-software-versions" title="Permalink to this headline">¶</a></h2>
+<p>It can be that the command <code class="docutils literal notranslate"><span class="pre">python</span></code> still refers to the old python2 version.
+This course relies completely on a newer python version. Therefore I have
+used the command <code class="docutils literal notranslate"><span class="pre">python3</span></code> everywhere to be sure the old version python2
+is not used. You can check the version number with the <code class="docutils literal notranslate"><span class="pre">--version</span></code> option.
+For example in the following way:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jttoivon@dx6-cs-05:$ python --version
+Python 2.7.15rc1
+jttoivon@dx6-cs-05:$ python3 --version
+Python 3.6.7
+</pre></div>
+</div>
+<p>If you have Anaconda correctly installed, then the Python version should
+be new enough and <code class="docutils literal notranslate"><span class="pre">python</span></code> command should refer to <code class="docutils literal notranslate"><span class="pre">python3</span></code>, not <code class="docutils literal notranslate"><span class="pre">python2</span></code>.
+The versions of additional libraries that are know to work are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="61%"/>
+<col width="39%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" rowspan="2">Library</th>
+<th class="head" rowspan="2">Version</th>
+</tr>
+<tr class="row-even"></tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>numpy</td>
+<td>1.13.3</td>
+</tr>
+<tr class="row-even"><td>pandas</td>
+<td>0.23.0</td>
+</tr>
+<tr class="row-odd"><td>matplotlib</td>
+<td>2.1.1</td>
+</tr>
+<tr class="row-even"><td>scikit-learn</td>
+<td>0.19.1</td>
+</tr>
+<tr class="row-odd"><td>scipy</td>
+<td>0.19.1</td>
+</tr>
+<tr class="row-even"><td>seaborn</td>
+<td>0.8.0</td>
+</tr>
+</tbody>
+</table>
+<p>More recent versions should work as well. You can check the software
+version of your installation with the following Python script:
+<a class="reference external" href="https://raw.githubusercontent.com/jttoivon/data-analysis-with-python-spring-2019/master/versions.py">versions.py</a>
+Download the script and execute it with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">versions.py</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="faq.html" rel="next" title="Frequently asked questions">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="instructions.html" rel="prev" title="Initializing course environment"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

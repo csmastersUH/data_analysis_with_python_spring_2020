@@ -1,0 +1,5052 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pandas (continues) — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="linear_regression.html" rel="next" title="Machine learning: linear regression"/>
+<link href="pandas2.html" rel="prev" title="Pandas (continues)"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pandas (continues)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Catenating-datasets">Catenating datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Merging-dataframes">Merging dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Aggregates-and-groupings">Aggregates and groupings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Other-ways-to-operate-on-groups">Other ways to operate on groups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Time-series">Time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Additional-information">Additional information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html">Docs</a> »</li>
+<li>Pandas (continues)</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/pandas3.ipynb.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition note">
+This page was generated from <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas3.ipynb">pandas3.ipynb</a>.
+<span class="raw-html"><br/><a href="https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas3.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
+<span class="raw-html"><br/></span></div>
+<!--NAVIGATION--><table border="1" class="docutils">
+<colgroup>
+<col width="33%"/>
+<col width="33%"/>
+<col width="33%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#Exercise-1-(split-date-continues)">Exercise 1 (split date continues)</a></td>
+<td><a class="reference external" href="#Exercise-2-(cycling-weather)">Exercise 2 (cycling weather)</a></td>
+<td><a class="reference external" href="#Exercise-3-(top-bands)">Exercise 3 (top bands)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#Exercise-4-(cyclists-per-day)">Exercise 4 (cyclists per day)</a></td>
+<td><a class="reference external" href="#Exercise-5-(best-record-company)">Exercise 5 (best record company)</a></td>
+<td><a class="reference external" href="#Exercise-6-(suicide-fractions)">Exercise 6 (suicide fractions)</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#Exercise-7-(suicide-weather)">Exercise 7 (suicide weather)</a></td>
+<td><a class="reference external" href="#Exercise-8-(bicycle-timeseries)">Exercise 8 (bicycle timeseries)</a></td>
+<td><a class="reference external" href="#Exercise-9-(commute)">Exercise 9 (commute)</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="Pandas-(continues)">
+<h1>Pandas (continues)<a class="headerlink" href="#Pandas-(continues)" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Catenating-datasets">
+<h2>Catenating datasets<a class="headerlink" href="#Catenating-datasets" title="Permalink to this headline">¶</a></h2>
+<p>We already saw in the NumPy section how we can catenate arrays along an axis: <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> catenates vertically and <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> catenates horizontally, and so on. With the DataFrames of Pandas it works similarly except that the row indices and the column names require extra attention. Also note a slight difference in the name: <code class="docutils literal notranslate"><span class="pre">np.concatenate</span></code> but <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>.</p>
+<p>Let’s start by considering catenation along the axis 0, that is, vertical catenation. We will first make a helper function to easily create DataFrames for testing.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">makedf</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">ind</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span> <span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ind</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ind</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Next we will create some example DataFrames:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span><span class="o">=</span><span class="n">makedf</span><span class="p">(</span><span class="s2">"AB"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A0</td>
+<td>B0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A1</td>
+<td>B1</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">=</span><span class="n">makedf</span><span class="p">(</span><span class="s2">"AB"</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2</th>
+<td>A2</td>
+<td>B2</td>
+</tr>
+<tr>
+<th>3</th>
+<td>A3</td>
+<td>B3</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">c</span><span class="o">=</span><span class="n">makedf</span><span class="p">(</span><span class="s2">"CD"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>C0</td>
+<td>D0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>C1</td>
+<td>D1</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">d</span><span class="o">=</span><span class="n">makedf</span><span class="p">(</span><span class="s2">"BC"</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2</th>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<th>3</th>
+<td>B3</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>In the following simple case, the <code class="docutils literal notranslate"><span class="pre">concat</span></code> function works exactly as we expect it would:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">])</span>   <span class="c1"># The default axis is 0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A0</td>
+<td>B0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A1</td>
+<td>B1</td>
+</tr>
+<tr>
+<th>2</th>
+<td>A2</td>
+<td>B2</td>
+</tr>
+<tr>
+<th>3</th>
+<td>A3</td>
+<td>B3</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The next, however, will create duplicate indices:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">r</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="p">])</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A0</td>
+<td>B0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A1</td>
+<td>B1</td>
+</tr>
+<tr>
+<th>0</th>
+<td>A0</td>
+<td>B0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A1</td>
+<td>B1</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s2">"A"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    A0
+0    A0
+Name: A, dtype: object
+</pre></div>
+</div>
+</div>
+<p>This is not usually what we want! There are three solutions to this. Firstly, deny creation of duplicated indices by giving the <code class="docutils literal notranslate"><span class="pre">verify_integrity</span></code> parameter to the <code class="docutils literal notranslate"><span class="pre">concat</span></code> function:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="p">],</span> <span class="n">verify_integrity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Indexes have overlapping values: Int64Index([0, 1], dtype='int64')
+</pre></div></div>
+</div>
+<p>Secondly, we can ask for automatic renumbering of rows:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A0</td>
+<td>B0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A1</td>
+<td>B1</td>
+</tr>
+<tr>
+<th>2</th>
+<td>A0</td>
+<td>B0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>A1</td>
+<td>B1</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Thirdly, we can ask for <em>hierarchical indexing</em>. The indices can contain multiple levels, but on this course we don’t consider hierarchical indices in detail. Hierarchical indices can make a two dimensional array to work like higher dimensional array.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">r2</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">'first'</span><span class="p">,</span> <span class="s1">'second'</span><span class="p">])</span>
+<span class="n">r2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="2" valign="top">first</th>
+<th>0</th>
+<td>A0</td>
+<td>B0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A1</td>
+<td>B1</td>
+</tr>
+<tr>
+<th rowspan="2" valign="top">second</th>
+<th>0</th>
+<td>A0</td>
+<td>B0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A1</td>
+<td>B1</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">r2</span><span class="p">[</span><span class="s2">"A"</span><span class="p">][</span><span class="s2">"first"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>'A0'
+</pre></div>
+</div>
+</div>
+<p>Everything works similarly, when we want to catenate horizontally:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A0</td>
+<td>B0</td>
+<td>C0</td>
+<td>D0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>D1</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>We have so far assumed that when concatenating vertically the columns of both DataFrames are the same, and when joining horizontally the indices are the same. This is, however, not required:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">d</span><span class="p">],</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>    <span class="c1"># sort option is used to silence a deprecation message</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A0</td>
+<td>B0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A1</td>
+<td>B1</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>2</th>
+<td>NaN</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<th>3</th>
+<td>NaN</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>It expanded the non-existing cases with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>s. This method is called an <em>outer join</em>, which forms the union of columns in the two DataFrames. The alternative is <em>inner join</em>, which forms the intersection of columns:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">d</span><span class="p">],</span> <span class="n">join</span><span class="o">=</span><span class="s2">"inner"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>B0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>B1</td>
+</tr>
+<tr>
+<th>2</th>
+<td>B2</td>
+</tr>
+<tr>
+<th>3</th>
+<td>B3</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-1-(split-date-continues)">Exercise 1 (split date continues)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">split_date_continues</span></code> that does</p>
+<ul class="simple">
+<li>read the bicycle data set</li>
+<li>clean the data set of columns/rows that contain only missing values</li>
+<li>drops the <code class="docutils literal notranslate"><span class="pre">Päivämäärä</span></code> column and replaces it with its splitted components as before</li>
+</ul>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">concat</span></code> function to do this. The function should return a DataFrame with 25 columns (first five related to the date and then the rest 20 conserning the measument location.</p>
+<hr/></div>
+<div class="section" id="Merging-dataframes">
+<h2>Merging dataframes<a class="headerlink" href="#Merging-dataframes" title="Permalink to this headline">¶</a></h2>
+<p>Merging combines two DataFrames based on some common field.</p>
+<p>Let’s recall the earlier DataFrame about wages and ages of persons:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1000</span><span class="p">,</span> <span class="s2">"Jack"</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="p">[</span><span class="mi">1500</span><span class="p">,</span> <span class="s2">"John"</span><span class="p">,</span> <span class="mi">29</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Wage"</span><span class="p">,</span> <span class="s2">"Name"</span><span class="p">,</span> <span class="s2">"Age"</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Wage</th>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1000</td>
+<td>Jack</td>
+<td>21</td>
+</tr>
+<tr>
+<th>1</th>
+<td>1500</td>
+<td>John</td>
+<td>29</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Now, create a new DataFrame with the occupations of persons:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"Name"</span> <span class="p">:</span> <span class="p">[</span><span class="s2">"John"</span><span class="p">,</span> <span class="s2">"Jack"</span><span class="p">],</span> <span class="s2">"Occupation"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Plumber"</span><span class="p">,</span> <span class="s2">"Carpenter"</span><span class="p">]})</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Name</th>
+<th>Occupation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>John</td>
+<td>Plumber</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Jack</td>
+<td>Carpenter</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The following function call will merge the two DataFrames on their common field, and, importantly, will keep the indices <em>aligned</em>. What this means is that even though the names are listed in different order in the two frames, the merge will still give correct result.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Wage</th>
+<th>Name</th>
+<th>Age</th>
+<th>Occupation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1000</td>
+<td>Jack</td>
+<td>21</td>
+<td>Carpenter</td>
+</tr>
+<tr>
+<th>1</th>
+<td>1500</td>
+<td>John</td>
+<td>29</td>
+<td>Plumber</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>This was an example of a simple one-to-one merge, where the keys in the <code class="docutils literal notranslate"><span class="pre">Name</span></code> columns had 1-to-1 correspondence. Sometimes not all the keys appear in both DataFrames:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df2</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s2">"Name"</span> <span class="p">:</span> <span class="p">[</span><span class="s2">"James"</span><span class="p">],</span> <span class="s2">"Occupation"</span><span class="p">:[</span><span class="s2">"Painter"</span><span class="p">]})],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Name</th>
+<th>Occupation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>John</td>
+<td>Plumber</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Jack</td>
+<td>Carpenter</td>
+</tr>
+<tr>
+<th>2</th>
+<td>James</td>
+<td>Painter</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df3</span><span class="p">)</span>                <span class="c1"># By default an inner join is computed</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Wage</th>
+<th>Name</th>
+<th>Age</th>
+<th>Occupation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1000</td>
+<td>Jack</td>
+<td>21</td>
+<td>Carpenter</td>
+</tr>
+<tr>
+<th>1</th>
+<td>1500</td>
+<td>John</td>
+<td>29</td>
+<td>Plumber</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df3</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"outer"</span><span class="p">)</span>   <span class="c1"># Outer join</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Wage</th>
+<th>Name</th>
+<th>Age</th>
+<th>Occupation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1000.0</td>
+<td>Jack</td>
+<td>21.0</td>
+<td>Carpenter</td>
+</tr>
+<tr>
+<th>1</th>
+<td>1500.0</td>
+<td>John</td>
+<td>29.0</td>
+<td>Plumber</td>
+</tr>
+<tr>
+<th>2</th>
+<td>NaN</td>
+<td>James</td>
+<td>NaN</td>
+<td>Painter</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Also, many-to-one and many-to-many relationships can occur in merges:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">books</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"Title"</span> <span class="p">:</span> <span class="p">[</span><span class="s2">"War and Peace"</span><span class="p">,</span> <span class="s2">"Good Omens"</span><span class="p">,</span> <span class="s2">"Good Omens"</span><span class="p">]</span> <span class="p">,</span>
+                      <span class="s2">"Author"</span> <span class="p">:</span> <span class="p">[</span><span class="s2">"Tolstoi"</span><span class="p">,</span> <span class="s2">"Terry Pratchett"</span><span class="p">,</span> <span class="s2">"Neil Gaiman"</span><span class="p">]})</span>
+<span class="n">books</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Title</th>
+<th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>War and Peace</td>
+<td>Tolstoi</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Good Omens</td>
+<td>Terry Pratchett</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Good Omens</td>
+<td>Neil Gaiman</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">collections</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">"Oodi"</span><span class="p">,</span> <span class="s2">"War and Peace"</span><span class="p">],</span>
+                           <span class="p">[</span><span class="s2">"Oodi"</span><span class="p">,</span> <span class="s2">"Good Omens"</span><span class="p">],</span>
+                           <span class="p">[</span><span class="s2">"Pasila"</span><span class="p">,</span> <span class="s2">"Good Omens"</span><span class="p">],</span>
+                           <span class="p">[</span><span class="s2">"Kallio"</span><span class="p">,</span> <span class="s2">"War and Peace"</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Library"</span><span class="p">,</span> <span class="s2">"Title"</span><span class="p">])</span>
+<span class="n">collections</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Library</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>Oodi</td>
+<td>War and Peace</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Oodi</td>
+<td>Good Omens</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Pasila</td>
+<td>Good Omens</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Kallio</td>
+<td>War and Peace</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>All combinations with matching keys (<code class="docutils literal notranslate"><span class="pre">Title</span></code>) are created:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">libraries_with_books_by</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">books</span><span class="p">,</span> <span class="n">collections</span><span class="p">)</span>
+<span class="n">libraries_with_books_by</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Title</th>
+<th>Author</th>
+<th>Library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>War and Peace</td>
+<td>Tolstoi</td>
+<td>Oodi</td>
+</tr>
+<tr>
+<th>1</th>
+<td>War and Peace</td>
+<td>Tolstoi</td>
+<td>Kallio</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Good Omens</td>
+<td>Terry Pratchett</td>
+<td>Oodi</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Good Omens</td>
+<td>Terry Pratchett</td>
+<td>Pasila</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Good Omens</td>
+<td>Neil Gaiman</td>
+<td>Oodi</td>
+</tr>
+<tr>
+<th>5</th>
+<td>Good Omens</td>
+<td>Neil Gaiman</td>
+<td>Pasila</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-2-(cycling-weather)">Exercise 2 (cycling weather)</a></div>
+<p>Merge the processed cycling data set (from the previous exercise) and weather data set along the columns year, month, and day. Note that the names of these columns might be different in the two tables: use the <code class="docutils literal notranslate"><span class="pre">left_on</span></code> and <code class="docutils literal notranslate"><span class="pre">right_on</span></code> parameters. Then drop useless columns ‘m’, ‘d’, ‘Time’, and ‘Time zone’.</p>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">cycling_weather</span></code> that reads the data sets and returns the resulting DataFrame.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-3-(top-bands)">Exercise 3 (top bands)</a></div>
+<p>Merge the DataFrames UK top40 and the bands DataFrame that are stored in the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder. Do all this in the parameterless function <code class="docutils literal notranslate"><span class="pre">top_bands</span></code>, which should return the merged DataFrame. Use the <code class="docutils literal notranslate"><span class="pre">left_on</span></code> and <code class="docutils literal notranslate"><span class="pre">right_on</span></code> parameters to <code class="docutils literal notranslate"><span class="pre">merge</span></code>. Test your function from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<hr/></div>
+<div class="section" id="Aggregates-and-groupings">
+<h2>Aggregates and groupings<a class="headerlink" href="#Aggregates-and-groupings" title="Permalink to this headline">¶</a></h2>
+<p>Let us use again the weather dataset. First, we make the column names a bit more uniform and concise. For example the columns <code class="docutils literal notranslate"><span class="pre">Year</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, and <code class="docutils literal notranslate"><span class="pre">d</span></code> are not uniformly named.</p>
+<p>We can easily change the column names with the <code class="docutils literal notranslate"><span class="pre">rename</span></code> method of the DataFrame. Note that we cannot directly change the index <code class="docutils literal notranslate"><span class="pre">wh.columns</span></code> as it is immutable.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"https://www.cs.helsinki.fi/u/jttoivon/dap/data/fmi/kumpula-weather-2017.csv"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh3</span> <span class="o">=</span> <span class="n">wh</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"m"</span><span class="p">:</span> <span class="s2">"Month"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">:</span> <span class="s2">"Day"</span><span class="p">,</span> <span class="s2">"Precipitation amount (mm)"</span> <span class="p">:</span> <span class="s2">"Precipitation"</span><span class="p">,</span>
+                         <span class="s2">"Snow depth (cm)"</span> <span class="p">:</span> <span class="s2">"Snow"</span><span class="p">,</span> <span class="s2">"Air temperature (degC)"</span> <span class="p">:</span> <span class="s2">"Temperature"</span><span class="p">})</span>
+<span class="n">wh3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>Month</th>
+<th>Day</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2017</td>
+<td>1</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>0.6</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2017</td>
+<td>1</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.4</td>
+<td>-1.0</td>
+<td>-3.9</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2017</td>
+<td>1</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2017</td>
+<td>1</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2017</td>
+<td>1</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Pandas has an operation that splits a DataFrame into groups, performs some operation on each of the groups, and then combines the result from each group into a resulting DataFrame. This split-apply-combine functionality is really flexible and powerful operation. In Pandas you start by calling the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method, which splits the DataFrame into groups. In the following example the rows that contain measurements from the same month belong to the same group:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">wh3</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Month"</span><span class="p">)</span>
+<span class="n">groups</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;pandas.core.groupby.groupby.DataFrameGroupBy object at 0x7fab89e43e48&gt;
+</pre></div>
+</div>
+</div>
+<p>Nothing happened yet, but the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> object knows how the division into groups is done. This is called a lazy operation. We can query the number of groups in the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> object:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>12
+</pre></div>
+</div>
+</div>
+<p>We can iterate through all the groups:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1 31
+2 28
+3 31
+4 30
+5 31
+6 30
+7 31
+8 31
+9 30
+10 31
+11 30
+12 31
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">groups</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                 <span class="c1"># Group with index two is February</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>Month</th>
+<th>Day</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>31</th>
+<td>2017</td>
+<td>2</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.5</td>
+<td>4.0</td>
+<td>-0.6</td>
+</tr>
+<tr>
+<th>32</th>
+<td>2017</td>
+<td>2</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>5.0</td>
+<td>-0.8</td>
+</tr>
+<tr>
+<th>33</th>
+<td>2017</td>
+<td>2</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>6.0</td>
+<td>-0.2</td>
+</tr>
+<tr>
+<th>34</th>
+<td>2017</td>
+<td>2</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.7</td>
+<td>6.0</td>
+<td>0.4</td>
+</tr>
+<tr>
+<th>35</th>
+<td>2017</td>
+<td>2</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>7.0</td>
+<td>-2.5</td>
+</tr>
+<tr>
+<th>36</th>
+<td>2017</td>
+<td>2</td>
+<td>6</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>7.0</td>
+<td>-7.3</td>
+</tr>
+<tr>
+<th>37</th>
+<td>2017</td>
+<td>2</td>
+<td>7</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>-12.1</td>
+</tr>
+<tr>
+<th>38</th>
+<td>2017</td>
+<td>2</td>
+<td>8</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>-8.8</td>
+</tr>
+<tr>
+<th>39</th>
+<td>2017</td>
+<td>2</td>
+<td>9</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>-10.1</td>
+</tr>
+<tr>
+<th>40</th>
+<td>2017</td>
+<td>2</td>
+<td>10</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>-8.3</td>
+</tr>
+<tr>
+<th>41</th>
+<td>2017</td>
+<td>2</td>
+<td>11</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>-5.4</td>
+</tr>
+<tr>
+<th>42</th>
+<td>2017</td>
+<td>2</td>
+<td>12</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>-2.7</td>
+</tr>
+<tr>
+<th>43</th>
+<td>2017</td>
+<td>2</td>
+<td>13</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>1.5</td>
+</tr>
+<tr>
+<th>44</th>
+<td>2017</td>
+<td>2</td>
+<td>14</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>4.4</td>
+</tr>
+<tr>
+<th>45</th>
+<td>2017</td>
+<td>2</td>
+<td>15</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>46</th>
+<td>2017</td>
+<td>2</td>
+<td>16</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.9</td>
+<td>8.0</td>
+<td>0.5</td>
+</tr>
+<tr>
+<th>47</th>
+<td>2017</td>
+<td>2</td>
+<td>17</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>8.0</td>
+<td>1.5</td>
+</tr>
+<tr>
+<th>48</th>
+<td>2017</td>
+<td>2</td>
+<td>18</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.5</td>
+<td>5.0</td>
+<td>1.9</td>
+</tr>
+<tr>
+<th>49</th>
+<td>2017</td>
+<td>2</td>
+<td>19</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.1</td>
+<td>5.0</td>
+<td>2.2</td>
+</tr>
+<tr>
+<th>50</th>
+<td>2017</td>
+<td>2</td>
+<td>20</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.8</td>
+<td>3.0</td>
+<td>0.4</td>
+</tr>
+<tr>
+<th>51</th>
+<td>2017</td>
+<td>2</td>
+<td>21</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>7.0</td>
+<td>-2.5</td>
+</tr>
+<tr>
+<th>52</th>
+<td>2017</td>
+<td>2</td>
+<td>22</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>12.2</td>
+<td>6.0</td>
+<td>-4.6</td>
+</tr>
+<tr>
+<th>53</th>
+<td>2017</td>
+<td>2</td>
+<td>23</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.3</td>
+<td>15.0</td>
+<td>-0.7</td>
+</tr>
+<tr>
+<th>54</th>
+<td>2017</td>
+<td>2</td>
+<td>24</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>13.0</td>
+<td>-5.3</td>
+</tr>
+<tr>
+<th>55</th>
+<td>2017</td>
+<td>2</td>
+<td>25</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.4</td>
+<td>13.0</td>
+<td>-5.6</td>
+</tr>
+<tr>
+<th>56</th>
+<td>2017</td>
+<td>2</td>
+<td>26</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.5</td>
+<td>12.0</td>
+<td>-2.0</td>
+</tr>
+<tr>
+<th>57</th>
+<td>2017</td>
+<td>2</td>
+<td>27</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.0</td>
+<td>14.0</td>
+<td>-2.3</td>
+</tr>
+<tr>
+<th>58</th>
+<td>2017</td>
+<td>2</td>
+<td>28</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>7.7</td>
+<td>13.0</td>
+<td>2.1</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">groupby</span></code> object functions a bit like a DataFrame, so some operations which are allowed for DataFrames are also allowed for the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> object. For example, we can get a subset of columns:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">groups</span><span class="p">[</span><span class="s2">"Temperature"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x7fab89deb1d0&gt;
+</pre></div>
+</div>
+</div>
+<p>For each DataFrame corresponding to a group the Temperature column was chosen. Still nothing was shown, because we haven’t applied any operation on the groups.</p>
+<p>The common methods also include the aggregation methods. Let’s try to apply the <code class="docutils literal notranslate"><span class="pre">mean</span></code> aggregation:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">groups</span><span class="p">[</span><span class="s2">"Temperature"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Month
+1     -2.316129
+2     -2.389286
+3      0.983871
+4      2.676667
+5      9.783871
+6     13.726667
+7     16.035484
+8     16.183871
+9     11.826667
+10     5.454839
+11     3.950000
+12     1.741935
+Name: Temperature, dtype: float64
+</pre></div>
+</div>
+</div>
+<p>Now what happened was that after the mean aggregation was performed on each group, the results were automatically combined into a resulting DataFrame. Let’s try some other aggregation:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">groups</span><span class="p">[</span><span class="s2">"Precipitation"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Month
+1      26.9
+2      21.0
+3      29.7
+4      26.9
+5      -5.9
+6      59.3
+7      14.2
+8      70.1
+9      51.2
+10    173.5
+11    117.2
+12    133.6
+Name: Precipitation, dtype: float64
+</pre></div>
+</div>
+</div>
+<p>Ok, the -1.0 values in the Precipitation field are causing trouble here, let’s convert them to zeros:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh4</span> <span class="o">=</span> <span class="n">wh3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">wh4</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">wh4</span><span class="o">.</span><span class="n">Precipitation</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Precipitation"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">wh4</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">wh4</span><span class="o">.</span><span class="n">Snow</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Snow"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">wh4</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>Month</th>
+<th>Day</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2017</td>
+<td>1</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.6</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2017</td>
+<td>1</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.4</td>
+<td>0.0</td>
+<td>-3.9</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2017</td>
+<td>1</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2017</td>
+<td>1</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2017</td>
+<td>1</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh4</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Month"</span><span class="p">)[</span><span class="s2">"Precipitation"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Month
+1      38.9
+2      35.0
+3      41.7
+4      39.9
+5      16.1
+6      76.3
+7      31.2
+8      86.1
+9      65.2
+10    184.5
+11    120.2
+12    140.6
+Name: Precipitation, dtype: float64
+</pre></div>
+</div>
+</div>
+<div class="section" id="Other-ways-to-operate-on-groups">
+<h3>Other ways to operate on groups<a class="headerlink" href="#Other-ways-to-operate-on-groups" title="Permalink to this headline">¶</a></h3>
+<p>The aggregations are not the only possible operations on groups. The other possibilities are filtering, transformation, and application.</p>
+<p>In <strong>filtering</strong> some of the groups can be filtered out.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">myfilter</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>                                     <span class="c1"># The filter function must return a boolean value</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s2">"Precipitation"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">150</span>
+
+<span class="n">wh4</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Month"</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">myfilter</span><span class="p">)</span>                 <span class="c1"># Filter out months with total precipitation less that 150 mm</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>Month</th>
+<th>Day</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>273</th>
+<td>2017</td>
+<td>10</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>9.1</td>
+</tr>
+<tr>
+<th>274</th>
+<td>2017</td>
+<td>10</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.4</td>
+<td>0.0</td>
+<td>9.2</td>
+</tr>
+<tr>
+<th>275</th>
+<td>2017</td>
+<td>10</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>21.5</td>
+<td>0.0</td>
+<td>8.3</td>
+</tr>
+<tr>
+<th>276</th>
+<td>2017</td>
+<td>10</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>12.7</td>
+<td>0.0</td>
+<td>11.2</td>
+</tr>
+<tr>
+<th>277</th>
+<td>2017</td>
+<td>10</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.6</td>
+<td>0.0</td>
+<td>8.8</td>
+</tr>
+<tr>
+<th>278</th>
+<td>2017</td>
+<td>10</td>
+<td>6</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.7</td>
+<td>0.0</td>
+<td>7.7</td>
+</tr>
+<tr>
+<th>279</th>
+<td>2017</td>
+<td>10</td>
+<td>7</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>11.7</td>
+<td>0.0</td>
+<td>8.1</td>
+</tr>
+<tr>
+<th>280</th>
+<td>2017</td>
+<td>10</td>
+<td>8</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>14.1</td>
+<td>0.0</td>
+<td>9.3</td>
+</tr>
+<tr>
+<th>281</th>
+<td>2017</td>
+<td>10</td>
+<td>9</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>18.3</td>
+<td>0.0</td>
+<td>8.6</td>
+</tr>
+<tr>
+<th>282</th>
+<td>2017</td>
+<td>10</td>
+<td>10</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>24.2</td>
+<td>0.0</td>
+<td>8.1</td>
+</tr>
+<tr>
+<th>283</th>
+<td>2017</td>
+<td>10</td>
+<td>11</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.5</td>
+<td>0.0</td>
+<td>6.9</td>
+</tr>
+<tr>
+<th>284</th>
+<td>2017</td>
+<td>10</td>
+<td>12</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>18.1</td>
+<td>0.0</td>
+<td>6.0</td>
+</tr>
+<tr>
+<th>285</th>
+<td>2017</td>
+<td>10</td>
+<td>13</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>7.5</td>
+</tr>
+<tr>
+<th>286</th>
+<td>2017</td>
+<td>10</td>
+<td>14</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>5.0</td>
+<td>0.0</td>
+<td>7.2</td>
+</tr>
+<tr>
+<th>287</th>
+<td>2017</td>
+<td>10</td>
+<td>15</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>3.3</td>
+<td>0.0</td>
+<td>8.3</td>
+</tr>
+<tr>
+<th>288</th>
+<td>2017</td>
+<td>10</td>
+<td>16</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>10.7</td>
+</tr>
+<tr>
+<th>289</th>
+<td>2017</td>
+<td>10</td>
+<td>17</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.6</td>
+<td>0.0</td>
+<td>8.5</td>
+</tr>
+<tr>
+<th>290</th>
+<td>2017</td>
+<td>10</td>
+<td>18</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>8.3</td>
+</tr>
+<tr>
+<th>291</th>
+<td>2017</td>
+<td>10</td>
+<td>19</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.9</td>
+<td>0.0</td>
+<td>4.6</td>
+</tr>
+<tr>
+<th>292</th>
+<td>2017</td>
+<td>10</td>
+<td>20</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>293</th>
+<td>2017</td>
+<td>10</td>
+<td>21</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.2</td>
+</tr>
+<tr>
+<th>294</th>
+<td>2017</td>
+<td>10</td>
+<td>22</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>295</th>
+<td>2017</td>
+<td>10</td>
+<td>23</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.3</td>
+</tr>
+<tr>
+<th>296</th>
+<td>2017</td>
+<td>10</td>
+<td>24</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.8</td>
+</tr>
+<tr>
+<th>297</th>
+<td>2017</td>
+<td>10</td>
+<td>25</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>8.5</td>
+<td>0.0</td>
+<td>2.1</td>
+</tr>
+<tr>
+<th>298</th>
+<td>2017</td>
+<td>10</td>
+<td>26</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>12.3</td>
+<td>2.0</td>
+<td>0.3</td>
+</tr>
+<tr>
+<th>299</th>
+<td>2017</td>
+<td>10</td>
+<td>27</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.7</td>
+<td>7.0</td>
+<td>-0.3</td>
+</tr>
+<tr>
+<th>300</th>
+<td>2017</td>
+<td>10</td>
+<td>28</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>17.1</td>
+<td>4.0</td>
+<td>3.3</td>
+</tr>
+<tr>
+<th>301</th>
+<td>2017</td>
+<td>10</td>
+<td>29</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>3.3</td>
+<td>0.0</td>
+<td>2.1</td>
+</tr>
+<tr>
+<th>302</th>
+<td>2017</td>
+<td>10</td>
+<td>30</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.2</td>
+</tr>
+<tr>
+<th>303</th>
+<td>2017</td>
+<td>10</td>
+<td>31</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>-0.4</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>In a <strong>transformation</strong> each group’s DataFrame is manipulated in a way that retains its shape. An example of centering values, so that the deviations from the monthly means are shown:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">wh4</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span>
+           <span class="n">wh4</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Month"</span><span class="p">)[[</span><span class="s2">"Precipitation"</span><span class="p">,</span> <span class="s2">"Snow"</span><span class="p">,</span> <span class="s2">"Temperature"</span><span class="p">]]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())],</span>
+          <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>Month</th>
+<th>Day</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2017</td>
+<td>1</td>
+<td>1</td>
+<td>-1.254839</td>
+<td>-6.903226</td>
+<td>2.916129</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2017</td>
+<td>1</td>
+<td>2</td>
+<td>3.145161</td>
+<td>-6.903226</td>
+<td>-1.583871</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2017</td>
+<td>1</td>
+<td>3</td>
+<td>5.345161</td>
+<td>0.096774</td>
+<td>-4.183871</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2017</td>
+<td>1</td>
+<td>4</td>
+<td>-1.254839</td>
+<td>6.096774</td>
+<td>-10.483871</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2017</td>
+<td>1</td>
+<td>5</td>
+<td>-1.254839</td>
+<td>3.096774</td>
+<td>-15.483871</td>
+</tr>
+<tr>
+<th>5</th>
+<td>2017</td>
+<td>1</td>
+<td>6</td>
+<td>-0.954839</td>
+<td>3.096774</td>
+<td>-15.483871</td>
+</tr>
+<tr>
+<th>6</th>
+<td>2017</td>
+<td>1</td>
+<td>7</td>
+<td>4.045161</td>
+<td>3.096774</td>
+<td>-1.483871</td>
+</tr>
+<tr>
+<th>7</th>
+<td>2017</td>
+<td>1</td>
+<td>8</td>
+<td>-1.254839</td>
+<td>5.096774</td>
+<td>1.816129</td>
+</tr>
+<tr>
+<th>8</th>
+<td>2017</td>
+<td>1</td>
+<td>9</td>
+<td>-0.154839</td>
+<td>5.096774</td>
+<td>2.816129</td>
+</tr>
+<tr>
+<th>9</th>
+<td>2017</td>
+<td>1</td>
+<td>10</td>
+<td>-0.954839</td>
+<td>2.096774</td>
+<td>4.016129</td>
+</tr>
+<tr>
+<th>10</th>
+<td>2017</td>
+<td>1</td>
+<td>11</td>
+<td>-1.254839</td>
+<td>0.096774</td>
+<td>0.716129</td>
+</tr>
+<tr>
+<th>11</th>
+<td>2017</td>
+<td>1</td>
+<td>12</td>
+<td>6.745161</td>
+<td>0.096774</td>
+<td>-0.483871</td>
+</tr>
+<tr>
+<th>12</th>
+<td>2017</td>
+<td>1</td>
+<td>13</td>
+<td>-1.154839</td>
+<td>6.096774</td>
+<td>3.416129</td>
+</tr>
+<tr>
+<th>13</th>
+<td>2017</td>
+<td>1</td>
+<td>14</td>
+<td>-1.154839</td>
+<td>1.096774</td>
+<td>3.116129</td>
+</tr>
+<tr>
+<th>14</th>
+<td>2017</td>
+<td>1</td>
+<td>15</td>
+<td>-1.254839</td>
+<td>1.096774</td>
+<td>-0.483871</td>
+</tr>
+<tr>
+<th>15</th>
+<td>2017</td>
+<td>1</td>
+<td>16</td>
+<td>-1.254839</td>
+<td>1.096774</td>
+<td>-1.883871</td>
+</tr>
+<tr>
+<th>16</th>
+<td>2017</td>
+<td>1</td>
+<td>17</td>
+<td>-1.054839</td>
+<td>1.096774</td>
+<td>-1.183871</td>
+</tr>
+<tr>
+<th>17</th>
+<td>2017</td>
+<td>1</td>
+<td>18</td>
+<td>-0.354839</td>
+<td>1.096774</td>
+<td>3.416129</td>
+</tr>
+<tr>
+<th>18</th>
+<td>2017</td>
+<td>1</td>
+<td>19</td>
+<td>-1.254839</td>
+<td>-1.903226</td>
+<td>3.916129</td>
+</tr>
+<tr>
+<th>19</th>
+<td>2017</td>
+<td>1</td>
+<td>20</td>
+<td>-0.954839</td>
+<td>-1.903226</td>
+<td>1.716129</td>
+</tr>
+<tr>
+<th>20</th>
+<td>2017</td>
+<td>1</td>
+<td>21</td>
+<td>-0.854839</td>
+<td>-1.903226</td>
+<td>0.516129</td>
+</tr>
+<tr>
+<th>21</th>
+<td>2017</td>
+<td>1</td>
+<td>22</td>
+<td>-1.054839</td>
+<td>-1.903226</td>
+<td>3.316129</td>
+</tr>
+<tr>
+<th>22</th>
+<td>2017</td>
+<td>1</td>
+<td>23</td>
+<td>-1.154839</td>
+<td>-0.903226</td>
+<td>2.416129</td>
+</tr>
+<tr>
+<th>23</th>
+<td>2017</td>
+<td>1</td>
+<td>24</td>
+<td>-1.254839</td>
+<td>-0.903226</td>
+<td>0.116129</td>
+</tr>
+<tr>
+<th>24</th>
+<td>2017</td>
+<td>1</td>
+<td>25</td>
+<td>-0.654839</td>
+<td>-0.903226</td>
+<td>-1.483871</td>
+</tr>
+<tr>
+<th>25</th>
+<td>2017</td>
+<td>1</td>
+<td>26</td>
+<td>-1.254839</td>
+<td>-0.903226</td>
+<td>4.216129</td>
+</tr>
+<tr>
+<th>26</th>
+<td>2017</td>
+<td>1</td>
+<td>27</td>
+<td>-1.254839</td>
+<td>-2.903226</td>
+<td>3.916129</td>
+</tr>
+<tr>
+<th>27</th>
+<td>2017</td>
+<td>1</td>
+<td>28</td>
+<td>0.545161</td>
+<td>-2.903226</td>
+<td>3.116129</td>
+</tr>
+<tr>
+<th>28</th>
+<td>2017</td>
+<td>1</td>
+<td>29</td>
+<td>1.345161</td>
+<td>-3.903226</td>
+<td>2.916129</td>
+</tr>
+<tr>
+<th>29</th>
+<td>2017</td>
+<td>1</td>
+<td>30</td>
+<td>4.345161</td>
+<td>-1.903226</td>
+<td>3.316129</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>335</th>
+<td>2017</td>
+<td>12</td>
+<td>2</td>
+<td>0.764516</td>
+<td>3.516129</td>
+<td>-0.341935</td>
+</tr>
+<tr>
+<th>336</th>
+<td>2017</td>
+<td>12</td>
+<td>3</td>
+<td>2.664516</td>
+<td>-1.483871</td>
+<td>3.258065</td>
+</tr>
+<tr>
+<th>337</th>
+<td>2017</td>
+<td>12</td>
+<td>4</td>
+<td>-4.535484</td>
+<td>-1.483871</td>
+<td>-0.441935</td>
+</tr>
+<tr>
+<th>338</th>
+<td>2017</td>
+<td>12</td>
+<td>5</td>
+<td>-3.835484</td>
+<td>-1.483871</td>
+<td>-1.741935</td>
+</tr>
+<tr>
+<th>339</th>
+<td>2017</td>
+<td>12</td>
+<td>6</td>
+<td>-4.535484</td>
+<td>-1.483871</td>
+<td>-2.941935</td>
+</tr>
+<tr>
+<th>340</th>
+<td>2017</td>
+<td>12</td>
+<td>7</td>
+<td>11.764516</td>
+<td>-1.483871</td>
+<td>-2.541935</td>
+</tr>
+<tr>
+<th>341</th>
+<td>2017</td>
+<td>12</td>
+<td>8</td>
+<td>-2.535484</td>
+<td>-1.483871</td>
+<td>3.458065</td>
+</tr>
+<tr>
+<th>342</th>
+<td>2017</td>
+<td>12</td>
+<td>9</td>
+<td>-4.335484</td>
+<td>-1.483871</td>
+<td>2.458065</td>
+</tr>
+<tr>
+<th>343</th>
+<td>2017</td>
+<td>12</td>
+<td>10</td>
+<td>-4.535484</td>
+<td>-1.483871</td>
+<td>0.258065</td>
+</tr>
+<tr>
+<th>344</th>
+<td>2017</td>
+<td>12</td>
+<td>11</td>
+<td>-3.235484</td>
+<td>-1.483871</td>
+<td>-0.341935</td>
+</tr>
+<tr>
+<th>345</th>
+<td>2017</td>
+<td>12</td>
+<td>12</td>
+<td>30.464516</td>
+<td>-1.483871</td>
+<td>-0.141935</td>
+</tr>
+<tr>
+<th>346</th>
+<td>2017</td>
+<td>12</td>
+<td>13</td>
+<td>-0.335484</td>
+<td>3.516129</td>
+<td>-0.141935</td>
+</tr>
+<tr>
+<th>347</th>
+<td>2017</td>
+<td>12</td>
+<td>14</td>
+<td>0.664516</td>
+<td>2.516129</td>
+<td>-0.141935</td>
+</tr>
+<tr>
+<th>348</th>
+<td>2017</td>
+<td>12</td>
+<td>15</td>
+<td>5.464516</td>
+<td>8.516129</td>
+<td>-0.041935</td>
+</tr>
+<tr>
+<th>349</th>
+<td>2017</td>
+<td>12</td>
+<td>16</td>
+<td>-3.235484</td>
+<td>4.516129</td>
+<td>0.658065</td>
+</tr>
+<tr>
+<th>350</th>
+<td>2017</td>
+<td>12</td>
+<td>17</td>
+<td>-4.535484</td>
+<td>3.516129</td>
+<td>-1.641935</td>
+</tr>
+<tr>
+<th>351</th>
+<td>2017</td>
+<td>12</td>
+<td>18</td>
+<td>-1.035484</td>
+<td>3.516129</td>
+<td>0.258065</td>
+</tr>
+<tr>
+<th>352</th>
+<td>2017</td>
+<td>12</td>
+<td>19</td>
+<td>-4.335484</td>
+<td>1.516129</td>
+<td>-0.741935</td>
+</tr>
+<tr>
+<th>353</th>
+<td>2017</td>
+<td>12</td>
+<td>20</td>
+<td>-0.935484</td>
+<td>1.516129</td>
+<td>0.858065</td>
+</tr>
+<tr>
+<th>354</th>
+<td>2017</td>
+<td>12</td>
+<td>21</td>
+<td>-4.535484</td>
+<td>-1.483871</td>
+<td>0.758065</td>
+</tr>
+<tr>
+<th>355</th>
+<td>2017</td>
+<td>12</td>
+<td>22</td>
+<td>-4.535484</td>
+<td>-1.483871</td>
+<td>-1.841935</td>
+</tr>
+<tr>
+<th>356</th>
+<td>2017</td>
+<td>12</td>
+<td>23</td>
+<td>3.064516</td>
+<td>-1.483871</td>
+<td>-0.541935</td>
+</tr>
+<tr>
+<th>357</th>
+<td>2017</td>
+<td>12</td>
+<td>24</td>
+<td>-4.535484</td>
+<td>-1.483871</td>
+<td>-2.041935</td>
+</tr>
+<tr>
+<th>358</th>
+<td>2017</td>
+<td>12</td>
+<td>25</td>
+<td>1.364516</td>
+<td>-1.483871</td>
+<td>-1.441935</td>
+</tr>
+<tr>
+<th>359</th>
+<td>2017</td>
+<td>12</td>
+<td>26</td>
+<td>3.264516</td>
+<td>-1.483871</td>
+<td>0.158065</td>
+</tr>
+<tr>
+<th>360</th>
+<td>2017</td>
+<td>12</td>
+<td>27</td>
+<td>-3.435484</td>
+<td>-1.483871</td>
+<td>2.058065</td>
+</tr>
+<tr>
+<th>361</th>
+<td>2017</td>
+<td>12</td>
+<td>28</td>
+<td>-0.835484</td>
+<td>-1.483871</td>
+<td>1.058065</td>
+</tr>
+<tr>
+<th>362</th>
+<td>2017</td>
+<td>12</td>
+<td>29</td>
+<td>3.264516</td>
+<td>-1.483871</td>
+<td>2.058065</td>
+</tr>
+<tr>
+<th>363</th>
+<td>2017</td>
+<td>12</td>
+<td>30</td>
+<td>-0.435484</td>
+<td>-1.483871</td>
+<td>0.758065</td>
+</tr>
+<tr>
+<th>364</th>
+<td>2017</td>
+<td>12</td>
+<td>31</td>
+<td>-1.335484</td>
+<td>-1.483871</td>
+<td>-0.141935</td>
+</tr>
+</tbody>
+</table>
+<p>365 rows × 6 columns</p>
+</div></div>
+</div>
+<p>The <strong>apply</strong> method is very generic and only requires that for each group’s DataFrame the given function returns a DataFrame, Series, or a scalar. In the following example, we sort within each group by the temperature:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh4</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Month"</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span> <span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"Temperature"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th></th>
+<th>Year</th>
+<th>Month</th>
+<th>Day</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+</tr>
+<tr>
+<th>Month</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="30" valign="top">1</th>
+<th>4</th>
+<td>2017</td>
+<td>1</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+</tr>
+<tr>
+<th>5</th>
+<td>2017</td>
+<td>1</td>
+<td>6</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.3</td>
+<td>10.0</td>
+<td>-17.8</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2017</td>
+<td>1</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2017</td>
+<td>1</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+</tr>
+<tr>
+<th>15</th>
+<td>2017</td>
+<td>1</td>
+<td>16</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>8.0</td>
+<td>-4.2</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2017</td>
+<td>1</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.4</td>
+<td>0.0</td>
+<td>-3.9</td>
+</tr>
+<tr>
+<th>24</th>
+<td>2017</td>
+<td>1</td>
+<td>25</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.6</td>
+<td>6.0</td>
+<td>-3.8</td>
+</tr>
+<tr>
+<th>6</th>
+<td>2017</td>
+<td>1</td>
+<td>7</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>5.3</td>
+<td>10.0</td>
+<td>-3.8</td>
+</tr>
+<tr>
+<th>16</th>
+<td>2017</td>
+<td>1</td>
+<td>17</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>8.0</td>
+<td>-3.5</td>
+</tr>
+<tr>
+<th>11</th>
+<td>2017</td>
+<td>1</td>
+<td>12</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>8.0</td>
+<td>7.0</td>
+<td>-2.8</td>
+</tr>
+<tr>
+<th>14</th>
+<td>2017</td>
+<td>1</td>
+<td>15</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>8.0</td>
+<td>-2.8</td>
+</tr>
+<tr>
+<th>23</th>
+<td>2017</td>
+<td>1</td>
+<td>24</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>6.0</td>
+<td>-2.2</td>
+</tr>
+<tr>
+<th>20</th>
+<td>2017</td>
+<td>1</td>
+<td>21</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.4</td>
+<td>5.0</td>
+<td>-1.8</td>
+</tr>
+<tr>
+<th>10</th>
+<td>2017</td>
+<td>1</td>
+<td>11</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>7.0</td>
+<td>-1.6</td>
+</tr>
+<tr>
+<th>19</th>
+<td>2017</td>
+<td>1</td>
+<td>20</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.3</td>
+<td>5.0</td>
+<td>-0.6</td>
+</tr>
+<tr>
+<th>7</th>
+<td>2017</td>
+<td>1</td>
+<td>8</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>12.0</td>
+<td>-0.5</td>
+</tr>
+<tr>
+<th>22</th>
+<td>2017</td>
+<td>1</td>
+<td>23</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.1</td>
+<td>6.0</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>30</th>
+<td>2017</td>
+<td>1</td>
+<td>31</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>0.2</td>
+</tr>
+<tr>
+<th>8</th>
+<td>2017</td>
+<td>1</td>
+<td>9</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.1</td>
+<td>12.0</td>
+<td>0.5</td>
+</tr>
+<tr>
+<th>28</th>
+<td>2017</td>
+<td>1</td>
+<td>29</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.6</td>
+<td>3.0</td>
+<td>0.6</td>
+</tr>
+<tr>
+<th>0</th>
+<td>2017</td>
+<td>1</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.6</td>
+</tr>
+<tr>
+<th>13</th>
+<td>2017</td>
+<td>1</td>
+<td>14</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.1</td>
+<td>8.0</td>
+<td>0.8</td>
+</tr>
+<tr>
+<th>27</th>
+<td>2017</td>
+<td>1</td>
+<td>28</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.8</td>
+<td>4.0</td>
+<td>0.8</td>
+</tr>
+<tr>
+<th>29</th>
+<td>2017</td>
+<td>1</td>
+<td>30</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>5.6</td>
+<td>5.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>21</th>
+<td>2017</td>
+<td>1</td>
+<td>22</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>5.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>12</th>
+<td>2017</td>
+<td>1</td>
+<td>13</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.1</td>
+<td>13.0</td>
+<td>1.1</td>
+</tr>
+<tr>
+<th>17</th>
+<td>2017</td>
+<td>1</td>
+<td>18</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.9</td>
+<td>8.0</td>
+<td>1.1</td>
+</tr>
+<tr>
+<th>18</th>
+<td>2017</td>
+<td>1</td>
+<td>19</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>5.0</td>
+<td>1.6</td>
+</tr>
+<tr>
+<th>26</th>
+<td>2017</td>
+<td>1</td>
+<td>27</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>1.6</td>
+</tr>
+<tr>
+<th>9</th>
+<td>2017</td>
+<td>1</td>
+<td>10</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.3</td>
+<td>9.0</td>
+<td>1.7</td>
+</tr>
+<tr>
+<th>...</th>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th rowspan="30" valign="top">12</th>
+<th>340</th>
+<td>2017</td>
+<td>12</td>
+<td>7</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>16.3</td>
+<td>0.0</td>
+<td>-0.8</td>
+</tr>
+<tr>
+<th>357</th>
+<td>2017</td>
+<td>12</td>
+<td>24</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>-0.3</td>
+</tr>
+<tr>
+<th>355</th>
+<td>2017</td>
+<td>12</td>
+<td>22</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>-0.1</td>
+</tr>
+<tr>
+<th>338</th>
+<td>2017</td>
+<td>12</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.7</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>350</th>
+<td>2017</td>
+<td>12</td>
+<td>17</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>5.0</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>358</th>
+<td>2017</td>
+<td>12</td>
+<td>25</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>5.9</td>
+<td>0.0</td>
+<td>0.3</td>
+</tr>
+<tr>
+<th>334</th>
+<td>2017</td>
+<td>12</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>3.4</td>
+<td>0.0</td>
+<td>0.9</td>
+</tr>
+<tr>
+<th>352</th>
+<td>2017</td>
+<td>12</td>
+<td>19</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>3.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>356</th>
+<td>2017</td>
+<td>12</td>
+<td>23</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>7.6</td>
+<td>0.0</td>
+<td>1.2</td>
+</tr>
+<tr>
+<th>337</th>
+<td>2017</td>
+<td>12</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.3</td>
+</tr>
+<tr>
+<th>335</th>
+<td>2017</td>
+<td>12</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>5.3</td>
+<td>5.0</td>
+<td>1.4</td>
+</tr>
+<tr>
+<th>344</th>
+<td>2017</td>
+<td>12</td>
+<td>11</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.3</td>
+<td>0.0</td>
+<td>1.4</td>
+</tr>
+<tr>
+<th>364</th>
+<td>2017</td>
+<td>12</td>
+<td>31</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>3.2</td>
+<td>0.0</td>
+<td>1.6</td>
+</tr>
+<tr>
+<th>346</th>
+<td>2017</td>
+<td>12</td>
+<td>13</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.2</td>
+<td>5.0</td>
+<td>1.6</td>
+</tr>
+<tr>
+<th>345</th>
+<td>2017</td>
+<td>12</td>
+<td>12</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>35.0</td>
+<td>0.0</td>
+<td>1.6</td>
+</tr>
+<tr>
+<th>347</th>
+<td>2017</td>
+<td>12</td>
+<td>14</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>5.2</td>
+<td>4.0</td>
+<td>1.6</td>
+</tr>
+<tr>
+<th>348</th>
+<td>2017</td>
+<td>12</td>
+<td>15</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>10.0</td>
+<td>10.0</td>
+<td>1.7</td>
+</tr>
+<tr>
+<th>359</th>
+<td>2017</td>
+<td>12</td>
+<td>26</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>7.8</td>
+<td>0.0</td>
+<td>1.9</td>
+</tr>
+<tr>
+<th>351</th>
+<td>2017</td>
+<td>12</td>
+<td>18</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>3.5</td>
+<td>5.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>343</th>
+<td>2017</td>
+<td>12</td>
+<td>10</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>349</th>
+<td>2017</td>
+<td>12</td>
+<td>16</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.3</td>
+<td>6.0</td>
+<td>2.4</td>
+</tr>
+<tr>
+<th>363</th>
+<td>2017</td>
+<td>12</td>
+<td>30</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.1</td>
+<td>0.0</td>
+<td>2.5</td>
+</tr>
+<tr>
+<th>354</th>
+<td>2017</td>
+<td>12</td>
+<td>21</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.5</td>
+</tr>
+<tr>
+<th>353</th>
+<td>2017</td>
+<td>12</td>
+<td>20</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>3.6</td>
+<td>3.0</td>
+<td>2.6</td>
+</tr>
+<tr>
+<th>361</th>
+<td>2017</td>
+<td>12</td>
+<td>28</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>3.7</td>
+<td>0.0</td>
+<td>2.8</td>
+</tr>
+<tr>
+<th>360</th>
+<td>2017</td>
+<td>12</td>
+<td>27</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.1</td>
+<td>0.0</td>
+<td>3.8</td>
+</tr>
+<tr>
+<th>362</th>
+<td>2017</td>
+<td>12</td>
+<td>29</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>7.8</td>
+<td>0.0</td>
+<td>3.8</td>
+</tr>
+<tr>
+<th>342</th>
+<td>2017</td>
+<td>12</td>
+<td>9</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>0.0</td>
+<td>4.2</td>
+</tr>
+<tr>
+<th>336</th>
+<td>2017</td>
+<td>12</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>7.2</td>
+<td>0.0</td>
+<td>5.0</td>
+</tr>
+<tr>
+<th>341</th>
+<td>2017</td>
+<td>12</td>
+<td>8</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.0</td>
+<td>0.0</td>
+<td>5.2</td>
+</tr>
+</tbody>
+</table>
+<p>365 rows × 8 columns</p>
+</div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-4-(cyclists-per-day)">Exercise 4 (cyclists per day)</a></div>
+<p>This exercise can give two points at maximum!</p>
+<p>Part 1.</p>
+<p>Read, clean and parse the bicycle data set as before. Group the rows by year, month, and day. Get the sum for each group. Make function <code class="docutils literal notranslate"><span class="pre">cyclists_per_day</span></code> that does the above. The function should return a DataFrame. Make sure that the columns Hour and Weekday are not included in the returned DataFrame.</p>
+<p>Part 2.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">main</span></code> function, using the function <code class="docutils literal notranslate"><span class="pre">cyclists_per_day</span></code>, get the daily counts. The index of the DataFrame now consists of tuples (Year, Month, Day). Then restrict this data to August of year 2017, and plot this data. Don’t forget to call the <code class="docutils literal notranslate"><span class="pre">plt.show</span></code> function of matplotlib. The x-axis should have ticks from 1 to 31, and there should be a curve to each measuring station. Can you spot the weekends?</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-5-(best-record-company)">Exercise 5 (best record company)</a></div>
+<p>We use again the UK top 40 data set from the first week of 1964 in the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder. Here we define “goodness” of a record company (<code class="docutils literal notranslate"><span class="pre">Publisher</span></code>) based on the sum of the weeks on chart (WoC) of its singles. Return a DataFrame of the singles by the best record company (a subset of rows of the original DataFrame). Do this with function <code class="docutils literal notranslate"><span class="pre">best_record_company</span></code>.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-6-(suicide-fractions)">Exercise 6 (suicide fractions)</a></div>
+<p>Load the suicide data set from <code class="docutils literal notranslate"><span class="pre">src</span></code> folder. This data was originally downloaded from <a class="reference external" href="https://www.kaggle.com/szamil/who-suicide-statistics">Kaggle</a>. Kaggle contains lots of interesting open data sets.</p>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">suicide_fractions</span></code> that loads the data set and returns a Series that has the country as the (row) index and as the column the mean fraction of suicides per population in that country. In other words, the value is the average of suicide fractions. The information about year, sex and age is not used.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-7-(suicide-weather)">Exercise 7 (suicide weather)</a></div>
+<p>Copy the function <code class="docutils literal notranslate"><span class="pre">suicide</span> <span class="pre">fractions</span></code> from the previous exercise.</p>
+<p>Implement function <code class="docutils literal notranslate"><span class="pre">suicide_weather</span></code> as described below. We use the dataset of average temperature (over years 1961-1990) in different countries from <code class="docutils literal notranslate"><span class="pre">src/List_of_countries_by_average_yearly_temperature.html</span></code> (<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature">https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature</a>) . You can use the function <code class="docutils literal notranslate"><span class="pre">pd.read_html</span></code> to get all the tables from a html page. By default <code class="docutils literal notranslate"><span class="pre">pd.read_html</span></code> does not know which row contains column headers and which column contains row headers.
+Therefore, you have to give both <code class="docutils literal notranslate"><span class="pre">index_col</span></code> and <code class="docutils literal notranslate"><span class="pre">header</span></code> parameters to <code class="docutils literal notranslate"><span class="pre">read_html</span></code>. Maku sure you use the country as the (row) index for both of the DataFrames. What is the <a class="reference external" href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient">Spearman correlation</a> between these variables? Use the <code class="docutils literal notranslate"><span class="pre">corr</span></code> method of Series object. Note the the two Series need not be sorted as the indices of the rows (country names) are used to align them.</p>
+<p>The return value of the function <code class="docutils literal notranslate"><span class="pre">suicide_weather</span></code> is a tuple (suicide_rows, temperature_rows, common_rows, spearman_correlation) The output from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function should be of the following form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suicide</span> <span class="n">DataFrame</span> <span class="n">has</span> <span class="n">x</span> <span class="n">rows</span>
+<span class="n">Temperature</span> <span class="n">DataFrame</span> <span class="n">has</span> <span class="n">x</span> <span class="n">rows</span>
+<span class="n">Common</span> <span class="n">DataFrame</span> <span class="n">has</span> <span class="n">x</span> <span class="n">rows</span>
+<span class="n">Spearman</span> <span class="n">correlation</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>You might have trouble when trying to convert the temperatures to float. The is because the negative numbers on that html page use a special <em>unicode minus sign</em>, which looks typographically nice, but the float constructor cannot interpret it as a minus sign. You can try out the following example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s</span><span class="o">=</span><span class="s2">"</span><span class="se">\u2212</span><span class="s2">"</span> <span class="s2">"5"</span>   <span class="c1"># unicode minus sign and five</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+−5
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+could not convert string to float: '−5'
+</pre></div></div>
+</div>
+<p>But if we explicitly convert unicode minus sign to normal minus sign, it works:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\u2212</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>-5.0
+</pre></div>
+</div>
+</div>
+<hr/></div>
+</div>
+<div class="section" id="Time-series">
+<h2>Time series<a class="headerlink" href="#Time-series" title="Permalink to this headline">¶</a></h2>
+<p>If a measurement is made at certain points in time, the resulting values with their measurement times is called a time series. In Pandas a Series whose index consists of dates/times is a time series.</p>
+<p>Let’s make a copy of the DataFrame that we can mess with:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh2</span> <span class="o">=</span> <span class="n">wh3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">wh2</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Index(['Year', 'Month', 'Day', 'Time', 'Time zone', 'Precipitation', 'Snow',
+       'Temperature'],
+      dtype='object')
+</pre></div>
+</div>
+</div>
+<p>The column names <code class="docutils literal notranslate"><span class="pre">Year</span></code>, <code class="docutils literal notranslate"><span class="pre">Month</span></code>, and <code class="docutils literal notranslate"><span class="pre">Day</span></code> are now in appropriate form for the <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> function. It can convert these fields into a timestamp series, which we will add to the DataFrame.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh2</span><span class="p">[</span><span class="s2">"Date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">wh2</span><span class="p">[[</span><span class="s2">"Year"</span><span class="p">,</span> <span class="s2">"Month"</span><span class="p">,</span> <span class="s2">"Day"</span><span class="p">]])</span>
+<span class="n">wh2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>Month</th>
+<th>Day</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2017</td>
+<td>1</td>
+<td>1</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>0.6</td>
+<td>2017-01-01</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2017</td>
+<td>1</td>
+<td>2</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.4</td>
+<td>-1.0</td>
+<td>-3.9</td>
+<td>2017-01-02</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2017</td>
+<td>1</td>
+<td>3</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+<td>2017-01-03</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2017</td>
+<td>1</td>
+<td>4</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+<td>2017-01-04</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2017</td>
+<td>1</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+<td>2017-01-05</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>We can now drop the useless fields:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh2</span><span class="o">=</span><span class="n">wh2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Year"</span><span class="p">,</span> <span class="s2">"Month"</span><span class="p">,</span> <span class="s2">"Day"</span><span class="p">])</span>
+<span class="n">wh2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>0.6</td>
+<td>2017-01-01</td>
+</tr>
+<tr>
+<th>1</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.4</td>
+<td>-1.0</td>
+<td>-3.9</td>
+<td>2017-01-02</td>
+</tr>
+<tr>
+<th>2</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+<td>2017-01-03</td>
+</tr>
+<tr>
+<th>3</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+<td>2017-01-04</td>
+</tr>
+<tr>
+<th>4</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+<td>2017-01-05</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The following method call will set the Date field as the index of the DataFrame.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh2</span> <span class="o">=</span> <span class="n">wh2</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Date"</span><span class="p">)</span>
+<span class="n">wh2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+</tr>
+<tr>
+<th>Date</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2017-01-01</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>0.6</td>
+</tr>
+<tr>
+<th>2017-01-02</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>4.4</td>
+<td>-1.0</td>
+<td>-3.9</td>
+</tr>
+<tr>
+<th>2017-01-03</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>6.6</td>
+<td>7.0</td>
+<td>-6.5</td>
+</tr>
+<tr>
+<th>2017-01-04</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>13.0</td>
+<td>-12.8</td>
+</tr>
+<tr>
+<th>2017-01-05</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>10.0</td>
+<td>-17.8</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>We can now easily get a set of rows using date slices:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh2</span><span class="p">[</span><span class="s2">"2017-01-15"</span><span class="p">:</span><span class="s2">"2017-02-03"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+</tr>
+<tr>
+<th>Date</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2017-01-15</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>-2.8</td>
+</tr>
+<tr>
+<th>2017-01-16</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>8.0</td>
+<td>-4.2</td>
+</tr>
+<tr>
+<th>2017-01-17</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>8.0</td>
+<td>-3.5</td>
+</tr>
+<tr>
+<th>2017-01-18</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.9</td>
+<td>8.0</td>
+<td>1.1</td>
+</tr>
+<tr>
+<th>2017-01-19</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>5.0</td>
+<td>1.6</td>
+</tr>
+<tr>
+<th>2017-01-20</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.3</td>
+<td>5.0</td>
+<td>-0.6</td>
+</tr>
+<tr>
+<th>2017-01-21</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.4</td>
+<td>5.0</td>
+<td>-1.8</td>
+</tr>
+<tr>
+<th>2017-01-22</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>5.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>2017-01-23</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.1</td>
+<td>6.0</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>2017-01-24</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>6.0</td>
+<td>-2.2</td>
+</tr>
+<tr>
+<th>2017-01-25</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.6</td>
+<td>6.0</td>
+<td>-3.8</td>
+</tr>
+<tr>
+<th>2017-01-26</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>6.0</td>
+<td>1.9</td>
+</tr>
+<tr>
+<th>2017-01-27</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>4.0</td>
+<td>1.6</td>
+</tr>
+<tr>
+<th>2017-01-28</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.8</td>
+<td>4.0</td>
+<td>0.8</td>
+</tr>
+<tr>
+<th>2017-01-29</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.6</td>
+<td>3.0</td>
+<td>0.6</td>
+</tr>
+<tr>
+<th>2017-01-30</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>5.6</td>
+<td>5.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>2017-01-31</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>4.0</td>
+<td>0.2</td>
+</tr>
+<tr>
+<th>2017-02-01</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.5</td>
+<td>4.0</td>
+<td>-0.6</td>
+</tr>
+<tr>
+<th>2017-02-02</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>5.0</td>
+<td>-0.8</td>
+</tr>
+<tr>
+<th>2017-02-03</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>6.0</td>
+<td>-0.2</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>By using the <code class="docutils literal notranslate"><span class="pre">date_range</span></code> function even more complicated sets can be formed. The following gets all the Mondays of July:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">r</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"2017-07-01"</span><span class="p">,</span> <span class="s2">"2017-07-31"</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"w-mon"</span><span class="p">)</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>DatetimeIndex(['2017-07-03', '2017-07-10', '2017-07-17', '2017-07-24',
+               '2017-07-31'],
+              dtype='datetime64[ns]', freq='W-MON')
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>DatetimeIndex(['2017-01-01', '2017-01-02', '2017-01-03', '2017-01-04',
+               '2017-01-05', '2017-01-06', '2017-01-07', '2017-01-08',
+               '2017-01-09', '2017-01-10',
+               ...
+               '2017-12-22', '2017-12-23', '2017-12-24', '2017-12-25',
+               '2017-12-26', '2017-12-27', '2017-12-28', '2017-12-29',
+               '2017-12-30', '2017-12-31'],
+              dtype='datetime64[ns]', length=360, freq=None)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">r</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation</th>
+<th>Snow</th>
+<th>Temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2017-07-03</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.2</td>
+<td>-1.0</td>
+<td>14.5</td>
+</tr>
+<tr>
+<th>2017-07-10</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>18.0</td>
+</tr>
+<tr>
+<th>2017-07-17</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.7</td>
+<td>-1.0</td>
+<td>15.4</td>
+</tr>
+<tr>
+<th>2017-07-24</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>15.7</td>
+</tr>
+<tr>
+<th>2017-07-31</th>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.1</td>
+<td>-1.0</td>
+<td>17.8</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The following finds all the business days (Monday to Friday) of July:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"2017-07-01"</span><span class="p">,</span> <span class="s2">"2017-07-31"</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"b"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>DatetimeIndex(['2017-07-03', '2017-07-04', '2017-07-05', '2017-07-06',
+               '2017-07-07', '2017-07-10', '2017-07-11', '2017-07-12',
+               '2017-07-13', '2017-07-14', '2017-07-17', '2017-07-18',
+               '2017-07-19', '2017-07-20', '2017-07-21', '2017-07-24',
+               '2017-07-25', '2017-07-26', '2017-07-27', '2017-07-28',
+               '2017-07-31'],
+              dtype='datetime64[ns]', freq='B')
+</pre></div>
+</div>
+</div>
+<p>We can get a general idea about the <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> column by plotting it. Note how the index time series is shown nicely on the x-axis.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">wh2</span><span class="p">[</span><span class="s2">"Temperature"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/pandas3_100_0.png" src="_images/pandas3_100_0.png"/>
+</div>
+</div>
+<p>The graph looks a bit messy at this level of detail. We can smooth it by taking averages over a sliding window of length 30 days:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rolling</span> <span class="o">=</span> <span class="n">wh2</span><span class="o">.</span><span class="n">Temperature</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rolling</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Rolling [window=30,center=True,axis=0]
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"Temperature"</span> <span class="p">:</span> <span class="n">wh2</span><span class="o">.</span><span class="n">Temperature</span><span class="p">,</span> <span class="s2">"Rolling mean"</span> <span class="p">:</span> <span class="n">rolling</span><span class="o">.</span><span class="n">mean</span><span class="p">()})</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/pandas3_103_0.png" src="_images/pandas3_103_0.png"/>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-8-(bicycle-timeseries)">Exercise 8 (bicycle timeseries)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">bicycle_timeseries</span></code> that</p>
+<ul class="simple">
+<li>reads the data set</li>
+<li>cleans it</li>
+<li>turns its <code class="docutils literal notranslate"><span class="pre">Päivämäärä</span></code> column into (row) DatetimeIndex (that is, to row names) of that DataFrame</li>
+<li>returns the new DataFrame</li>
+</ul>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-9-(commute)">Exercise 9 (commute)</a></div>
+<p>In function <code class="docutils literal notranslate"><span class="pre">commute</span></code> do the following:</p>
+<p>Use the function <code class="docutils literal notranslate"><span class="pre">bicycle_timeseries</span></code> to get the bicycle data. Restrict to August 2017, group by the weekday, aggregate by summing. Set the <code class="docutils literal notranslate"><span class="pre">Weekday</span></code> column to numbers from one to seven. Then set the column <code class="docutils literal notranslate"><span class="pre">Weekday</span></code> as the (row) index. Return the resulting DataFrame from the function.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">main</span></code> function plot the DataFrame. Xticklabels should be the weekdays. Don’t forget to call <code class="docutils literal notranslate"><span class="pre">show</span></code> function!</p>
+<p>If you want the xticklabels to be <code class="docutils literal notranslate"><span class="pre">['Mon',</span> <span class="pre">'Tue',</span> <span class="pre">'Wed',</span> <span class="pre">'Thu',</span> <span class="pre">'Fr',</span> <span class="pre">'Sat',</span> <span class="pre">'Sun']</span></code> instead of numbers (1,..,7), then it may get a bit messy. There seems to be a problem with non-numeric <code class="docutils literal notranslate"><span class="pre">x</span></code> values. You could try the following after plotting, but you don’t have to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">weekdays</span><span class="o">=</span><span class="s2">"x mon tue wed thu fri sat sun"</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">weekdays</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr/></div>
+<div class="section" id="Additional-information">
+<h2>Additional information<a class="headerlink" href="#Additional-information" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf">Pandas cheat sheet</a> Summary of most important Pandas’ functions and methods.</p>
+<p>Read the article <a class="reference external" href="https://www.jstatsoft.org/article/view/v059i10/v59i10.pdf">Tidy Data</a>. The article uses the statistical software R as an example, but the ideas are relevant in general. Pandas operations maintain data in the tidy format.</p>
+<p>Pandas handles only one dimensional data (Series) and two dimensional data (DataFrame). While you can use <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/user_guide/advanced.html#hierarchical-indexing-multiindex">hierarchical indices</a> to simulate higher dimensional arrays, you should use the <a class="reference external" href="http://xarray.pydata.org/en/stable/index.html">xarray</a> library, if you need proper higher-dimensional arrays with labels. It is basically a cross between NumPy and Pandas.</p>
+<!--NAVIGATION--></div>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="linear_regression.html" rel="next" title="Machine learning: linear regression">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="pandas2.html" rel="prev" title="Pandas (continues)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

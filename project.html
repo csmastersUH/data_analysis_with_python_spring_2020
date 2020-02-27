@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project work — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="exam.html" rel="next" title="Exam"/>
+<link href="pca.html" rel="prev" title="ML: Principal component analysis"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sequence-analysis">Sequence analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#regression-analysis">Regression analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Regression analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Sequence analysis</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html">Docs</a> »</li>
+<li>Project work</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/project.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="project-work">
+<h1>Project work<a class="headerlink" href="#project-work" title="Permalink to this headline">¶</a></h1>
+<p>Choose a project work. There are two projects to choose from:</p>
+<ol class="arabic simple">
+<li>biological sequence analysis (part07)</li>
+<li>regression analysis on medical data (part08)</li>
+</ol>
+<p>After you have completed 65% of points from week 6, download the exercises
+and/or notebooks from the TMC server.
+Then try to solve as many exercises as you can.
+Then submit your solutions to the TMC server.
+Note that the TMC server is only used here for helping you
+to proceed with the project work. Your final project work
+returned to Moodle can include partial solutions.</p>
+<p>The two projects differ a lot in their workflow. See the below sections
+on individual projects to see in detail how solving, testing and reporting
+of exercises are done in each project.</p>
+<p>Save the report as a Jupyter notebook file (with <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> extension)
+and submit this file to Moodle.
+After this you will need to give feedback for your own
+report and two other reports. The feedback is given in two categories:</p>
+<p>1. Give a grade 0…5 on the correctness of solutions, and provide
+constructive comments where you find places for improvement.</p>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li>Less than half of assignments solved satisfactorily</li>
+<li>At least half of assignments solved satisfactorily</li>
+<li>At least half of assignment solved pretty correctly</li>
+<li>65% of assignments solved pretty correctly</li>
+<li>80% assignments solved pretty correctly</li>
+<li>All but 1-2 assignments solved almost perfectly</li>
+</ol>
+</div></blockquote>
+<p>To assess the percentage of correctness, you may give 0.5 points from
+a serious (but failed) attempt, 1 point from essentially correct
+answer, and divide total points by maximum points. Essentially correct
+means an answer that might not go through an automatic test for some
+minor reason.</p>
+<ol class="arabic simple" start="2">
+<li>Give a grade 0…5 on the clarity of writing and code, and provide
+constructive comments where you find places for improvement.</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li>Writing and code are not at sufficient level in the solved assignments</li>
+<li>Writing and code are mostly at sufficient level in the solved assignments</li>
+<li>Writing and code are mostly at satisfactory level in the solved assignments</li>
+<li>Writing and code are mostly at good level in the solved assignments</li>
+<li>Writing and code are mostly at very good level in the solved assignments</li>
+<li>Writing and code are mostly at excellent level in the solved assignments</li>
+</ol>
+</div></blockquote>
+<p>In each category, in addition to textual feedback, give also
+a grade in the range 0, 1, …, 5.
+The final grade for the project work will be the weighted average
+over the two categories, where category 1 has weight 2, and
+the second has weight 1. More details can be found in the Moodle.
+You must get at least grade 1 for the project work.</p>
+<p>You have ten days to finish the project solutions and report
+(26.4. - 6.5.). After that you have 7 days to do the peer review.
+Deadline for peer review is on 13.5.</p>
+<div class="section" id="sequence-analysis">
+<h2>Sequence analysis<a class="headerlink" href="#sequence-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Complete the exercises of the project like normal weekly exercises.</p>
+<p>Copy the file <code class="docutils literal notranslate"><span class="pre">project_notebook_sequence_analysis.ipynb</span></code> to folder
+<code class="docutils literal notranslate"><span class="pre">hy-data-analysis-with-python-spring-2019</span></code>,
+where your solutions are. Start Jupyter with
+<code class="docutils literal notranslate"><span class="pre">jupyter-notebook</span> <span class="pre">project_notebook_sequence_analysis.ipynb</span></code>.
+Fill in the missing boxes. Run all cells; it should find the source code
+of your solutions, and include them in the notebook. Do not modify lines that say <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">exercise</span> <span class="pre">x</span></code>.
+Avoid too long lines as they might not be visible without horizontal scrolling.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The internal references in the notebook aren’t weren’t readable. It should be fixed now,
+but if you already downloaded it before, you can fetch the updated version from
+<a class="reference external" href="https://www.cs.helsinki.fi/u/jttoivon/dap/project_notebook_sequence_analysis.ipynb">here</a>.
+The pdf version is available from <a class="reference external" href="https://www.cs.helsinki.fi/u/jttoivon/dap/project_notebook_sequence_analysis.pdf">here</a>.</p>
+</div>
+<p>Next to each exercise in the report there are also two text boxes for you
+to fill. In the first box, in your own words, describe the idea of the
+solution to the exercise. In the second box analyse the results,
+including how the program worked with the given example input or
+your own examples. Make sure the notebook includes your solutions and looks readable,
+and then submit the resulting notebook to Moodle.</p>
+<p>NOTE. Exercises in section “Stationary and equilibrium distributions (extra)”
+(exercises 20, 21, and 22) are not obligatory. Thus, you only need to do
+19 exercises, if you are aiming to get full points.</p>
+</div>
+<div class="section" id="regression-analysis">
+<h2>Regression analysis<a class="headerlink" href="#regression-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Read the introduction <code class="docutils literal notranslate"><span class="pre">introduction-to-regression-analysis.pdf</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It looks like the TMC server corrupted the pdf, you can read it from
+<a class="reference external" href="https://www.cs.helsinki.fi/u/jttoivon/dap/introduction-to-regression-analysis.pdf">here</a></p>
+</div>
+<p>Write solutions to exercises directly into the cells of the given Jupyter notebook.
+Do not modify lines that say <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">exercise</span> <span class="pre">x</span></code>; without those the tests won’t work.
+Don’t use additional cells, and do in each cell exactly as the instructions say.
+Save the file and run <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">test</span></code>. The tests read and execute directly the cells
+of the notebook.
+Make sure the notebook includes you solutions and looks readable,
+and then submit the resulting notebook to Moodle.</p>
+</div>
+</div>
+<div class="section" id="running-tests-when-peer-reviewing-students-notebooks">
+<h1>Running tests when peer-reviewing students notebooks<a class="headerlink" href="#running-tests-when-peer-reviewing-students-notebooks" title="Permalink to this headline">¶</a></h1>
+<p>If you want, you can run tests on the work you are reviewing, to help
+assess the correctness of the solutions. Note that there can be bugs in
+the tests too.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure you don’t accidentally delete your own solutions, when
+testing other student’s work. Don’t do the tests where your own
+solutions are.</p>
+</div>
+<div class="section" id="id1">
+<h2>Regression analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Go to a temporary working area (like <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> on Unix) so you don’t accidentally overwrite
+your own solutions. Run <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">download</span> <span class="pre">-a</span> <span class="pre">hy-data-analysis-with-python-spring-2019</span></code>
+to get the tests. Store student’s notebook to file
+<code class="docutils literal notranslate"><span class="pre">part08-e01_regression/src/project_notebook_regression_analysis.ipynb</span></code>.
+Run the tests using <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">test</span> <span class="pre">part08-e01_regression</span></code>.</p>
+</div>
+<div class="section" id="id2">
+<h2>Sequence analysis<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Go to a temporary working area (like <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> on Unix) so you don’t accidentally overwrite
+your own solutions. Run <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">download</span> <span class="pre">-a</span> <span class="pre">hy-data-analysis-with-python-spring-2019</span></code>
+to get the tests. Store student’s notebook to file
+<code class="docutils literal notranslate"><span class="pre">hy-data-analysis-with-python-spring-2019/project_notebook_sequence_analysis.ipynb</span></code>.
+In the same folder as the notebook, download and save the script
+<a class="reference external" href="https://www.cs.helsinki.fi/u/jttoivon/dap/split-bio-sequence-notebook-into-files.py">split-bio-sequence-notebook-into-files.py</a> (version 2), which will extract the solutions
+from notebook to files.
+Run the script with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">split-bio-sequence-notebook-into-files.py</span></code>.
+This will overwrite existing files, so be careful!
+Run the tests using <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">test</span> <span class="pre">part07-e*</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="exam.html" rel="next" title="Exam">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="pca.html" rel="prev" title="ML: Principal component analysis"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

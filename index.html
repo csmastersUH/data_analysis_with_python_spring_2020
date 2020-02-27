@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome to Data analysis with Python - Spring 2019 — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="instructions.html" rel="next" title="Initializing course environment"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="#"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="#">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="#">Docs</a> »</li>
+<li>Welcome to Data analysis with Python - Spring 2019</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="welcome-to-data-analysis-with-python-spring-2019">
+<h1>Welcome to Data analysis with Python - Spring 2019<a class="headerlink" href="#welcome-to-data-analysis-with-python-spring-2019" title="Permalink to this headline">¶</a></h1>
+<p>In this course an overview is given of different phases
+of the data analysis pipeline using Python and its data analysis
+ecosystem. What is typically done in data analysis? We assume that data is already
+available, so we only need to download it. After downloading the
+data it needs to be cleaned to enable further analysis. In the
+cleaning phase the data is converted to some uniform and consistent
+format. After which the data can, for instance, be</p>
+<ul class="simple">
+<li>combined or divided into smaller chunks</li>
+<li>grouped or sorted,</li>
+<li>condensed into small number of summary statistics</li>
+<li>numerical or string operations can be performed on the data</li>
+</ul>
+<p>The point is to manipulate the data into a form that enables discovery
+of relationships and regularities among the elements of data.
+Visualization of data often helps to get a better understanding of the data.
+Another useful tool for data analysis is machine learning,
+where a mathematical or statistical model
+is fitted to the data. These models can then be used to make predictions
+of new data, or can be used to explain or describe the current data.</p>
+<p>Python is a popular, easy to learn programming language.
+It is commonly used in the field of data analysis, because
+there are very efficient libraries available to process large amounts of data.
+This so called <em>data analysis stack</em> includes libraries such
+of NumPy, Pandas, Matplotlib and SciPy that we will familiarize ourselves
+with during this course.</p>
+<p>No previous knowledge of Python is needed as will start with
+a quick introduction to Python. It is however assumed that
+you have good programming skills in some language.
+In addition, linear algebra and probability calculus are prerequisites
+of this course.
+The course lasts for seven weeks and gives 5 credit units.
+It is recommended that you do this course in the end of bachelor
+degree or in the beginning of masters degree; preferably
+before the course “Introduction to Data Science”.</p>
+<div class="section" id="passing-the-course">
+<h2>Passing the course<a class="headerlink" href="#passing-the-course" title="Permalink to this headline">¶</a></h2>
+<p>From the weekly programming exercises you need to get 80% of the points.
+If you succeed in this, then you can start doing the project work
+(approximately 1 cu of work). After the project work and
+its peer reviewing is done, the you can take part in the final
+exam. The final exam consists of multiple choice questions on the
+themes discussed in the exercises. The final grade will be based
+on the project work, its peer review, and the exam.</p>
+<p>Note that this course requires a lot of work! Depending on your background
+it can take something between 5 to 20 hours per week.
+In addition to reading the course material, you sometimes may need to consult
+the online documentation of Python or its various libraries.</p>
+</div>
+<div class="section" id="schedule">
+<h2>Schedule<a class="headerlink" href="#schedule" title="Permalink to this headline">¶</a></h2>
+<p>Every week there are 15 - 20 programming exercises that you must
+solve and then submit to the TMC system for checking.
+In order to continue with next week’s exercises (and on this course), you
+need to get a certain percentage of the <strong>points</strong> from exercises of the previous week.
+These requirements are specified in the below table for each exercise week.
+Note that from some exercises it is possible to get more than one point.
+These exercises are divided into <em>parts</em>, where the parts are shown
+as Part 1, Part 2, etc. Each part gives one point.
+It is possible to submit, and get points for,
+an exercise you have completed at least partly.
+You can check your points from the <a class="reference external" href="https://tmc.mooc.fi/org/hy/courses/438">TMC server</a>.
+The deadlines, shown below, are hard and no exceptions will be made,
+so finish and submit your solutions early.</p>
+<p>Teaching workshop (pajaopetus) will be held weekly in Exactum building
+in Kumpula in room B221 on Thurdays 10.00 - 12.00 (14.3. - 5.5.).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%"/>
+<col width="27%"/>
+<col width="27%"/>
+<col width="35%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Week</th>
+<th class="head">Deadline</th>
+<th class="head">Points required</th>
+<th class="head">Theme</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>18.3.2019 23.59</td>
+<td>80%</td>
+<td>Basics of Python I</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>25.3.2019 23.59</td>
+<td>80%</td>
+<td>Basics of Python II,
+NumPy I</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>1.4.2019 23.59</td>
+<td>80%</td>
+<td>NumPy II,
+Visualization,
+Image processing,
+Data Analysis
+with Pandas I</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>8.4.2019 23.59</td>
+<td>75%</td>
+<td>Data Analysis
+with Pandas II</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>15.4.2019 23.59</td>
+<td>70%</td>
+<td>Data Analysis
+with Pandas III,
+Machine learning I</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>29.4.2019 23.59</td>
+<td>65%</td>
+<td>Machine learning II,
+Project</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>6.5.2019 23.59</td>
+<td> </td>
+<td>Project continues</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>13.5.2019 23.59</td>
+<td> </td>
+<td>Peer review,
+Exam</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="renewal-course-in-may">
+<h2>Renewal course in May<a class="headerlink" href="#renewal-course-in-may" title="Permalink to this headline">¶</a></h2>
+<p>The instructions are the same except for the points mentioned below.
+There is a single deadline for the exercises, but the exercises unlock
+only after the specified amount of points is achieved from the previous week.
+Use command <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">download</span> <span class="pre">hy-dap-spring-2019-renewal</span></code> to download the exercises.
+You can check your points from the <a class="reference external" href="https://tmc.mooc.fi/org/hy/courses/465">TMC server</a>.
+The deadlines, shown below, are hard and no exceptions will be made,
+so finish and submit your solutions early.</p>
+<p>No teaching workshop will be held.</p>
+<p>There is a Telegram group for this renewal course at
+<a class="reference external" href="https://t.me/dap19srenewal">https://t.me/dap19srenewal</a>.
+The browser version can be reached here <a class="reference external" href="https://web.telegram.org">Telegram</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%"/>
+<col width="27%"/>
+<col width="27%"/>
+<col width="35%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Week</th>
+<th class="head">Deadline</th>
+<th class="head">Points required</th>
+<th class="head">Theme</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>15.5.2019 23.59</td>
+<td>80%</td>
+<td>Basics of Python I</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>15.5.2019 23.59</td>
+<td>80%</td>
+<td>Basics of Python II,
+NumPy I</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>15.5.2019 23.59</td>
+<td>80%</td>
+<td>NumPy II,
+Visualization,
+Image processing,
+Data Analysis
+with Pandas I</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>15.5.2019 23.59</td>
+<td>75%</td>
+<td>Data Analysis
+with Pandas II</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>15.5.2019 23.59</td>
+<td>70%</td>
+<td>Data Analysis
+with Pandas III,
+Machine learning I</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>15.5.2019 23.59</td>
+<td>65%</td>
+<td>Machine learning II,
+Project</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>22.5.2019 23.59</td>
+<td> </td>
+<td>Project continues</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>29.5.2019 23.59</td>
+<td> </td>
+<td>Peer review,
+Exam</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="discussion-forum">
+<h2>Discussion forum<a class="headerlink" href="#discussion-forum" title="Permalink to this headline">¶</a></h2>
+<p>A Telegram chat room for the course has been opened. We recommend that you use
+the channel either through a web browser or the Telegram desktop application.</p>
+<p>You can reach the channel through this link:
+<a class="reference external" href="https://t.me/dap19s">https://t.me/dap19s</a>.
+The browser version can be reached here <a class="reference external" href="https://web.telegram.org">Telegram</a>.</p>
+<p>The discussion channel is based on peer support. The teachers of the course
+are participating the discussion on voluntary basis if time permits.</p>
+</div>
+<div class="section" id="software-libraries-used">
+<h2>Software libraries used<a class="headerlink" href="#software-libraries-used" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%"/>
+<col width="80%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" rowspan="2">Library</th>
+<th class="head" rowspan="2">Documentation</th>
+</tr>
+<tr class="row-even"></tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>numpy</td>
+<td><a class="reference external" href="https://docs.scipy.org/doc/numpy/">doc</a></td>
+</tr>
+<tr class="row-even"><td>pandas</td>
+<td><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/">doc</a></td>
+</tr>
+<tr class="row-odd"><td>matplotlib</td>
+<td><a class="reference external" href="https://matplotlib.org/api/api_overview.html">doc</a></td>
+</tr>
+<tr class="row-even"><td>scikit-learn</td>
+<td><a class="reference external" href="https://scikit-learn.org/stable/">doc</a></td>
+</tr>
+<tr class="row-odd"><td>scipy</td>
+<td><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/">doc</a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#1-Install-Python-and-the-needed-external-packages">1 Install Python and the needed external packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#2-Log-in-to-the-course">2 Log in to the course</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#3-Install-TMC-client">3 Install TMC client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#ipython">IPython</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#jupyter-notebook">Jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#executing-a-file-containing-python-code">Executing a file containing Python code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#correct-software-versions">Correct software versions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#when-logging-to-tmc-first-time-whats-the-server-address-it-asks">When logging to tmc first time, whats the server address it asks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#tmc-not-found">tmc not found</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#tmc-test-says-test-results-0-0-tests-passed"><cite>tmc test</cite> says: “Test results: 0/0 tests passed”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#what-version-of-python-should-i-use-what-is-the-name-of-the-executable">What version of Python should I use? What is the name of the executable?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-to-load-a-file-that-resides-in-the-src-folder">How to load a file that resides in the src folder?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#tests-complain-about-missing-attribute-assert-called-assert-called-once">Tests complain about missing attribute assert_called, assert_called_once, …</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#modulenotfounderror-no-module-named-somelibrary">ModuleNotFoundError: No module named ‘somelibrary’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#i-cannot-understand-the-error-message-from-a-failed-test-case">I cannot understand the error message from a failed test case</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#Basic-concepts">Basic concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#String-handling">String handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#Modules">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#Summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics2.html#Regular-expressions">Regular expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics2.html#Basic-file-processing">Basic file processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics2.html#sys-module">sys module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics2.html#Objects-and-classes">Objects and classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics2.html#Exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics2.html#Sequences,-iterables,-generators:-revisited">Sequences, iterables, generators: revisited</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#Creation-of-arrays">Creation of arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#Array-types-and-attributes">Array types and attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#Indexing,-slicing-and-reshaping">Indexing, slicing and reshaping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#Array-concatenation,-splitting-and-stacking">Array concatenation, splitting and stacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#Fast-computation-using-universal-functions">Fast computation using universal functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#Aggregations:-max,-min,-sum,-mean,-standard-deviation...">Aggregations: max, min, sum, mean, standard deviation…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#Broadcasting">Broadcasting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy.html#Summary-(week-2)">Summary (week 2)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="numpy2.html#Comparisons-and-masking">Comparisons and masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy2.html#Fancy-indexing">Fancy indexing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy2.html#Sorting-arrays">Sorting arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy2.html#Matrix-operations">Matrix operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy2.html#Solving-system-of-linear-equations">Solving system of linear equations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib.html#Simple-figure">Simple figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib.html#Subfigures">Subfigures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib.html#Other-data-visualization-libraries-for-Python">Other data visualization libraries for Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="image_processing.html#Finding-clusters-in-an-image">Finding clusters in an image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pandas1.html#Creation-and-indexing-of-series">Creation and indexing of series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas1.html#Summary-(week-3)">Summary (week 3)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas2.html">Pandas (continues)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html#Creation-of-dataframes">Creation of dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html#Accessing-columns-and-rows-of-a-dataframe">Accessing columns and rows of a dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html#Alternative-indexing-and-data-selection">Alternative indexing and data selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html#Summary-statistics">Summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html#Missing-data">Missing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html#Converting-columns-from-one-type-to-another">Converting columns from one type to another</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html#String-processing">String processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html#Additional-information">Additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html#Summary-(week-4)">Summary (week 4)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pandas3.html#Catenating-datasets">Catenating datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas3.html#Merging-dataframes">Merging dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas3.html#Aggregates-and-groupings">Aggregates and groupings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas3.html#Time-series">Time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas3.html#Additional-information">Additional information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear_regression.html#Linear-regression">Linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_regression.html#Additional-information">Additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_regression.html#Summary-(week-5)">Summary (week 5)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bayes.html#Another-example">Another example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bayes.html#Text-classification">Text classification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#Simple-example">Simple example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#More-complicated-example">More complicated example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#Clustering-digits">Clustering digits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#Hierarchical-clustering">Hierarchical clustering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pca.html#Principal-component-analysis">Principal component analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pca.html#Summary-(week-6)">Summary (week 6)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project.html#sequence-analysis">Sequence analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project.html#regression-analysis">Regression analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project.html#id1">Regression analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project.html#id2">Sequence analysis</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="instructions.html" rel="next" title="Initializing course environment">Next <span class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

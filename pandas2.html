@@ -1,0 +1,3030 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pandas (continues) — Data analysis with Python - Spring 2019  documentation</title>
+<script src="_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js" type="text/javascript"></script>
+<script src="_static/underscore.js" type="text/javascript"></script>
+<script src="_static/doctools.js" type="text/javascript"></script>
+<script src="_static/language_data.js" type="text/javascript"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="pandas3.html" rel="next" title="Pandas (continues)"/>
+<link href="pandas1.html" rel="prev" title="Pandas"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="index.html"> Data analysis with Python - Spring 2019
+          
+
+          
+          </a>
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Initializing course environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 2:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics2.html">Python (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">NumPy</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 3:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numpy2.html">NumPy (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_processing.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas1.html">Pandas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week 4:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pandas (continues)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Creation-of-dataframes">Creation of dataframes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Creating-DataFrames-from-a-NumPy-array">Creating DataFrames from a NumPy array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Creating-DataFrames-from-columns">Creating DataFrames from columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Creating-DataFrames-from-rows">Creating DataFrames from rows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Accessing-columns-and-rows-of-a-dataframe">Accessing columns and rows of a dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Alternative-indexing-and-data-selection">Alternative indexing and data selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Summary-statistics">Summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Missing-data">Missing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Converting-columns-from-one-type-to-another">Converting columns from one type to another</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#String-processing">String processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Additional-information">Additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Summary-(week-4)">Summary (week 4)</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Week 5:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pandas3.html">Pandas (continues)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_regression.html">Machine learning: linear regression</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week6:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">ML: Naive Bayes classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">ML: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">ML: Principal component analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week7:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Week8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exam.html">Exam</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="index.html">Data analysis with Python - Spring 2019</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html">Docs</a> »</li>
+<li>Pandas (continues)</li>
+<li class="wy-breadcrumbs-aside">
+<a href="_sources/pandas2.ipynb.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition note">
+This page was generated from <a class="reference external" href="https://github.com/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas2.ipynb">pandas2.ipynb</a>.
+<span class="raw-html"><br/><a href="https://colab.research.google.com/github/jttoivon/data-analysis-with-python-spring-2019/blob/master/pandas2.ipynb"><img align="left" alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" title="Open and Execute in Google Colaboratory"/></a></span>
+<span class="raw-html"><br/></span></div>
+<!--NAVIGATION--><table border="1" class="docutils">
+<colgroup>
+<col width="33%"/>
+<col width="33%"/>
+<col width="33%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+<th class="head"><ul class="first last simple">
+<li></li>
+</ul>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#Exercise-1-(cities)">Exercise 1 (cities)</a></td>
+<td><a class="reference external" href="#Exercise-2-(powers-of-series)">Exercise 2 (powers of series)</a></td>
+<td><a class="reference external" href="#Exercise-3-(municipal-information)">Exercise 3 (municipal information)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#Exercise-4-(municipalities-of-finland)">Exercise 4 (municipalities of finland)</a></td>
+<td><a class="reference external" href="#Exercise-5-(swedish-and-foreigners)">Exercise 5 (swedish and foreigners)</a></td>
+<td><a class="reference external" href="#Exercise-6-(growing-municipalities)">Exercise 6 (growing municipalities)</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#Exercise-7-(subsetting-with-loc)">Exercise 7 (subsetting with loc)</a></td>
+<td><a class="reference external" href="#Exercise-8-(subsetting-by-positions)">Exercise 8 (subsetting by positions)</a></td>
+<td><a class="reference external" href="#Exercise-9-(snow-depth)">Exercise 9 (snow depth)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#Exercise-10-(average-temperature)">Exercise 10 (average temperature)</a></td>
+<td><a class="reference external" href="#Exercise-11-(below-zero)">Exercise 11 (below zero)</a></td>
+<td><a class="reference external" href="#Exercise-12-(cyclists)">Exercise 12 (cyclists)</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#Exercise-13-(missing-value-types)">Exercise 13 (missing value types)</a></td>
+<td><a class="reference external" href="#Exercise-14-(special-missing-values)">Exercise 14 (special missing values)</a></td>
+<td><a class="reference external" href="#Exercise-15-(last-week)">Exercise 15 (last week)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#Exercise-16-(split-date)">Exercise 16 (split date)</a></td>
+<td><a class="reference external" href="#Exercise-17-(cleaning-data)">Exercise 17 (cleaning data)</a></td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="Pandas-(continues)">
+<h1>Pandas (continues)<a class="headerlink" href="#Pandas-(continues)" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Creation-of-dataframes">
+<h2>Creation of dataframes<a class="headerlink" href="#Creation-of-dataframes" title="Permalink to this headline">¶</a></h2>
+<p>The DataFrame is essentially a two dimensional object, and it can be created in three different ways:</p>
+<ul class="simple">
+<li>out of a two dimensional NumPy array</li>
+<li>out of given columns</li>
+<li>out of given rows</li>
+</ul>
+<div class="section" id="Creating-DataFrames-from-a-NumPy-array">
+<h3>Creating DataFrames from a NumPy array<a class="headerlink" href="#Creating-DataFrames-from-a-NumPy-array" title="Permalink to this headline">¶</a></h3>
+<p>In the following example a DataFrame with 2 rows and 3 column is created. The row and column indices are given explicitly.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"First"</span><span class="p">,</span> <span class="s2">"Second"</span><span class="p">,</span> <span class="s2">"Third"</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>First</th>
+<th>Second</th>
+<th>Third</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>a</th>
+<td>1.542593</td>
+<td>-1.671786</td>
+<td>1.515713</td>
+</tr>
+<tr>
+<th>b</th>
+<td>-0.503594</td>
+<td>0.383179</td>
+<td>1.101714</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Note that now both the rows and columns can be accessed using the special <code class="docutils literal notranslate"><span class="pre">Index</span></code> object:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span>                            <span class="c1"># These are the "row names"</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Index(['a', 'b'], dtype='object')
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>                          <span class="c1"># These are the "column names"</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Index(['First', 'Second', 'Third'], dtype='object')
+</pre></div>
+</div>
+</div>
+<p>If either <code class="docutils literal notranslate"><span class="pre">columns</span></code> or <code class="docutils literal notranslate"><span class="pre">index</span></code> argument is left out, then an implicit integer index will be used:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df2</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">])</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>a</th>
+<td>1.141325</td>
+<td>-1.964590</td>
+<td>0.955332</td>
+</tr>
+<tr>
+<th>b</th>
+<td>1.540851</td>
+<td>0.311107</td>
+<td>-0.635765</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Now the column index is an object similar to Python’s builtin <code class="docutils literal notranslate"><span class="pre">range</span></code> type:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df2</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>RangeIndex(start=0, stop=3, step=1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Creating-DataFrames-from-columns">
+<h3>Creating DataFrames from columns<a class="headerlink" href="#Creating-DataFrames-from-columns" title="Permalink to this headline">¶</a></h3>
+<p>A column can be specified as a list, an NumPy array, or a Pandas’ Series. The names of the columns can be given either with the <code class="docutils literal notranslate"><span class="pre">columns</span></code> parameter, or if Series objects are used, then the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute of each Series is used as the column name.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">s1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1
+1    2
+2    3
+dtype: int64
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">"b"</span><span class="p">)</span>
+<span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    4
+1    5
+2    6
+Name: b, dtype: int64
+</pre></div>
+</div>
+</div>
+<p>Give the column name explicitly:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"a"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute of Series s2 as the column name:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>4</td>
+</tr>
+<tr>
+<th>1</th>
+<td>5</td>
+</tr>
+<tr>
+<th>2</th>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>If using multiple columns, then they must be given as the dictionary, whose keys give the column names and values are the actual column content.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"a"</span><span class="p">:</span> <span class="n">s1</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span> <span class="n">s2</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Creating-DataFrames-from-rows">
+<h3>Creating DataFrames from rows<a class="headerlink" href="#Creating-DataFrames-from-rows" title="Permalink to this headline">¶</a></h3>
+<p>We can give a list of rows as a parameter to the DataFrame constructor. Each row is given as a dict, list, Series, or NumPy array. If we want to give names for the columns, then either the rows must be dictionaries, where the key is the column name and the values are the elements of the DataFrame on that row and column, or else the column names must be given explicitly. An example of this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">"Wage"</span> <span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">"Name"</span> <span class="p">:</span> <span class="s2">"Jack"</span><span class="p">,</span> <span class="s2">"Age"</span> <span class="p">:</span> <span class="mi">21</span><span class="p">},</span> <span class="p">{</span><span class="s2">"Wage"</span> <span class="p">:</span> <span class="mi">1500</span><span class="p">,</span> <span class="s2">"Name"</span> <span class="p">:</span> <span class="s2">"John"</span><span class="p">,</span> <span class="s2">"Age"</span> <span class="p">:</span> <span class="mi">29</span><span class="p">}])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Age</th>
+<th>Name</th>
+<th>Wage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>21</td>
+<td>Jack</td>
+<td>1000</td>
+</tr>
+<tr>
+<th>1</th>
+<td>29</td>
+<td>John</td>
+<td>1500</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Or:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1000</span><span class="p">,</span> <span class="s2">"Jack"</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="p">[</span><span class="mi">1500</span><span class="p">,</span> <span class="s2">"John"</span><span class="p">,</span> <span class="mi">29</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Wage"</span><span class="p">,</span> <span class="s2">"Name"</span><span class="p">,</span> <span class="s2">"Age"</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Wage</th>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1000</td>
+<td>Jack</td>
+<td>21</td>
+</tr>
+<tr>
+<th>1</th>
+<td>1500</td>
+<td>John</td>
+<td>29</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title fa fa-exclamation-circle">Note that the order of columns is not always the same order as they were in the parameter list. In this case you can use the <code class="docutils literal notranslate"><span class="pre">columns</span></code> parameter to specify the exact order.</p>
+<p>In the earlier case, however, where we created DataFrames from a dictionary of columns, the order of columns should be the same as in the parameter dictionary in the recent versions of Python and Pandas.</p>
+</div>
+<p>In the sense of information content the order of columns should not matter, but sometimes you want to specify a certain order to make the Frame more readable, or to make it obey some semantic meaning of column order.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-1-(cities)">Exercise 1 (cities)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">cities</span></code> that returns the following DataFrame of top Finnish cities by population:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 <span class="n">Population</span> <span class="n">Total</span> <span class="n">area</span>
+<span class="n">Helsinki</span>         <span class="mi">643272</span>     <span class="mf">715.48</span>
+<span class="n">Espoo</span>            <span class="mi">279044</span>     <span class="mf">528.03</span>
+<span class="n">Tampere</span>          <span class="mi">231853</span>     <span class="mf">689.59</span>
+<span class="n">Vantaa</span>           <span class="mi">223027</span>     <span class="mf">240.35</span>
+<span class="n">Oulu</span>             <span class="mi">201810</span>     <span class="mf">3817.52</span>
+</pre></div>
+</div>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-2-(powers-of-series)">Exercise 2 (powers of series)</a></div>
+<p>Make function <code class="docutils literal notranslate"><span class="pre">powers_of_series</span></code> that takes a Series and a positive integer <code class="docutils literal notranslate"><span class="pre">k</span></code> as parameters and returns a DataFrame. The resulting DataFrame should have the same index as the input Series. The first column of the dataFrame should be the input Series, the second column should contain the Series raised to power of two. The third column should contain the Series raised to the power of three, and so on until (and including) power of <code class="docutils literal notranslate"><span class="pre">k</span></code>. The columns should have indices from 1 to k.</p>
+<p>The values should be numbers, but the index can have any type. Test your function from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function. Example of usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcd"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">powers_of_series</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Should print:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>
+<span class="n">a</span>  <span class="mi">1</span>   <span class="mi">1</span>   <span class="mi">1</span>
+<span class="n">b</span>  <span class="mi">2</span>   <span class="mi">4</span>   <span class="mi">8</span>
+<span class="n">c</span>  <span class="mi">3</span>   <span class="mi">9</span>  <span class="mi">27</span>
+<span class="n">d</span>  <span class="mi">4</span>  <span class="mi">16</span>  <span class="mi">64</span>
+</pre></div>
+</div>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-3-(municipal-information)">Exercise 3 (municipal information)</a></div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">main</span></code> function load a data set of municipal information from the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder (originally from <a class="reference external" href="https://pxnet2.stat.fi/PXWeb/pxweb/en/">Statistics Finland</a>). Use the function <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>, and note that the separator is a tabulator.</p>
+<p>Print the shape of the DataFrame (number of rows and columns) and the column names in the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Shape</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span><span class="n">c</span>
+<span class="n">Columns</span><span class="p">:</span>
+<span class="n">col1</span>
+<span class="n">col2</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Note, sometimes file ending <code class="docutils literal notranslate"><span class="pre">tsv</span></code> (tab separated values) is used instead of <code class="docutils literal notranslate"><span class="pre">csv</span></code> if the separator is a tab.</p>
+<hr/></div>
+</div>
+<div class="section" id="Accessing-columns-and-rows-of-a-dataframe">
+<h2>Accessing columns and rows of a dataframe<a class="headerlink" href="#Accessing-columns-and-rows-of-a-dataframe" title="Permalink to this headline">¶</a></h2>
+<p>Even though DataFrames are basically just two dimensional arrays, the way to access their elements is different from NumPy arrays. There are a couple of complications, which we will go through in this section.</p>
+<p>Firstly, the bracket notation <code class="docutils literal notranslate"><span class="pre">[]</span></code> does not allow the use of an index pair to access a single element of the DataFrame. Instead only one dimension can be specified.</p>
+<p>Well, does this dimension specify the rows of the DataFrame, like NumPy arrays if only one index is given, or does it specify the columns of the DataFrame?</p>
+<p>It depends!</p>
+<p>If an integer is used, then it specifies a column of the DataFrame in the case the <strong>explicit</strong> indices for the column contain that integer. In any other case an error will result. For example, with the above DataFrame, the following indexing will not work, because the explicit column index consist of the column names “Name” and “Wage” which are not integers.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Key error"</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Key error
+</pre></div></div>
+</div>
+<p>The following will however work.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Wage"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1000
+1    1500
+Name: Wage, dtype: int64
+</pre></div>
+</div>
+</div>
+<p>As does the fancy indexing:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="p">[[</span><span class="s2">"Wage"</span><span class="p">,</span> <span class="s2">"Name"</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Wage</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1000</td>
+<td>Jack</td>
+</tr>
+<tr>
+<th>1</th>
+<td>1500</td>
+<td>John</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>If one indexes with a slice or a boolean mask, then the <strong>rows</strong> are referred to. Examples of these:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>                           <span class="c1"># slice</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Wage</th>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1000</td>
+<td>Jack</td>
+<td>21</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Wage</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">]</span>               <span class="c1"># boolean mask</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Wage</th>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1</th>
+<td>1500</td>
+<td>John</td>
+<td>29</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>If some of the above calls return a Series object, then you can chain the bracket calls to get a single value from the DataFrame:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Wage"</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>                    <span class="c1"># Note order of dimensions</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>1500
+</pre></div>
+</div>
+</div>
+<p>But there is a better way to achieve this, which we will see in the next section.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-4-(municipalities-of-finland)">Exercise 4 (municipalities of finland)</a></div>
+<p>Load again the municipal information DataFrame. The rows of the DataFrame correspond to various geographical areas of Finland. The first row is about Finland as a whole, then rows from Akaa to Äänekoski are municipalities of Finland in alphabetical order. After that some larger regions are listed.</p>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">municipalities_of_finland</span></code> that returns a DataFrame containing only rows about municipalities. Give an appropriate argument for <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> so that it interprets the column about region name as the (row) index. This way you can index the DataFrame with the names of the regions.</p>
+<p>Test your function from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-5-(swedish-and-foreigners)">Exercise 5 (swedish and foreigners)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">swedish_and_foreigners</span></code> that</p>
+<ul class="simple">
+<li>Reads the municipalities data set</li>
+<li>Takes the subset about municipalities (like in previous exercise)</li>
+<li>Further take a subset of rows that have proportion of Swedish speaking people and proportion of foreigners both above 5 % level</li>
+<li>From this data set take only columns about population, the proportions of Swedish speaking people and foreigners, that is three columns.</li>
+</ul>
+<p>The function should return this final DataFrame.</p>
+<p>Do you see some kind of correlation between the columns about Swedish speaking and foreign people? Do you see correlation between the columns about the population and the proportion of Swedish speaking people in this subset?</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-6-(growing-municipalities)">Exercise 6 (growing municipalities)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">growing_municipalities</span></code> that gets subset of municipalities (a DataFrame) as a parameter and returns the proportion of municipalities with increasing population in that subset.</p>
+<p>Test your function from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function using some subset of the municipalities. Print the proportion as percentages using 1 decimal precision.</p>
+<p>Example output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Proportion</span> <span class="n">of</span> <span class="n">growing</span> <span class="n">municipalities</span><span class="p">:</span> <span class="mf">12.4</span><span class="o">%</span>
+</pre></div>
+</div>
+<hr/></div>
+<div class="section" id="Alternative-indexing-and-data-selection">
+<h2>Alternative indexing and data selection<a class="headerlink" href="#Alternative-indexing-and-data-selection" title="Permalink to this headline">¶</a></h2>
+<p>If the explanation in the previous section sounded confusing or ambiguous, or if you didn’t understand a thing, you don’t have to worry.</p>
+<p>There is another way to index Pandas DataFrames, which</p>
+<ul class="simple">
+<li>allows use of index pairs to access a single element</li>
+<li>has the same order of dimensions as NumPy: first index specifies rows, second columns</li>
+<li>is not ambiguous about implicit or explicit indices</li>
+</ul>
+<p>Pandas DataFrames have attributes <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">iloc</span></code> that have the above qualities. You can use <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">iloc</span></code> attributes and forget everything about the previous section. Or you can use these attributes and sometimes use the methods from the previous section as shortcuts if you understand them well.</p>
+<p>The difference between <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">iloc</span></code> attributes is that the former uses explicit indices and the latter uses the implicit integer indices. Examples of use:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Wage"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>1500
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>             <span class="c1"># Right lower corner of the DataFrame</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>29
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Name"</span><span class="p">,</span> <span class="s2">"Wage"</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Name    John
+Wage    1500
+Name: 1, dtype: object
+</pre></div>
+</div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">iloc</span></code> everything works like with NumPy arrays: indexing, slicing, fancy indexing, masking and their combinations. With <code class="docutils literal notranslate"><span class="pre">loc</span></code> it is the same but now the names in the explicit indices are used for specifying rows and columns. Make sure your understand why the above examples work as they do!</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-7-(subsetting-with-loc)">Exercise 7 (subsetting with loc)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">subsetting_with_loc</span></code> that in one go takes the subset of municipalities from Akaa to Äänekoski and restricts it to columns: “Population”, “Share of Swedish-speakers of the population, %”, and “Share of foreign citizens of the population, %”. The function should return this content as a DataFrame. Use the attribute <code class="docutils literal notranslate"><span class="pre">loc</span></code>.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-8-(subsetting-by-positions)">Exercise 8 (subsetting by positions)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">subsetting_by_positions</span></code> that does the following.</p>
+<p>Read the data set of the top forty singles from the beginning of the year 1964 from the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder. Return the top 10 entries and only the columns <code class="docutils literal notranslate"><span class="pre">Title</span></code> and <code class="docutils literal notranslate"><span class="pre">Artist</span></code>. Get these elements by their positions, that is, by using a single call to the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> attribute. The function should return these as a DataFrame.</p>
+<hr/></div>
+<div class="section" id="Summary-statistics">
+<h2>Summary statistics<a class="headerlink" href="#Summary-statistics" title="Permalink to this headline">¶</a></h2>
+<p>The summary statistic methods work in a similar way as their counter parts in NumPy. By default, the aggregation is done over columns.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"https://www.cs.helsinki.fi/u/jttoivon/dap/data/fmi/kumpula-weather-2017.csv"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh2</span> <span class="o">=</span> <span class="n">wh</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"Year"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># taking averages over these is not very interesting</span>
+<span class="n">wh2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Precipitation amount (mm)    1.966301
+Snow depth (cm)              0.966480
+Air temperature (degC)       6.527123
+dtype: float64
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">describe</span></code> method of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object gives different summary statistics for each (numeric) column. The result is a DataFrame. This method gives a good overview of the data, and is typically used in the exploratory data analysis phase.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>m</th>
+<th>d</th>
+<th>Precipitation amount (mm)</th>
+<th>Snow depth (cm)</th>
+<th>Air temperature (degC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>count</th>
+<td>365.0</td>
+<td>365.000000</td>
+<td>365.000000</td>
+<td>365.000000</td>
+<td>358.000000</td>
+<td>365.000000</td>
+</tr>
+<tr>
+<th>mean</th>
+<td>2017.0</td>
+<td>6.526027</td>
+<td>15.720548</td>
+<td>1.966301</td>
+<td>0.966480</td>
+<td>6.527123</td>
+</tr>
+<tr>
+<th>std</th>
+<td>0.0</td>
+<td>3.452584</td>
+<td>8.808321</td>
+<td>4.858423</td>
+<td>3.717472</td>
+<td>7.183934</td>
+</tr>
+<tr>
+<th>min</th>
+<td>2017.0</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>-1.000000</td>
+<td>-1.000000</td>
+<td>-17.800000</td>
+</tr>
+<tr>
+<th>25%</th>
+<td>2017.0</td>
+<td>4.000000</td>
+<td>8.000000</td>
+<td>-1.000000</td>
+<td>-1.000000</td>
+<td>1.200000</td>
+</tr>
+<tr>
+<th>50%</th>
+<td>2017.0</td>
+<td>7.000000</td>
+<td>16.000000</td>
+<td>0.200000</td>
+<td>-1.000000</td>
+<td>4.800000</td>
+</tr>
+<tr>
+<th>75%</th>
+<td>2017.0</td>
+<td>10.000000</td>
+<td>23.000000</td>
+<td>2.700000</td>
+<td>0.000000</td>
+<td>12.900000</td>
+</tr>
+<tr>
+<th>max</th>
+<td>2017.0</td>
+<td>12.000000</td>
+<td>31.000000</td>
+<td>35.000000</td>
+<td>15.000000</td>
+<td>19.600000</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-9-(snow-depth)">Exercise 9 (snow depth)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">snow_depth</span></code> that reads in the weather DataFrame from the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder and returns the maximum amount of snow in the year 2017.</p>
+<p>Print the result in the <code class="docutils literal notranslate"><span class="pre">main</span></code> function in the following form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Max</span> <span class="n">snow</span> <span class="n">depth</span><span class="p">:</span> <span class="n">xx</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-10-(average-temperature)">Exercise 10 (average temperature)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">average_temperature</span></code> that reads the weather data set and returns the average temperature in July.</p>
+<p>Print the result in the <code class="docutils literal notranslate"><span class="pre">main</span></code> function in the following form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Average</span> <span class="n">temperature</span> <span class="ow">in</span> <span class="n">July</span><span class="p">:</span> <span class="n">xx</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-11-(below-zero)">Exercise 11 (below zero)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">below_zero</span></code> that returns the number of days when the temperature was below zero.</p>
+<p>Print the result in the main function in the following form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">days</span> <span class="n">below</span> <span class="n">zero</span><span class="p">:</span> <span class="n">xx</span>
+</pre></div>
+</div>
+<hr/></div>
+<div class="section" id="Missing-data">
+<h2>Missing data<a class="headerlink" href="#Missing-data" title="Permalink to this headline">¶</a></h2>
+<p>You may have noticed something strange in the output of the <code class="docutils literal notranslate"><span class="pre">describe</span></code> method. First, the minimum value in both precipitation and snow depth fields is -1. The special value -1 means that on that day there was absolutely no snow or rain, whereas the value 0 might indicate that the value was close to zero. Secondly, the snow depth column has count 358, whereas the other columns have count 365, one measurement/value for each day of the year. How is this possible? Every field in a DataFrame should
+have the same number of rows. Let’s use the <code class="docutils literal notranslate"><span class="pre">unique</span></code> method of the Series object to find out, which different values are used in this column:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="p">[</span><span class="s2">"Snow depth (cm)"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([ -1.,   7.,  13.,  10.,  12.,   9.,   8.,   5.,   6.,   4.,   3.,
+        15.,  14.,   2.,  nan,   0.])
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">float</span></code> type allows a special value <code class="docutils literal notranslate"><span class="pre">nan</span></code> (Not A Number), in addition to normal floating point numbers. This value can represent the result from an illegal operation. For example, the operation 0/0 can either cause an exception to occur or just silently produce a <code class="docutils literal notranslate"><span class="pre">nan</span></code>. In Pandas <code class="docutils literal notranslate"><span class="pre">nan</span></code> can be used to represent a missing value. In the weather DataFrame the <code class="docutils literal notranslate"><span class="pre">nan</span></code> value tells us that the measurement from that day is not available, possibly due to a broken measuring instrument or some
+other problem.</p>
+<p>Note that only float types allow the <code class="docutils literal notranslate"><span class="pre">nan</span></code> value (in Python, NumPy or Pandas). So, if we try to create an integer series with missing values, its dtype gets promoted to <code class="docutils literal notranslate"><span class="pre">float</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1
+1    3
+2    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1.0
+1    3.0
+2    2.0
+3    NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+<p>For non-numeric types the special value <code class="docutils literal notranslate"><span class="pre">None</span></code> is used to denote a missing value, and the dtype is promoted to <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"jack"</span><span class="p">,</span> <span class="s2">"joe"</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    jack
+1     joe
+2    None
+dtype: object
+</pre></div>
+</div>
+</div>
+<p>Pandas excludes the missing values from the summary statistics, like we saw in the previous section. Pandas also provides some functions to handle missing values.</p>
+<p>The missing values can be located with the <code class="docutils literal notranslate"><span class="pre">isnull</span></code> method:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>      <span class="c1"># returns a boolean mask DataFrame</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>m</th>
+<th>d</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation amount (mm)</th>
+<th>Snow depth (cm)</th>
+<th>Air temperature (degC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>1</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>2</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>3</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>4</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>5</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>6</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>7</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>8</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>9</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>10</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>11</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>12</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>13</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>14</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>15</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>16</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>17</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>18</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>19</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>20</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>21</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>22</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>23</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>24</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>25</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>26</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>27</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>28</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>29</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>335</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>336</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>337</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>338</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>339</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>340</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>341</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>342</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>343</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>344</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>345</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>346</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>347</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>348</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>349</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>350</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>351</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>352</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>353</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>354</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>355</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>356</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>357</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>358</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>359</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>360</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>361</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>362</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>363</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<th>364</th>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p>365 rows × 8 columns</p>
+</div></div>
+</div>
+<p>This is not very useful as we cannot directly use the mask to index the DataFrame. We can, however, combine it with the <code class="docutils literal notranslate"><span class="pre">any</span></code> method to find out all the rows that contain at least one missing value:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="p">[</span><span class="n">wh</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>m</th>
+<th>d</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation amount (mm)</th>
+<th>Snow depth (cm)</th>
+<th>Air temperature (degC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>74</th>
+<td>2017</td>
+<td>3</td>
+<td>16</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>1.8</td>
+<td>NaN</td>
+<td>3.4</td>
+</tr>
+<tr>
+<th>163</th>
+<td>2017</td>
+<td>6</td>
+<td>13</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.6</td>
+<td>NaN</td>
+<td>12.6</td>
+</tr>
+<tr>
+<th>308</th>
+<td>2017</td>
+<td>11</td>
+<td>5</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>0.2</td>
+<td>NaN</td>
+<td>8.4</td>
+</tr>
+<tr>
+<th>309</th>
+<td>2017</td>
+<td>11</td>
+<td>6</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>2.0</td>
+<td>NaN</td>
+<td>7.5</td>
+</tr>
+<tr>
+<th>313</th>
+<td>2017</td>
+<td>11</td>
+<td>10</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>3.6</td>
+<td>NaN</td>
+<td>7.2</td>
+</tr>
+<tr>
+<th>321</th>
+<td>2017</td>
+<td>11</td>
+<td>18</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>11.3</td>
+<td>NaN</td>
+<td>5.9</td>
+</tr>
+<tr>
+<th>328</th>
+<td>2017</td>
+<td>11</td>
+<td>25</td>
+<td>00:00</td>
+<td>UTC</td>
+<td>8.5</td>
+<td>NaN</td>
+<td>4.2</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">notnull</span></code> method works conversively to the <code class="docutils literal notranslate"><span class="pre">isnull</span></code> method.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dropna</span></code> method of a DataFrame drops columns or rows that contain missing values from the DataFrame, depending on the <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span>   <span class="c1"># Default axis is 0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(358, 8)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># Drops the columns containing missing values</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(365, 7)
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">how</span></code> and <code class="docutils literal notranslate"><span class="pre">thresh</span></code> parameters of the <code class="docutils literal notranslate"><span class="pre">dropna</span></code> method allow one to specify how many values need to be missing in order for the row/column to be dropped.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">fillna</span></code> method allows to fill the missing values with some constant or interpolated values. The <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter can be:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">None</span></code>: use the given positional parameter as the constant to fill missing values with</li>
+<li><code class="docutils literal notranslate"><span class="pre">ffill</span></code>: use the previous value to fill the current value</li>
+<li><code class="docutils literal notranslate"><span class="pre">bfill</span></code>: use the next value to fill the current value</li>
+</ul>
+<p>For example, for the weather data we could use forward fill</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wh</span> <span class="o">=</span> <span class="n">wh</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">'ffill'</span><span class="p">)</span>
+<span class="n">wh</span><span class="p">[</span><span class="n">wh</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Year</th>
+<th>m</th>
+<th>d</th>
+<th>Time</th>
+<th>Time zone</th>
+<th>Precipitation amount (mm)</th>
+<th>Snow depth (cm)</th>
+<th>Air temperature (degC)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">interpolate</span></code> method, which we will not cover here, offers more elaborate ways to interpolate the missing values from their neighbouring non-missing values.</p>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-12-(cyclists)">Exercise 12 (cyclists)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">cyclists</span></code> that does the following.</p>
+<p>Load the Helsinki bicycle data set from the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder (<a class="reference external" href="https://hri.fi/data/dataset//helsingin-pyorailijamaarat">https://hri.fi/data/dataset//helsingin-pyorailijamaarat</a>). The dataset contains the number of cyclists passing by measuring points per hour. The data is gathered over about four years, and there are 20 measuring points around Helsinki. The dataset contains some empty rows at the end. Get rid of these. Also, get rid of columns that contain only missing values. Return the cleaned dataset.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-13-(missing-value-types)">Exercise 13 (missing value types)</a></div>
+<p>Make function <code class="docutils literal notranslate"><span class="pre">missing_value_types</span></code> that returns the following DataFrame. Use the <code class="docutils literal notranslate"><span class="pre">State</span></code> column as the (row) index. The value types for the two other columns should be <code class="docutils literal notranslate"><span class="pre">float</span></code> and <code class="docutils literal notranslate"><span class="pre">object</span></code>, respectively. Replace the dashes with the appropriate missing value symbols.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%"/>
+<col width="43%"/>
+<col width="25%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Year of independence</th>
+<th class="head">President</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>United Kingdom</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Finland</td>
+<td>1917</td>
+<td>Niinistö</td>
+</tr>
+<tr class="row-even"><td>USA</td>
+<td>1776</td>
+<td>Trump</td>
+</tr>
+<tr class="row-odd"><td>Sweden</td>
+<td>1523</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Germany</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>Steinmeier</td>
+</tr>
+<tr class="row-odd"><td>Russia</td>
+<td>1992</td>
+<td>Putin</td>
+</tr>
+</tbody>
+</table>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-14-(special-missing-values)">Exercise 14 (special missing values)</a></div>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">special_missing_values</span></code> that does the following.</p>
+<p>Read the data set of the top forty singles from the beginning of the year 1964 from the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder. Return the rows whose singles’ position dropped compared to last week’s position (column LW=Last Week).</p>
+<p>To do this you first have to convert the special values “New” and “Re” (Re-entry) to missing values (<code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-15-(last-week)">Exercise 15 (last week)</a></div>
+<p>This exercise can give two points at maximum!</p>
+<p>Write function <code class="docutils literal notranslate"><span class="pre">last_week</span></code> that reads the top40 data set mentioned in the above exercise. The function should then try to reconstruct the top40 list of the previous week based on that week’s list. Try to do this as well as possible. You can fill the values that are impossible to reconstruct by missing value symbols. Your solution should work for a top40 list of any week. So don’t rely on specific features of this top40 list. The column <code class="docutils literal notranslate"><span class="pre">WoC</span></code> means “Weeks on Chart”, that is, on how many weeks
+this song has been on the top 40 list.</p>
+<p>Hint. First create the last week’s top40 list of those songs that are also on this week’s list. Then add those entries that were not on this week’s list. Finally sort by position.</p>
+<p>Hint 2. The <code class="docutils literal notranslate"><span class="pre">where</span></code> method of Series and DataFrame can be useful. It can also be nested.</p>
+<p>Hint 3. Like in NumPy, you can use with Pandas the bitwise operators <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>, and <code class="docutils literal notranslate"><span class="pre">~</span></code>. Remember that he bitwise operators have higher precedence than the comparison operations, so you may have to use parentheses around comparisons, if you combined result of comparisons with bitwise operators.</p>
+<p>You get a second point, if you get the columns <code class="docutils literal notranslate"><span class="pre">LW</span></code> and <code class="docutils literal notranslate"><span class="pre">Peak</span> <span class="pre">Pos</span></code> correct.</p>
+<hr/></div>
+<div class="section" id="Converting-columns-from-one-type-to-another">
+<h2>Converting columns from one type to another<a class="headerlink" href="#Converting-columns-from-one-type-to-another" title="Permalink to this headline">¶</a></h2>
+<p>There are several ways of converting a column to another type. For converting single columns (a Series) one can use the <code class="docutils literal notranslate"><span class="pre">pd.to_numeric</span></code> function or the <code class="docutils literal notranslate"><span class="pre">map</span></code> method. For converting several columns in one go one can use the <code class="docutils literal notranslate"><span class="pre">astype</span></code> method. We will give a few examples of use of these methods/functions. For more details, look from the Pandas documentation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"1"</span><span class="p">,</span><span class="s2">"2"</span><span class="p">])</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>                           <span class="c1"># str -&gt; int</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1
+1    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>                               <span class="c1"># int -&gt; str</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1
+1    2
+dtype: object
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]),</span> <span class="n">downcast</span><span class="o">=</span><span class="s2">"integer"</span><span class="p">)</span>   <span class="c1"># object -&gt; int</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1
+1    1
+dtype: int8
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="s2">"a"</span><span class="p">]),</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span><span class="p">)</span>      <span class="c1"># conversion error produces Nan</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1.0
+1    NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>                            <span class="c1"># works for a single series</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0    1
+1    2
+dtype: object
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"a"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s2">"b"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="s2">"c"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+a    int64
+b    int64
+c    int64
+dtype: object
+   a  b  c
+0  1  4  7
+1  2  5  8
+2  3  6  9
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>                       <span class="c1"># Convert all columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1.0</td>
+<td>4.0</td>
+<td>7.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2.0</td>
+<td>5.0</td>
+<td>8.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3.0</td>
+<td>6.0</td>
+<td>9.0</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s2">"b"</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">"c"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">})</span>    <span class="c1"># different types for columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+a      int64
+b    float64
+c     object
+dtype: object
+   a    b  c
+0  1  4.0  7
+1  2  5.0  8
+2  3  6.0  9
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="String-processing">
+<h2>String processing<a class="headerlink" href="#String-processing" title="Permalink to this headline">¶</a></h2>
+<p>If the elements in a column are strings, then the vectorized versions of Python’s string processing methods are available. These are accessed through the <code class="docutils literal notranslate"><span class="pre">str</span></code> attribute of a Series or a DataFrame. For example, to capitalize all the strings of a Series, we can use the <code class="docutils literal notranslate"><span class="pre">str.capitalize</span></code> method:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"donald"</span><span class="p">,</span> <span class="s2">"theresa"</span><span class="p">,</span> <span class="s2">"angela"</span><span class="p">,</span> <span class="s2">"vladimir"</span><span class="p">])</span>
+<span class="n">names</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0      Donald
+1     Theresa
+2      Angela
+3    Vladimir
+dtype: object
+</pre></div>
+</div>
+</div>
+<p>One can find all the available methods by pressing the tab key after the text <code class="docutils literal notranslate"><span class="pre">names.str.</span></code> in a Python prompt. Try it in below cell!</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#names.str.</span>
+</pre></div>
+</div>
+</div>
+<p>We can split a column or Series into several columns using the <code class="docutils literal notranslate"><span class="pre">split</span></code> method. For example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">full_names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"Donald Trump"</span><span class="p">,</span> <span class="s2">"Theresa May"</span><span class="p">,</span> <span class="s2">"Angela Merkel"</span><span class="p">,</span> <span class="s2">"Vladimir Putin"</span><span class="p">])</span>
+<span class="n">full_names</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0      [Donald, Trump]
+1       [Theresa, May]
+2     [Angela, Merkel]
+3    [Vladimir, Putin]
+dtype: object
+</pre></div>
+</div>
+</div>
+<p>This is not exactly what we wanted: now each element is a list. We need to use the <code class="docutils literal notranslate"><span class="pre">expand</span></code> parameter to split into columns:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">full_names</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>Donald</td>
+<td>Trump</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Theresa</td>
+<td>May</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Angela</td>
+<td>Merkel</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Vladimir</td>
+<td>Putin</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-16-(split-date)">Exercise 16 (split date)</a></div>
+<p>Read again the bicycle data set from <code class="docutils literal notranslate"><span class="pre">src</span></code> folder, and clean it as in the earlier exercise. Then split the <code class="docutils literal notranslate"><span class="pre">Päivämäärä</span></code> column into a DataFrame with five columns with column names <code class="docutils literal notranslate"><span class="pre">Weekday</span></code>, <code class="docutils literal notranslate"><span class="pre">Day</span></code>, <code class="docutils literal notranslate"><span class="pre">Month</span></code>, <code class="docutils literal notranslate"><span class="pre">Year</span></code>, and <code class="docutils literal notranslate"><span class="pre">Hour</span></code>. Note that you also need to to do some conversions. To get Hours, drop the colon and minutes. Convert field <code class="docutils literal notranslate"><span class="pre">Weekday</span></code> according the following rule:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ma</span> <span class="o">-&gt;</span> <span class="n">Mon</span>
+<span class="n">ti</span> <span class="o">-&gt;</span> <span class="n">Tue</span>
+<span class="n">ke</span> <span class="o">-&gt;</span> <span class="n">Wed</span>
+<span class="n">to</span> <span class="o">-&gt;</span> <span class="n">Thu</span>
+<span class="n">pe</span> <span class="o">-&gt;</span> <span class="n">Fri</span>
+<span class="n">la</span> <span class="o">-&gt;</span> <span class="n">Sat</span>
+<span class="n">su</span> <span class="o">-&gt;</span> <span class="n">Sun</span>
+</pre></div>
+</div>
+<p>Convert the <code class="docutils literal notranslate"><span class="pre">Month</span></code> column according to the following mapping</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tammi</span> <span class="mi">1</span>
+<span class="n">helmi</span> <span class="mi">2</span>
+<span class="n">maalis</span> <span class="mi">3</span>
+<span class="n">huhti</span> <span class="mi">4</span>
+<span class="n">touko</span> <span class="mi">5</span>
+<span class="n">kesä</span> <span class="mi">6</span>
+<span class="n">heinä</span> <span class="mi">7</span>
+<span class="n">elo</span> <span class="mi">8</span>
+<span class="n">syys</span> <span class="mi">9</span>
+<span class="n">loka</span> <span class="mi">10</span>
+<span class="n">marras</span> <span class="mi">11</span>
+<span class="n">joulu</span> <span class="mi">12</span>
+</pre></div>
+</div>
+<p>Create function <code class="docutils literal notranslate"><span class="pre">split_date</span></code> that does the above and returns a DataFrame with five columns. You may want to use the <code class="docutils literal notranslate"><span class="pre">map</span></code> method of Series objects.</p>
+<p>So the first element in the <code class="docutils literal notranslate"><span class="pre">Päivämäärä</span></code> column of the original data set should be converted from <code class="docutils literal notranslate"><span class="pre">ke</span> <span class="pre">1</span> <span class="pre">tammi</span> <span class="pre">2014</span> <span class="pre">00:00</span></code> to <code class="docutils literal notranslate"><span class="pre">Wed</span> <span class="pre">1</span> <span class="pre">1</span> <span class="pre">2014</span> <span class="pre">0</span></code> . Test your solution from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<hr/><hr class="docutils"/>
+<div class="admonition note"><a id="Exercise-17-(cleaning-data)">Exercise 17 (cleaning data)</a></div>
+<p>This exercise can give two points at maximum!</p>
+<p>The entries in the following table of US presidents are not uniformly formatted. Make function <code class="docutils literal notranslate"><span class="pre">cleaning_data</span></code> that reads the table from the tsv file <code class="docutils literal notranslate"><span class="pre">src/presidents.tsv</span></code> and returns the cleaned version of it. Note, you must do the edits programmatically using the string edit methods, not by creating a new DataFrame by hand. The columns should have <code class="docutils literal notranslate"><span class="pre">dtype</span></code>s <code class="docutils literal notranslate"><span class="pre">object</span></code>, <code class="docutils literal notranslate"><span class="pre">integer</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">integer</span></code>, <code class="docutils literal notranslate"><span class="pre">object</span></code>. The <code class="docutils literal notranslate"><span class="pre">where</span></code> method of DataFrames can be helpful, likewise the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/api.html#string-handling">string
+methods</a> of Series objects. You get an additional point, if you manage to get the columns President and Vice-president right!</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%"/>
+<col width="18%"/>
+<col width="12%"/>
+<col width="17%"/>
+<col width="27%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">President</th>
+<th class="head">Start</th>
+<th class="head">Last</th>
+<th class="head">Seasons</th>
+<th class="head">Vice-president</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>donald trump</td>
+<td>2017 Jan</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1</td>
+<td>Mike pence</td>
+</tr>
+<tr class="row-odd"><td>barack obama</td>
+<td>2009</td>
+<td>2017</td>
+<td>2</td>
+<td>joe Biden</td>
+</tr>
+<tr class="row-even"><td>bush, george</td>
+<td>2001</td>
+<td>2009</td>
+<td>2</td>
+<td>Cheney, dick</td>
+</tr>
+<tr class="row-odd"><td>Clinton, Bill</td>
+<td>1993</td>
+<td>2001</td>
+<td>two</td>
+<td>gore, Al</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="Additional-information">
+<h2>Additional information<a class="headerlink" href="#Additional-information" title="Permalink to this headline">¶</a></h2>
+<p>We covered subsetting of DataFrames with the indexers <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code>, and <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> quite concisely. For a more verbose explanation, look at the <a class="reference external" href="https://medium.com/dunder-data/pandas-tutorials/home">tutorials at Dunder Data</a>. Especially, the problems with chained indexing operators (like <code class="docutils literal notranslate"><span class="pre">df["a"][1]</span></code>) are explained well there (tutorial 4), which we did not cover at all. As a rule of thumb: one should avoid chained indexing combined with assignment! See <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#why-does-assignment-fail-when-using-chained-indexing">Pandas
+documentation</a>.</p>
+</div>
+<div class="section" id="Summary-(week-4)">
+<h2>Summary (week 4)<a class="headerlink" href="#Summary-(week-4)" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can create DataFrames in several ways:<ul>
+<li>By reading from a csv file</li>
+<li>Out out two dimensional NumPy array</li>
+<li>Out of rows</li>
+<li>Out of columns</li>
+</ul>
+</li>
+<li>You know how to access rows, columns and individual elements of DataFrames</li>
+<li>You can use the <code class="docutils literal notranslate"><span class="pre">describe</span></code> method to get a quick overview of a DataFrame</li>
+<li>You know how missing values are represented in Series and DataFrames, and you know how to manipulate them</li>
+<li>There are similarities between Python’s string methods and the vectorized forms of string operations in Series and DataFrames</li>
+<li>You can do complicated text processing with the <code class="docutils literal notranslate"><span class="pre">str.replace</span></code> method combined with regular expressions</li>
+<li>The powerful <code class="docutils literal notranslate"><span class="pre">where</span></code> method is the vectorized form of Python’s <code class="docutils literal notranslate"><span class="pre">if-else</span></code> construct</li>
+<li>We remember that with NumPy arrays we preferred vectorized operations instead of, for instance, <code class="docutils literal notranslate"><span class="pre">for</span></code> loops. Same goes with Pandas. It may first feel that things are easier to achieve with loops, but after a while vectorized operations will feel natural.</li>
+</ul>
+<!--NAVIGATION--></div>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="pandas3.html" rel="next" title="Pandas (continues)">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="pandas1.html" rel="prev" title="Pandas"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018-2019, Jarkko Toivonen
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
