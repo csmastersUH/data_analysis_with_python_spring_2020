@@ -1,0 +1,51 @@
+dist: xenial
+language: python
+python:
+  - "3.6"
+
+cache: pip
+
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    packages:
+      - pandoc
+install:
+#  - pip install pandoc==2.2.3
+  - pip install Sphinx==1.8.5     # too recent version breaks links to exercises
+  - pip install nbsphinx==0.4.2
+  - pip install ipykernel
+  - pip install sphinx_rtd_theme
+  - pip install lxml
+  - pip install beautifulsoup4
+  - pip install numpy==1.13.3
+  - pip install pandas==0.23.0
+  - pip install matplotlib==2.1.1
+  - pip install scikit-learn==0.19.1
+  - pip install scipy==0.19.1
+  - pip install seaborn==0.8.0
+
+script:
+  - python -m sphinx . _build/ -b html
+  - ./add_html_anchors_to_exercises.py _build/*.html
+  - touch _build/.nojekyll # this file tells gh-pages that there is no need to build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  local-dir: _build
+  target-branch: gh-pages
+  on:
+    branch: master
+
+notifications:
+  email:
+    recipients:
+      - saska.donges@helsinki.fi
+    on_success: change
+    on_failure: always

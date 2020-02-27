@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with svg_stack (http://github.com/astraw/svg_stack) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="934.26111"
+   height="276.03323"
+   id="svg76"
+   sodipodi:docname="typing.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata80">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1877"
+     inkscape:window-height="821"
+     id="namedview78"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.31253333"
+     inkscape:cx="510.71367"
+     inkscape:cy="-92.033887"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg76" />
+  <defs
+     id="defs2" />
+  <g
+     id="id0:id0"
+     transform="matrix(0.07887431,0,0,0.07885763,-39.678824,-19.682864)">
+    <g
+       id="g35"
+       style="fill:none">
+      <!-- Line -->
+      <rect
+         x="5310"
+         y="540"
+         width="1080"
+         height="3195"
+         id="rect4"
+         style="stroke:#000000;stroke-width:30px" />
+      <!-- Line -->
+      <rect
+         x="5490"
+         y="990"
+         width="765"
+         height="180"
+         id="rect6"
+         style="stroke:#000000;stroke-width:30px" />
+      <!-- Line -->
+      <rect
+         x="5490"
+         y="2070"
+         width="765"
+         height="180"
+         id="rect8"
+         style="stroke:#000000;stroke-width:30px" />
+      <!-- Line -->
+      <polyline
+         points=" 945,1980 2340,1980"
+         id="polyline10"
+         style="stroke:#000000;stroke-width:8px;stroke-dasharray:40, 40" />
+      <!-- Line -->
+      <rect
+         x="630"
+         y="1665"
+         width="1935"
+         height="630"
+         id="rect12"
+         style="stroke:#000000;stroke-width:30px" />
+      <!-- Line -->
+      <polyline
+         points=" 2565,1800 2567,1799 2570,1797 2577,1794 2588,1789 2603,1782 2623,1772 2648,1760  2679,1746 2713,1730 2753,1712 2795,1692 2841,1671 2889,1649 2939,1626 2990,1603  3041,1580 3092,1558 3142,1536 3191,1515 3239,1494 3286,1475 3331,1456 3375,1439  3417,1422 3458,1407 3498,1392 3537,1378 3575,1365 3612,1353 3649,1341 3686,1330  3722,1319 3759,1309 3795,1299 3833,1290 3866,1282 3900,1274 3935,1266 3970,1259  4007,1252 4044,1245 4082,1238 4122,1231 4163,1224 4206,1218 4250,1211 4297,1205  4345,1198 4396,1192 4448,1185 4503,1178 4560,1172 4619,1165 4680,1158 4742,1152  4805,1145 4869,1139 4933,1132 4997,1126 5059,1120 5120,1114 5177,1108 5231,1103  5281,1099 5326,1095 5365,1091 5399,1088 5427,1086 5449,1084 5465,1082 5490,1080 "
+         id="polyline14"
+         style="stroke:#000000;stroke-width:30px;stroke-linejoin:bevel" />
+      <!-- Forward arrow to point 0,0 -->
+      <polygon
+         points=""
+         stroke-miterlimit="8"
+         id="polygon16"
+         style="fill:#000000;stroke:#000000;stroke-width:60px;stroke-miterlimit:8" />
+      <!-- Line -->
+      <defs
+         id="defs21">
+        <clipPath
+           id="id0:cp0">
+          <path
+             d="M 480,249 H 6423 V 3768 H 480 Z m 2802,1260 -24,-55 -241,117 15,33 z"
+             id="path18"
+             inkscape:connector-curvature="0"
+             style="clip-rule:evenodd" />
+        </clipPath>
+      </defs>
+      <polyline
+         points=" 2565,2160 2567,2160 2570,2161 2578,2163 2589,2165 2605,2168 2626,2172 2652,2178  2684,2184 2721,2191 2763,2199 2809,2208 2859,2218 2911,2228 2966,2238 3022,2248  3079,2259 3136,2269 3193,2279 3248,2289 3303,2298 3355,2307 3407,2315 3456,2322  3504,2329 3549,2336 3593,2342 3636,2347 3677,2352 3717,2356 3755,2359 3792,2362  3829,2365 3865,2367 3900,2368 3935,2369 3970,2370 4005,2370 4040,2370 4075,2369  4110,2368 4145,2367 4181,2365 4218,2362 4255,2359 4293,2356 4333,2352 4374,2347  4417,2342 4461,2336 4506,2329 4554,2322 4603,2315 4655,2307 4707,2298 4762,2289  4817,2279 4874,2269 4931,2259 4988,2248 5044,2238 5099,2228 5151,2218 5201,2208  5247,2199 5289,2191 5326,2184 5358,2178 5384,2172 5405,2168 5421,2165 5445,2160 "
+         clip-path="url(#id0:cp0)"
+         id="polyline23"
+         style="stroke:#000000;stroke-width:30px;stroke-linejoin:bevel" />
+      <!-- Forward arrow to point 3041,1580 -->
+      <polygon
+         points="3282,1509 3258,1454 3160,1529 "
+         stroke-miterlimit="8"
+         id="polygon25"
+         style="fill:#000000;stroke:#000000;stroke-width:60px;stroke-miterlimit:8" />
+      <!-- Text -->
+      <text
+         xml:space="preserve"
+         x="1305"
+         y="2205"
+         font-style="normal"
+         font-weight="normal"
+         font-size="240"
+         id="text27"
+         style="font-style:normal;font-weight:normal;font-size:240px;font-family:Times;text-anchor:start;fill:#000000">type</text>
+      <!-- Text -->
+      <text
+         xml:space="preserve"
+         x="495"
+         y="720"
+         font-style="normal"
+         font-weight="normal"
+         font-size="288"
+         id="text29"
+         style="font-style:normal;font-weight:normal;font-size:288px;font-family:Times;text-anchor:start;fill:#000000">C - static typing</text>
+      <!-- Text -->
+      <text
+         xml:space="preserve"
+         x="5265"
+         y="360"
+         font-style="normal"
+         font-weight="normal"
+         font-size="240"
+         id="text31"
+         style="font-style:normal;font-weight:normal;font-size:240px;font-family:Times;text-anchor:start;fill:#000000">memory</text>
+      <!-- Text -->
+      <text
+         xml:space="preserve"
+         x="630"
+         y="1890"
+         font-style="normal"
+         font-weight="normal"
+         font-size="240"
+         id="text33"
+         style="font-style:normal;font-weight:normal;font-size:240px;font-family:Times;text-anchor:start;fill:#000000">variable_name</text>
+    </g>
+  </g>
+  <g
+     id="id1:id1"
+     transform="matrix(0.07887431,0,0,0.07885763,429.07118,-19.682864)">
+    <g
+       id="g73"
+       style="fill:none">
+      <!-- Line -->
+      <rect
+         x="5310"
+         y="540"
+         width="1080"
+         height="3195"
+         id="rect38"
+         style="stroke:#000000;stroke-width:30px" />
+      <!-- Line -->
+      <rect
+         x="585"
+         y="1665"
+         width="1980"
+         height="630"
+         id="rect40"
+         style="stroke:#000000;stroke-width:30px" />
+      <!-- Line -->
+      <rect
+         x="5490"
+         y="990"
+         width="765"
+         height="585"
+         id="rect42"
+         style="stroke:#000000;stroke-width:30px" />
+      <!-- Line -->
+      <rect
+         x="5490"
+         y="2070"
+         width="765"
+         height="675"
+         id="rect44"
+         style="stroke:#000000;stroke-width:30px" />
+      <!-- Line -->
+      <polyline
+         points=" 5625,1305 6165,1305"
+         id="polyline46"
+         style="stroke:#000000;stroke-width:8px;stroke-dasharray:40, 40" />
+      <!-- Line -->
+      <polyline
+         points=" 5625,2430 6165,2430"
+         id="polyline48"
+         style="stroke:#000000;stroke-width:8px;stroke-dasharray:40, 40" />
+      <!-- Line -->
+      <polyline
+         points=" 2565,1800 2567,1799 2570,1797 2577,1794 2588,1789 2603,1782 2623,1772 2648,1760  2679,1746 2713,1730 2753,1712 2795,1692 2841,1671 2889,1649 2939,1626 2990,1603  3041,1580 3092,1558 3142,1536 3191,1515 3239,1494 3286,1475 3331,1456 3375,1439  3417,1422 3458,1407 3498,1392 3537,1378 3575,1365 3612,1353 3649,1341 3686,1330  3722,1319 3759,1309 3795,1299 3833,1290 3866,1282 3900,1274 3935,1266 3970,1259  4007,1252 4044,1245 4082,1238 4122,1231 4163,1224 4206,1218 4250,1211 4297,1205  4345,1198 4396,1192 4448,1185 4503,1178 4560,1172 4619,1165 4680,1158 4742,1152  4805,1145 4869,1139 4933,1132 4997,1126 5059,1120 5120,1114 5177,1108 5231,1103  5281,1099 5326,1095 5365,1091 5399,1088 5427,1086 5449,1084 5465,1082 5490,1080 "
+         id="polyline50"
+         style="stroke:#000000;stroke-width:30px;stroke-linejoin:bevel" />
+      <!-- Forward arrow to point 0,0 -->
+      <polygon
+         points=""
+         stroke-miterlimit="8"
+         id="polygon52"
+         style="fill:#000000;stroke:#000000;stroke-width:60px;stroke-miterlimit:8" />
+      <!-- Line -->
+      <defs
+         id="defs57">
+        <clipPath
+           id="id1:cp0">
+          <path
+             d="M 480,249 H 6423 V 3768 H 480 Z m 2802,1260 -24,-55 -241,117 15,33 z"
+             id="path54"
+             inkscape:connector-curvature="0"
+             style="clip-rule:evenodd" />
+        </clipPath>
+      </defs>
+      <polyline
+         points=" 2565,2160 2567,2160 2570,2161 2578,2163 2589,2165 2605,2168 2626,2172 2652,2178  2684,2184 2721,2191 2763,2199 2809,2208 2859,2218 2911,2228 2966,2238 3022,2248  3079,2259 3136,2269 3193,2279 3248,2289 3303,2298 3355,2307 3407,2315 3456,2322  3504,2329 3549,2336 3593,2342 3636,2347 3677,2352 3717,2356 3755,2359 3792,2362  3829,2365 3865,2367 3900,2368 3935,2369 3970,2370 4005,2370 4040,2370 4075,2369  4110,2368 4145,2367 4181,2365 4218,2362 4255,2359 4293,2356 4333,2352 4374,2347  4417,2342 4461,2336 4506,2329 4554,2322 4603,2315 4655,2307 4707,2298 4762,2289  4817,2279 4874,2269 4931,2259 4988,2248 5044,2238 5099,2228 5151,2218 5201,2208  5247,2199 5289,2191 5326,2184 5358,2178 5384,2172 5405,2168 5421,2165 5445,2160 "
+         clip-path="url(#id1:cp0)"
+         id="polyline59"
+         style="stroke:#000000;stroke-width:30px;stroke-linejoin:bevel" />
+      <!-- Forward arrow to point 3041,1580 -->
+      <polygon
+         points="3282,1509 3258,1454 3160,1529 "
+         stroke-miterlimit="8"
+         id="polygon61"
+         style="fill:#000000;stroke:#000000;stroke-width:60px;stroke-miterlimit:8" />
+      <!-- Text -->
+      <text
+         xml:space="preserve"
+         x="495"
+         y="720"
+         font-style="normal"
+         font-weight="normal"
+         font-size="288"
+         id="text63"
+         style="font-style:normal;font-weight:normal;font-size:288px;font-family:Times;text-anchor:start;fill:#000000">Python - dynamic typing</text>
+      <!-- Text -->
+      <text
+         xml:space="preserve"
+         x="630"
+         y="2070"
+         font-style="normal"
+         font-weight="normal"
+         font-size="240"
+         id="text65"
+         style="font-style:normal;font-weight:normal;font-size:240px;font-family:Times;text-anchor:start;fill:#000000">variable_name</text>
+      <!-- Text -->
+      <text
+         xml:space="preserve"
+         x="5310"
+         y="360"
+         font-style="normal"
+         font-weight="normal"
+         font-size="240"
+         id="text67"
+         style="font-style:normal;font-weight:normal;font-size:240px;font-family:Times;text-anchor:start;fill:#000000">memory</text>
+      <!-- Text -->
+      <text
+         xml:space="preserve"
+         x="5715"
+         y="2295"
+         font-style="normal"
+         font-weight="normal"
+         font-size="216"
+         id="text69"
+         style="font-style:normal;font-weight:normal;font-size:216px;font-family:Times;text-anchor:start;fill:#000000">str</text>
+      <!-- Text -->
+      <text
+         xml:space="preserve"
+         x="5760"
+         y="1260"
+         font-style="normal"
+         font-weight="normal"
+         font-size="216"
+         id="text71"
+         style="font-style:normal;font-weight:normal;font-size:216px;font-family:Times;text-anchor:start;fill:#000000">int</text>
+    </g>
+  </g>
+</svg>
