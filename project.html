@@ -83,8 +83,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#running-tests-when-peer-reviewing-students-notebooks">Running tests when peer-reviewing students notebooks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Regression analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Sequence analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Regression analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Sequence analysis</a></li>
 </ul>
 </li>
 </ul>
@@ -139,60 +139,22 @@
 <ol class="arabic simple">
 <li>biological sequence analysis (part07)</li>
 <li>regression analysis on medical data (part08)</li>
-<li>fossil data analysis (see course page / tasks section)</li>
+<li>fossil data analysis</li>
 </ol>
-<p>After you have completed 80% of points from week 6, download the exercises
+<p>The fossil data analysis project is currently not integrated to the TMC system, so for that, see the instructions from the <a class="reference external" href="https://courses.helsinki.fi/fi/aycsm90004en/129239201">course page</a> / tasks section.</p>
+<p>For the two first projects (part07 and part08), download the exercises
 and/or notebooks from the TMC server.
 Then try to solve as many exercises as you can.
 Then submit your solutions to the TMC server.
 Note that the TMC server is only used here for helping you
 to proceed with the project work. Your final project work
 returned to Moodle can include partial solutions.</p>
-<p>The two projects differ a lot in their workflow. See the below sections
+<p>The projects differ a lot in their workflow. See the below sections
 on individual projects to see in detail how solving, testing and reporting
 of exercises are done in each project.</p>
 <p>Save the report as a Jupyter notebook file (with <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> extension)
-and submit this file to Moodle.
-After this you will need to give feedback for your own
-report and two other reports. The feedback is given in two categories:</p>
-<p>1. Give a grade 0…5 on the correctness of solutions, and provide
-constructive comments where you find places for improvement.</p>
-<blockquote>
-<div><ol class="arabic simple" start="0">
-<li>Less than half of assignments solved satisfactorily</li>
-<li>At least half of assignments solved satisfactorily</li>
-<li>At least half of assignment solved pretty correctly</li>
-<li>65% of assignments solved pretty correctly</li>
-<li>80% assignments solved pretty correctly</li>
-<li>All but 1-2 assignments solved almost perfectly</li>
-</ol>
-</div></blockquote>
-<p>To assess the percentage of correctness, you may give 0.5 points from
-a serious (but failed) attempt, 1 point from essentially correct
-answer, and divide total points by maximum points. Essentially correct
-means an answer that might not go through an automatic test for some
-minor reason.</p>
-<ol class="arabic simple" start="2">
-<li>Give a grade 0…5 on the clarity of writing and code, and provide
-constructive comments where you find places for improvement.</li>
-</ol>
-<blockquote>
-<div><ol class="arabic simple" start="0">
-<li>Writing and code are not at sufficient level in the solved assignments</li>
-<li>Writing and code are mostly at sufficient level in the solved assignments</li>
-<li>Writing and code are mostly at satisfactory level in the solved assignments</li>
-<li>Writing and code are mostly at good level in the solved assignments</li>
-<li>Writing and code are mostly at very good level in the solved assignments</li>
-<li>Writing and code are mostly at excellent level in the solved assignments</li>
-</ol>
-</div></blockquote>
-<p>In each category, in addition to textual feedback, give also
-a grade in the range 0, 1, …, 5.
-The final grade for the project work will be the weighted average
-over the two categories, where category 1 has weight 2, and
-the second has weight 1. More details can be found in the Moodle.
-You must get at least grade 1 for the project work.</p>
-<p>The following instructions are for the TMC-integrated projects (part7 and part8).</p>
+and submit this file to Moodle. After this you will need to give feedback for your own
+report and two other reports. See the tasks section of the <a class="reference external" href="https://courses.helsinki.fi/fi/aycsm90004en/129239201">course page</a> for instructions on this peer-review process.</p>
 <div class="section" id="sequence-analysis">
 <h2>Sequence analysis<a class="headerlink" href="#sequence-analysis" title="Permalink to this headline">¶</a></h2>
 <p>Download part 7 from tmc after you have completed the required number of part 6
@@ -239,16 +201,16 @@ the tests too.</p>
 testing other student’s work. Don’t do the tests where your own
 solutions are.</p>
 </div>
-<div class="section" id="id1">
-<h2>Regression analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>Regression analysis<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Go to a temporary working area (like <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> on Unix) so you don’t accidentally overwrite
 your own solutions. Run <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">download</span> <span class="pre">-a</span> <span class="pre">hy-data-analysis-with-python-spring-2020</span></code>
 to get the tests. Store student’s notebook to file
 <code class="docutils literal notranslate"><span class="pre">part08-e01_regression/src/project_notebook_regression_analysis.ipynb</span></code>.
 Run the tests using <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">test</span> <span class="pre">part08-e01_regression</span></code>.</p>
 </div>
-<div class="section" id="id2">
-<h2>Sequence analysis<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>Sequence analysis<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Go to a temporary working area (like <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> on Unix) so you don’t accidentally overwrite
 your own solutions. Run <code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">download</span> <span class="pre">-a</span> <span class="pre">hy-data-analysis-with-python-spring-2020</span></code>
 to get the tests. Overwrite the student’s notebook in <code class="docutils literal notranslate"><span class="pre">part07-e01_sequence_analysis/src</span></code>.
