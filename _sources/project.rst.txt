@@ -52,7 +52,7 @@ Regression analysis
 Read the introduction ``introduction-to-regression-analysis.pdf``.
 
 .. note:: It looks like the TMC server corrupted the pdf, you can read it from
-	  `here <https://www.cs.helsinki.fi/u/jttoivon/dap/introduction-to-regression-analysis.pdf>`__
+	  `here <https://courses.helsinki.fi/sites/default/files/course-material/4681820/introduction-to-regression-analysis.pdf>`__
 
 Write solutions to exercises directly into the cells of the given Jupyter notebook.
 Do not modify lines that say ``# exercise x``; without those the tests won't work.
