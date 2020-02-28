@@ -7,7 +7,7 @@ Choose a project work. There are three projects to choose from:
 2. regression analysis on medical data (part08)
 3. fossil data analysis 
 
-The fossil data analysis project is currently not integrated to the TMC system, so for that, see the instructions from the `course page <https://courses.helsinki.fi/fi/aycsm90004en/129239201>`_ / tasks section.
+The fossil data analysis project is currently not integrated to the TMC system, so for that, see the instructions from the tasks section of the `course page <https://courses.helsinki.fi/fi/aycsm90004en/129239201>`_.
 
 For the two first projects (part07 and part08), download the exercises
 and/or notebooks from the TMC server.
