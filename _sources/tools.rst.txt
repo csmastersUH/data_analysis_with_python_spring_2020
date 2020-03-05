@@ -95,6 +95,10 @@ For example in the following way:
 
 If you have Anaconda correctly installed, then the Python version should
 be new enough and ``python`` command should refer to ``python3``, not ``python2``.
+
+The Python version should be at least 3.6. The exercises may work with slightly older 
+python versions as well, but you may run into issues with the exercise templates and tests.
+
 The versions of additional libraries that are know to work are:
 
 +--------------+---------+
@@ -111,6 +115,8 @@ The versions of additional libraries that are know to work are:
 | scipy        | 0.19.1  |
 +--------------+---------+
 | seaborn      | 0.8.0   |
++--------------+---------+
+| jupyter      | 1.0.0   |
 +--------------+---------+
 
 
