@@ -3,8 +3,6 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Note: This course page is under development and will change before the start of the course.
-
 Welcome to Data analysis with Python - Spring 2020
 ==================================================
 
@@ -80,22 +78,21 @@ posting complete solutions or spoilers for exercises.
 Software libraries used
 -----------------------
 
-+--------------+---------------------------------------------------------+
-| Library      + Documentation                                           |
-+==============+=========================================================+
-| numpy        | `doc <https://docs.scipy.org/doc/numpy/>`_              |
-+--------------+---------------------------------------------------------+
-| pandas       | `doc <http://pandas.pydata.org/pandas-docs/stable/>`_   |
-+--------------+---------------------------------------------------------+
-| matplotlib   | `doc <https://matplotlib.org/api/api_overview.html>`_   |
-+--------------+---------------------------------------------------------+
-| scikit-learn | `doc <https://scikit-learn.org/stable/>`_               |
-+--------------+---------------------------------------------------------+
-| scipy        | `doc <https://docs.scipy.org/doc/scipy/reference/>`_    |
-+--------------+---------------------------------------------------------+
-
-
-
++--------------+----------------------------------------------------------------+
+| Library      + Documentation                                                  |
++==============+================================================================+
+| numpy        | `doc <https://docs.scipy.org/doc/numpy/>`_                     |
++--------------+----------------------------------------------------------------+
+| pandas       | `doc <http://pandas.pydata.org/pandas-docs/stable/>`_          |
++--------------+----------------------------------------------------------------+
+| matplotlib   | `doc <https://matplotlib.org/api/api_overview.html>`_          |
++--------------+----------------------------------------------------------------+
+| scikit-learn | `doc <https://scikit-learn.org/stable/>`_                      |
++--------------+----------------------------------------------------------------+
+| scipy        | `doc <https://docs.scipy.org/doc/scipy/reference/>`_           |
++--------------+----------------------------------------------------------------+
+| jupyter      | `doc <https://jupyter-notebook.readthedocs.io/en/stable/>`_    |
++--------------+----------------------------------------------------------------+
 
 
 .. toctree::
