@@ -379,7 +379,7 @@ This page was generated from <a class="reference external" href="https://github.
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">painting</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">"painting.png"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">painting</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The image consists of {painting.shape[0] * painting.shape[1]} pixels"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The image consists of </span><span class="si">{</span><span class="n">painting</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">painting</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> pixels"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">painting</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -552,7 +552,7 @@ sensitive to green color and least sensitive to blue color.</p>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">im2</span> <span class="o">&gt;</span> <span class="n">im2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>     <span class="c1"># mask those pixels whose intensity is above mean</span>
 <span class="n">label_im</span><span class="p">,</span> <span class="n">nb_labels</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>   <span class="c1"># connected components form clusters</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of clusters is </span><span class="si">{nb_labels}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of clusters is </span><span class="si">{</span><span class="n">nb_labels</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">label_im</span><span class="p">);</span>
 </pre></div>
 </div>

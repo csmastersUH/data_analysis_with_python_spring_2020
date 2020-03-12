@@ -832,7 +832,7 @@ first second second first
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> plus </span><span class="si">{}</span><span class="s2"> is equal to </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># Format method</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{1}</span><span class="s2"> plus </span><span class="si">{3}</span><span class="s2"> is equal to </span><span class="si">{4}</span><span class="s2">"</span><span class="p">)</span>             <span class="c1"># f-string</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mi">1</span><span class="si">}</span><span class="s2"> plus </span><span class="si">{</span><span class="mi">3</span><span class="si">}</span><span class="s2"> is equal to </span><span class="si">{</span><span class="mi">4</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>             <span class="c1"># f-string</span>
 </pre></div>
 </div>
 </div>
@@ -855,7 +855,7 @@ first second second first
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%.1f</span><span class="s2"> </span><span class="si">%.2f</span><span class="s2"> </span><span class="si">%.3f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">))</span>               <span class="c1"># Old style</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{:.1f}</span><span class="s2"> </span><span class="si">{:.2f}</span><span class="s2"> </span><span class="si">{:.3f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">))</span>     <span class="c1"># newer style</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{1.6:.1f}</span><span class="s2"> </span><span class="si">{1.7:.2f}</span><span class="s2"> </span><span class="si">{1.8:.3f}</span><span class="s2">"</span><span class="p">)</span>                 <span class="c1"># f-string</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">1.6</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mf">1.7</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mf">1.8</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>                 <span class="c1"># f-string</span>
 </pre></div>
 </div>
 </div>
@@ -877,7 +877,7 @@ first second second first
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> concatenated with </span><span class="si">%s</span><span class="s2"> produces </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="s2">"water"</span><span class="p">,</span> <span class="s2">"melon"</span><span class="p">,</span> <span class="s2">"water"</span><span class="o">+</span><span class="s2">"melon"</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0}</span><span class="s2"> concatenated with </span><span class="si">{1}</span><span class="s2"> produces </span><span class="si">{0}{1}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"water"</span><span class="p">,</span> <span class="s2">"melon"</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"{'water'} concatenated with {'melon'} produces {'water' + 'melon'}"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'water'</span><span class="si">}</span><span class="s2"> concatenated with </span><span class="si">{</span><span class="s1">'melon'</span><span class="si">}</span><span class="s2"> produces </span><span class="si">{</span><span class="s1">'water'</span> <span class="o">+</span> <span class="s1">'melon'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1152,8 +1152,8 @@ The first negative list element was -1
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">continue</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Square root of </span><span class="si">{x}</span><span class="s2"> is {sqrt(x):.3f}"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Natural logarithm of </span><span class="si">{x}</span><span class="s2"> is {log(x):.4f}"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Square root of </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Natural logarithm of </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1843,7 +1843,7 @@ the main function for creating inputs to the <code class="docutils literal notra
 <span class="n">weathers</span><span class="o">=</span><span class="s2">"rainy rainy sunny cloudy rainy sunny sunny"</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="n">temperatures</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">day</span><span class="p">,</span> <span class="n">weather</span><span class="p">,</span> <span class="n">temperature</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">days</span><span class="p">,</span><span class="n">weathers</span><span class="p">,</span><span class="n">temperatures</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"On </span><span class="si">{day}</span><span class="s2"> it was </span><span class="si">{weather}</span><span class="s2"> and the temperature was </span><span class="si">{temperature}</span><span class="s2"> degrees celsius."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"On </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> it was </span><span class="si">{</span><span class="n">weather</span><span class="si">}</span><span class="s2"> and the temperature was </span><span class="si">{</span><span class="n">temperature</span><span class="si">}</span><span class="s2"> degrees celsius."</span><span class="p">)</span>
 
 <span class="c1"># Or equivalently:</span>
 <span class="c1">#for t in zip(days,weathers,temperatures):</span>
@@ -2039,7 +2039,7 @@ set()
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">s</span><span class="o">=</span><span class="s2">"mississippi"</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"There are {len(set(s))} distinct characters in </span><span class="si">{s}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">s</span><span class="p">))</span><span class="si">}</span><span class="s2"> distinct characters in </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2188,7 +2188,7 @@ a b
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"For key '</span><span class="si">{key}</span><span class="s2">' value </span><span class="si">{value}</span><span class="s2"> was stored"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"For key '</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">' value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> was stored"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2570,7 +2570,7 @@ the function. Let’s replace the above <code class="docutils literal notranslat
 </pre></div>
 </div>
 </div>
-<p>Because this is a common pattern, the <code class="docutils literal notranslate"><span class="pre">reduce</span></code> function is a common inclusion in functional programming languages. In Python <code class="docutils literal notranslate"><span class="pre">reduce</span></code> is included in the <code class="docutils literal notranslate"><span class="pre">functools</span></code> modlue. You give the operator you want to use as a parameter to reduce (addition in the above example). You may also give a starting value of the computation (starting value 0 was used above).</p>
+<p>Because this is a common pattern, the <code class="docutils literal notranslate"><span class="pre">reduce</span></code> function is a common inclusion in functional programming languages. In Python <code class="docutils literal notranslate"><span class="pre">reduce</span></code> is included in the <code class="docutils literal notranslate"><span class="pre">functools</span></code> module. You give the operator you want to use as a parameter to reduce (addition in the above example). You may also give a starting value of the computation (starting value 0 was used above).</p>
 <p>If no starting value is used, the first element of the iterable is used as the starting value.</p>
 <p>We can now get rid of the separate function <code class="docutils literal notranslate"><span class="pre">sumreduce</span></code> by using the reduce function:</p>
 <div class="nbinput docutils container">
@@ -2691,7 +2691,7 @@ Note that use of the starting value is necessary, because we want to be able to 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span><span class="o">*</span><span class="mi">11</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
     <span class="n">s</span><span class="o">=</span><span class="s2">"*"</span><span class="o">*</span><span class="n">i</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"|{s.center(9)}|"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"|</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s2">|"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span><span class="o">*</span><span class="mi">11</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -584,10 +584,10 @@ Accuracy score is 1.0
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Means: [[ 0.0734032  -0.03602287]
- [-0.08858146  4.05361162]]
-Standard deviations: [[ 4.8454338   4.67164179]
- [ 4.80792924  4.84875095]]
+Means: [[ 0.06120061 -0.03196488]
+ [ 0.01954824  3.98453625]]
+Standard deviations: [[ 4.46221398  4.33889698]
+ [ 4.50504969  4.4786319 ]]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -612,7 +612,7 @@ Standard deviations: [[ 4.8454338   4.67164179]
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Accuracy score is 0.822
+Accuracy score is 0.826
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -839,7 +839,7 @@ Type of feature matrix: &lt;class 'scipy.sparse.csr.csr_matrix'&gt;
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Number of words:"</span><span class="p">,</span> <span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="n">col</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">[</span><span class="s2">"it"</span><span class="p">]</span>   <span class="c1"># Get the column of 'it' word in the feature matrix</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Word 'it' appears in the first message </span><span class="si">{features[0, col]}</span><span class="s2"> times."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Word 'it' appears in the first message </span><span class="si">{</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span><span class="si">}</span><span class="s2"> times."</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># Let's print the corresponding message as well</span>
 <span class="c1">#print(vec.get_feature_names())</span>
