@@ -48,10 +48,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#2-Log-in-to-the-course">2 Log in to the course</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#3-Install-TMC-client">3 Install TMC client</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Note-for-windows-users">Note for windows users</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#3-Install-TMC-client">3 Install TMC client</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
@@ -215,20 +212,7 @@ This page was generated from <a class="reference external" href="https://github.
 <li><code class="docutils literal notranslate"><span class="pre">tmc</span> <span class="pre">submit</span></code> to submit your solution to the server for grading</li>
 <li>The above github page of the tmc-client also contains instructions on the use of the client</li>
 </ul>
-<div class="section" id="Note-for-windows-users">
-<h3>Note for windows users<a class="headerlink" href="#Note-for-windows-users" title="Permalink to this headline">¶</a></h3>
-<p>As there is no installer, you get the tmc cli client by downloading the latest <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file from releases. To actually run the tmc cli you issue the exact commands below but substituting <code class="docutils literal notranslate"><span class="pre">tmc</span></code> with <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span> <span class="pre">&lt;path-to-jar-file&gt;.jar</span></code> as specified <a class="reference external" href="https://github.com/testmycode/tmc-cli#manual-installation">here</a>.</p>
-<p>You may want to alias the <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span> <span class="pre">&lt;path-to-jar-file&gt;.jar</span></code> -part of the command so that just the command <code class="docutils literal notranslate"><span class="pre">tmc</span></code> works on windows as well. This can be done according to <a class="reference external" href="https://superuser.com/questions/1134368/create-permanent-doskey-in-windows-cmd">these instructions</a>.</p>
-<ul class="simple">
-<li>Create a <code class="docutils literal notranslate"><span class="pre">aliases.cmd</span></code> file</li>
-<li>Add the following to the file: <code class="docutils literal notranslate"><span class="pre">@echo</span> <span class="pre">off</span>   <span class="pre">doskey</span> <span class="pre">tmc=java</span> <span class="pre">-jar</span> <span class="pre">&lt;Path-to-tmc-jar&gt;</span> <span class="pre">$*</span></code></li>
-<li>In <code class="docutils literal notranslate"><span class="pre">`regedit</span></code> &lt;<a class="reference external" href="https://support.microsoft.com/en-us/help/4027573/windows-10-open-registry-editor">https://support.microsoft.com/en-us/help/4027573/windows-10-open-registry-editor</a>&gt;`__, browse to <code class="docutils literal notranslate"><span class="pre">HKEY_CURRENT_USER\Software\Microsoft\Command</span> <span class="pre">Processor</span></code></li>
-<li>Create a new registry key-value pair of type <code class="docutils literal notranslate"><span class="pre">REG_EXPAND_SZ</span></code>, with name <code class="docutils literal notranslate"><span class="pre">AutoRun</span></code> and the path to the aliases file as value</li>
-<li>Now the <code class="docutils literal notranslate"><span class="pre">tmc</span></code> alias should always be added when a new console is opened</li>
-</ul>
-<p>Thanks to @Eeero for the step-by-step instructions.</p>
 <!--NAVIGATION--></div>
-</div>
 </div>
 </div>
 </div>
