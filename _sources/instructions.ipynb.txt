@@ -35,7 +35,7 @@
     "* Follow the instructions of the installer\n",
     "* Takes about 3 minutes\n",
     "* **windows:** In the anaconda navigator, start the conda prompt.\n",
-    "* Verify that your installation is complete by downloading the script [versions.py](https://raw.githubusercontent.com/saskeli/data-analysis-with-python-summer-2019/master/versions.py) and run it with `python3 versions.py`.\n",
+    "* Verify that your installation is complete by downloading the script [versions.py](https://raw.githubusercontent.com/saskeli/data-analysis-with-python-summer-2019/master/versions.py) and run it with `python versions.py`.\n",
     "\n",
     "### (alternative b) Install miniconda and Python packages\n",
     "* This alternative is not recommended\n",
@@ -72,6 +72,25 @@
    "metadata": {},
    "source": [
     "## 3 Install TMC client\n",
+    "\n",
+    "### Suggested approach (With anaconda navigator installed)\n",
+    "\n",
+    "The TMC extension for VS Code is new and may contain bugs. That said, it does seem to work well and is significantly more approachable than the TMC CLI.\n",
+    "\n",
+    "* Install `VS Code` in the home tab on anaconda navigator\n",
+    "* Launch `VS Code`\n",
+    "* Under the `Extensions` tab on the left (Four squares), look for `TestMyCode` *MOOC.fi – University of Helsinki*\n",
+    "* Install the Extension\n",
+    "* You will see a new `TMC` tab int the left section of VS Code. \n",
+    "* Follow the directions to log in and select the correct course.\n",
+    "* After selectin the course, it is added to your courses in VS Code, After this you can access a \"course page\" in VS Code to download exercises\n",
+    "* Now you can access the exercises by clicking `Open exercise workspace`.\n",
+    "* As you complete exercises you can run tests locally by clicking the `TMC - run tests` button on the top right.\n",
+    "* After passing the local test, you can submit to server from the test results.\n",
+    "\n",
+    "\n",
+    "\n",
+    "### Alternative approach (TMC CLI)\n",
     "\n",
     "* TMC requires a fairly modern java 8 or later to work properly.\n",
     "    * open jdk 1.8.0_212 for example works\n",
@@ -118,7 +137,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.9"
+   "version": "3.7.3"
   },
   "varInspector": {
    "cols": {

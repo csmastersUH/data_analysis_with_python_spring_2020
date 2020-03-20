@@ -48,7 +48,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#2-Log-in-to-the-course">2 Log in to the course</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#3-Install-TMC-client">3 Install TMC client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3-Install-TMC-client">3 Install TMC client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Suggested-approach-(With-anaconda-navigator-installed)">Suggested approach (With anaconda navigator installed)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Alternative-approach-(TMC-CLI)">Alternative approach (TMC CLI)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Running Python code</a></li>
@@ -157,7 +161,7 @@ This page was generated from <a class="reference external" href="https://github.
 <li>Follow the instructions of the installer</li>
 <li>Takes about 3 minutes</li>
 <li><strong>windows:</strong> In the anaconda navigator, start the conda prompt.</li>
-<li>Verify that your installation is complete by downloading the script <a class="reference external" href="https://raw.githubusercontent.com/saskeli/data-analysis-with-python-summer-2019/master/versions.py">versions.py</a> and run it with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">versions.py</span></code>.</li>
+<li>Verify that your installation is complete by downloading the script <a class="reference external" href="https://raw.githubusercontent.com/saskeli/data-analysis-with-python-summer-2019/master/versions.py">versions.py</a> and run it with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">versions.py</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="(alternative-b)-Install-miniconda-and-Python-packages">
@@ -193,6 +197,24 @@ This page was generated from <a class="reference external" href="https://github.
 </div>
 <div class="section" id="3-Install-TMC-client">
 <h2>3 Install TMC client<a class="headerlink" href="#3-Install-TMC-client" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Suggested-approach-(With-anaconda-navigator-installed)">
+<h3>Suggested approach (With anaconda navigator installed)<a class="headerlink" href="#Suggested-approach-(With-anaconda-navigator-installed)" title="Permalink to this headline">¶</a></h3>
+<p>The TMC extension for VS Code is new and may contain bugs. That said, it does seem to work well and is significantly more approachable than the TMC CLI.</p>
+<ul class="simple">
+<li>Install <code class="docutils literal notranslate"><span class="pre">VS</span> <span class="pre">Code</span></code> in the home tab on anaconda navigator</li>
+<li>Launch <code class="docutils literal notranslate"><span class="pre">VS</span> <span class="pre">Code</span></code></li>
+<li>Under the <code class="docutils literal notranslate"><span class="pre">Extensions</span></code> tab on the left (Four squares), look for <code class="docutils literal notranslate"><span class="pre">TestMyCode</span></code> <em>MOOC.fi – University of Helsinki</em></li>
+<li>Install the Extension</li>
+<li>You will see a new <code class="docutils literal notranslate"><span class="pre">TMC</span></code> tab int the left section of VS Code.</li>
+<li>Follow the directions to log in and select the correct course.</li>
+<li>After selectin the course, it is added to your courses in VS Code, After this you can access a “course page” in VS Code to download exercises</li>
+<li>Now you can access the exercises by clicking <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">exercise</span> <span class="pre">workspace</span></code>.</li>
+<li>As you complete exercises you can run tests locally by clicking the <code class="docutils literal notranslate"><span class="pre">TMC</span> <span class="pre">-</span> <span class="pre">run</span> <span class="pre">tests</span></code> button on the top right.</li>
+<li>After passing the local test, you can submit to server from the test results.</li>
+</ul>
+</div>
+<div class="section" id="Alternative-approach-(TMC-CLI)">
+<h3>Alternative approach (TMC CLI)<a class="headerlink" href="#Alternative-approach-(TMC-CLI)" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>TMC requires a fairly modern java 8 or later to work properly.<ul>
 <li>open jdk 1.8.0_212 for example works</li>
@@ -213,6 +235,7 @@ This page was generated from <a class="reference external" href="https://github.
 <li>The above github page of the tmc-client also contains instructions on the use of the client</li>
 </ul>
 <!--NAVIGATION--></div>
+</div>
 </div>
 </div>
 </div>
