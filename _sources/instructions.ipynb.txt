@@ -75,7 +75,7 @@
     "\n",
     "### Suggested approach (With anaconda navigator installed)\n",
     "\n",
-    "The TMC extension for VS Code is new and may contain bugs. That said, it does seem to work well and is significantly more approachable than the TMC CLI.\n",
+    "The [TMC extension for VS Code](https://github.com/rage/tmc-vscode) is new and may contain bugs. That said, it does seem to work well and is significantly more approachable than the TMC CLI. Below is a very short point-to-point guide for setup. Visit the linked page for more information.\n",
     "\n",
     "* Install `VS Code` in the home tab on anaconda navigator\n",
     "* Launch `VS Code`\n",
