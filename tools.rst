@@ -54,7 +54,7 @@ then rendered as html pages, which you are reading now.
 While the static html pages do not allow modification of pieces of
 Python code, you can click the 'open in colab' link at the top of the page
 to open the notebook in Google's colab service. There it is possible
-to edit code and reexecute it.
+to edit code and re-execute it.
 
 Alternatively, you can download the notebooks with command
 ``git clone https://github.com/csmastersUH/data_analysis_with_python_spring_2020``. Then start
@@ -64,7 +64,7 @@ Executing a file containing Python code
 ---------------------------------------
 
 In your favorite text editor write some Python code, and save
-it to a file with ``.py`` ext`ension, for example ``myprogram.py``. Then you can execute
+it to a file with ``.py`` extension, for example ``myprogram.py``. Then you can execute
 the program with the command ``python3 myprogram.py``. In all the exercises
 of this course you write your solution to a text file (a stub file is provided
 where you can add the missing pieces). To run your solution to an exercise, for example
