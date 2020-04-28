@@ -69,7 +69,7 @@ the program with the command ``python3 myprogram.py``. In all the exercises
 of this course you write your solution to a text file (a stub file is provided
 where you can add the missing pieces). To run your solution to an exercise, for example
 the "hello world" exercise, use ``python3 src/hello_world.py``. This
-of course depends on what is your currect folder.
+of course depends on what is your current folder.
 
 If you are running some unix based operation system, like Linux or macOS, you
 can make the file directly executable in the following way. Add as the first line of you
