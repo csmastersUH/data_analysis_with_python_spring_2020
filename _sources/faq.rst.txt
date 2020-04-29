@@ -12,7 +12,7 @@ TMC login crashes (with mention of tmc-cli.log)
 
 Your java version is probably too old. If you want, you can check the log file that should be
 located in ``<user.home>/.config/tmc-cli/logs``. There should be mention of ``SSLHandshakeException``
-or similar security relatd exceptions. In this case you should update to a newer version of java.
+or similar security related exceptions. In this case you should update to a newer version of java.
 
 For java 8, at least open jdk 1.8.0_212 and 1.8.0.211 work. All java 11 and 12 version should work.
 
@@ -77,9 +77,9 @@ TMC runs code from the project root. So for python to find ``file.txt``, you nee
 the folder as well. That is ``src/file.txt``.
 
 However, if you are requested to write a function, say ``f``, that gets a filename as a parameter,
-then calling setting the correct file path is the responsibility of the caller of ``f``. If the filename comes from
+then setting the correct file path is the responsibility of the caller of ``f``. If the filename comes from
 the command line parameters (``sys.argv``), then it is the responsibility of the person
-who runs the program to provided correct path, like ``src/file.txt``.
+who runs the program to provide the correct path, like ``src/file.txt``.
 
 Tests complain about missing attribute assert_called, assert_called_once, ...
 -----------------------------------------------------------------------------
@@ -138,4 +138,4 @@ Note that reporting that "tests should be better" doesn't really help. Please tr
 
 * Link to non-working code
 
-* If reported via Github or Telegram: **What was the excercise in question?**
+* If reported via Github or Telegram: **What was the exercise in question?**
